@@ -16,3 +16,8 @@ Kohten, internationale Abende und jede Menge neue Freundschaften.
 Ein ausführlicher Bericht folgt bald an dieser Stelle – **und es wird
 Bilder geben!** Schaut also demnächst wieder vorbei oder werft einen Blick
 in unsere [Fotogalerie](/fotos).
+
+**Du warst dabei und hast selbst fotografiert?** Dann her mit deinen
+Bildern: Über unsere [Foto-Einreichung](/fotos-einreichen) kannst du sie
+ganz einfach hochladen – auch viele hundert auf einmal. Der Stamm sammelt
+alles und stellt daraus das Lager-Album zusammen.
