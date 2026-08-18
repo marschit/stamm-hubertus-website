@@ -1,0 +1,141 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { formatMonat } from '../../lib/termine';
+
+export async function getStaticPaths() {
+  const alben = await getCollection('galerie');
+  return alben.map((a) => ({ params: { album: a.id }, props: { album: a } }));
+}
+
+const { album } = Astro.props;
+const { Content } = await render(album);
+---
+<Layout titel={album.data.titel} beschreibung={`Fotoalbum „${album.data.titel}“ des Stamm Hubertus Siegen.`}>
+  <section>
+    <div class="wrap">
+      <span class="eyebrow">{formatMonat(album.data.datum)}</span>
+      <h1>{album.data.titel}</h1>
+      {album.body?.trim() && <div class="prose beschreibung"><Content /></div>}
+      <div class="raster">
+        {album.data.bilder.map((b, i) => (
+          <button class="foto" data-index={i} type="button" aria-label={`Foto ${i + 1} groß anzeigen`}>
+            <img src={b.bild} alt={b.text ?? `Foto ${i + 1} aus dem Album ${album.data.titel}`} loading="lazy" />
+          </button>
+        ))}
+      </div>
+      <p><a href="/fotos">← Alle Alben</a></p>
+    </div>
+  </section>
+
+  <dialog class="lightbox" aria-label="Foto-Großansicht">
+    <button class="lb-schliessen" type="button" aria-label="Schließen">×</button>
+    <button class="lb-zurueck" type="button" aria-label="Vorheriges Foto">‹</button>
+    <figure>
+      <img src="" alt="" />
+      <figcaption></figcaption>
+    </figure>
+    <button class="lb-weiter" type="button" aria-label="Nächstes Foto">›</button>
+  </dialog>
+</Layout>
+
+<script>
+  const bilder = [...document.querySelectorAll<HTMLImageElement>('.foto img')].map((img) => ({
+    src: img.src,
+    text: img.alt,
+  }));
+  const dialog = document.querySelector<HTMLDialogElement>('.lightbox')!;
+  const gross = dialog.querySelector('img')!;
+  const beschriftung = dialog.querySelector('figcaption')!;
+  let aktuell = 0;
+
+  function zeige(i: number) {
+    aktuell = (i + bilder.length) % bilder.length;
+    gross.src = bilder[aktuell].src;
+    gross.alt = bilder[aktuell].text;
+    beschriftung.textContent = bilder[aktuell].text;
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('.foto').forEach((k) =>
+    k.addEventListener('click', () => {
+      zeige(Number(k.dataset.index));
+      dialog.showModal();
+    })
+  );
+  dialog.querySelector('.lb-schliessen')!.addEventListener('click', () => dialog.close());
+  dialog.querySelector('.lb-zurueck')!.addEventListener('click', () => zeige(aktuell - 1));
+  dialog.querySelector('.lb-weiter')!.addEventListener('click', () => zeige(aktuell + 1));
+  dialog.addEventListener('click', (e) => {
+    if (e.target === dialog) dialog.close();
+  });
+  dialog.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') zeige(aktuell - 1);
+    if (e.key === 'ArrowRight') zeige(aktuell + 1);
+  });
+</script>
+
+<style>
+  .beschreibung { margin-bottom: 1rem; }
+  .raster {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+    gap: 0.8rem;
+    margin: 1.5rem 0 2rem;
+  }
+  .foto {
+    display: block;
+    padding: 0;
+    border: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: zoom-in;
+    background: var(--pfadiblau-hell);
+    aspect-ratio: 4 / 3;
+  }
+  .foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 160ms ease;
+  }
+  .foto:hover img { transform: scale(1.04); }
+
+  .lightbox {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    max-width: min(92vw, 70rem);
+    max-height: 92vh;
+  }
+  .lightbox::backdrop { background: rgb(10 23 36 / 0.92); }
+  .lightbox figure { margin: 0; }
+  .lightbox img {
+    max-width: min(92vw, 70rem);
+    max-height: 82vh;
+    display: block;
+    border-radius: 4px;
+  }
+  .lightbox figcaption {
+    color: #fff;
+    text-align: center;
+    padding: 0.6rem 0.5rem 0;
+    font-size: 0.95rem;
+  }
+  .lightbox button {
+    position: fixed;
+    font: inherit;
+    font-size: 2rem;
+    line-height: 1;
+    background: rgb(253 252 248 / 0.12);
+    color: #fff;
+    border: 0;
+    border-radius: 999px;
+    width: 2.7rem;
+    height: 2.7rem;
+    cursor: pointer;
+  }
+  .lightbox button:hover { background: rgb(253 252 248 / 0.28); }
+  .lb-schliessen { top: 1rem; right: 1rem; }
+  .lb-zurueck { left: 1rem; top: 50%; transform: translateY(-50%); }
+  .lb-weiter { right: 1rem; top: 50%; transform: translateY(-50%); }
+</style>

@@ -25,6 +25,8 @@ Jede Änderung wird als Git-Commit gespeichert und ist jederzeit rückholbar.
 | `src/content/termine/` | Termine mit Kategorie; daraus entstehen Terminseite + iCal-Feeds |
 | `src/content/gruppen/` | Gruppen: Meute, Sippen, Gilde (Markdown) |
 | `src/content/seiten/` | Feste Seiten: Über uns, Kontakt, Förderverein … |
+| `src/content/galerie/` | Fotoalben für die Galerie |
+| `public/upload.php` | Foto-Einreichung (läuft nur auf dem IONOS-Webspace, braucht PHP) |
 | `src/data/einstellungen.json` | Adresse, Treffzeit, Kontakt, Kalender-Links |
 | `public/bdp/` | BdP-CD-Assets: Logos (Klilie/WBM), Icons |
 | `public/fonts/` | Hausschrift „einfachBdP“ (SIL Open Font License) |
@@ -63,3 +65,18 @@ Förderverein). Beim Build entstehen daraus:
 
 Ein wöchentlicher GitHub-Actions-Lauf (montags 4 Uhr) baut die Seite neu,
 damit vergangene Termine auch ohne Inhaltsänderung verschwinden.
+
+## Fotogalerie & Foto-Einreichung
+
+Alben werden in Pages CMS unter *Fotoalben* gepflegt (Bilder zuerst unter
+*Medien* hochladen, dann dem Album zuordnen). Die Galerie liegt unter
+`/fotos`, jede Albumseite hat eine Lightbox.
+
+Unter `/fotos-einreichen` können Eltern und Mitglieder Fotos hochladen.
+`public/upload.php` legt sie auf dem Webspace unter `fotoeingang/` ab –
+dieser Ordner ist per `.htaccess` gesperrt (nicht öffentlich abrufbar) und
+wird vom Verein per FTP/SFTP geleert. Nichts davon wird automatisch
+veröffentlicht. Achtung: Das Formular funktioniert nur auf dem
+IONOS-Webspace (PHP), nicht in `npm run preview` und nicht auf GitHub Pages.
+Wichtig: Der Ordner `fotoeingang/` darf beim Deploy nicht gelöscht werden –
+die FTP-Deploy-Action rührt fremde Server-Dateien standardmäßig nicht an.

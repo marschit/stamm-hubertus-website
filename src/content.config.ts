@@ -37,6 +37,22 @@ const termine = defineCollection({
   }),
 });
 
+const galerie = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/galerie' }),
+  schema: z.object({
+    titel: z.string(),
+    datum: z.coerce.date(),
+    bilder: z
+      .array(
+        z.object({
+          bild: z.string(),
+          text: z.string().optional(),
+        })
+      )
+      .default([]),
+  }),
+});
+
 const seiten = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/seiten' }),
   schema: z.object({
@@ -45,4 +61,4 @@ const seiten = defineCollection({
   }),
 });
 
-export const collections = { gruppen, aktuelles, termine, seiten };
+export const collections = { gruppen, aktuelles, termine, galerie, seiten };

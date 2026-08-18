@@ -1,0 +1,81 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { formatMonat } from '../../lib/termine';
+
+const alben = (await getCollection('galerie'))
+  .filter((a) => a.data.bilder.length > 0)
+  .sort((a, b) => b.data.datum.valueOf() - a.data.datum.valueOf());
+---
+<Layout titel="Fotos" beschreibung="Fotoalben des Stamm Hubertus Siegen: Lager, Fahrten und Aktionen in Bildern.">
+  <section>
+    <div class="wrap">
+      <span class="eyebrow">Lager, Fahrten &amp; Aktionen in Bildern</span>
+      <h1>Fotos</h1>
+      <p class="intro">
+        Eindrücke aus unserem Stammesleben. Du warst bei einer Aktion dabei und
+        hast selbst Fotos gemacht? <a href="/fotos-einreichen">Reich sie hier ein</a> –
+        wir sammeln sie für den Stamm.
+      </p>
+      <div class="alben">
+        {alben.map((a) => (
+          <a class="album" href={`/fotos/${a.id}`}>
+            <img src={a.data.bilder[0].bild} alt="" loading="lazy" />
+            <span class="album-info">
+              <span class="album-datum">{formatMonat(a.data.datum)}</span>
+              <strong>{a.data.titel}</strong>
+              <span class="album-anzahl">{a.data.bilder.length} {a.data.bilder.length === 1 ? 'Foto' : 'Fotos'}</span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .intro { max-width: 42rem; }
+  .alben {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    gap: 1.3rem;
+    margin-top: 2rem;
+  }
+  .album {
+    display: block;
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    text-decoration: none;
+    background: var(--pfadiblau);
+    aspect-ratio: 4 / 3;
+    transition: transform 130ms ease, box-shadow 130ms ease;
+  }
+  .album:hover { transform: translateY(-3px); box-shadow: 0 10px 26px rgb(14 66 120 / 0.25); }
+  .album img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .album-info {
+    position: absolute;
+    inset: auto 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.05rem;
+    padding: 2.2rem 1rem 0.8rem;
+    background: linear-gradient(transparent, rgb(10 33 57 / 0.85));
+    color: #fff;
+  }
+  .album-datum {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--woelflingsgelb);
+  }
+  .album-info strong { font-weight: 900; font-size: 1.15rem; line-height: 1.2; }
+  .album-anzahl { font-size: 0.8rem; opacity: 0.85; }
+</style>

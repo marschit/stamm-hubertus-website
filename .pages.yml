@@ -147,6 +147,42 @@ content:
         label: Inhalt
         type: rich-text
 
+  - name: galerie
+    label: Fotoalben
+    description: Fotoalben für die Galerie – Bilder vorher unter „Medien“ hochladen
+    type: collection
+    path: src/content/galerie
+    view:
+      fields: [titel, datum]
+      sort: [datum]
+      default:
+        sort: datum
+        order: desc
+    fields:
+      - name: titel
+        label: Albumtitel
+        type: string
+        required: true
+      - name: datum
+        label: Datum der Veranstaltung
+        type: date
+        required: true
+      - name: bilder
+        label: Fotos
+        type: object
+        list: true
+        fields:
+          - name: bild
+            label: Foto
+            type: image
+            required: true
+          - name: text
+            label: Bildunterschrift (optional)
+            type: string
+      - name: body
+        label: Beschreibung (optional)
+        type: rich-text
+
   - name: ferien
     label: Schulferien (NRW)
     description: In diesen Zeiträumen fällt der Heimabend aus – bitte jedes Jahr um die neuen NRW-Ferien ergänzen (schulministerium.nrw)

@@ -1,0 +1,122 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const fehler = null;
+---
+<Layout titel="Fotos einreichen" beschreibung="Du hast bei einer Aktion des Stamm Hubertus fotografiert? Reich deine Fotos hier für den Verein ein.">
+  <section>
+    <div class="wrap-text">
+      <span class="eyebrow">Für Eltern &amp; Mitglieder</span>
+      <h1>Fotos einreichen</h1>
+      <p>
+        Du hast bei einem Lager, einer Fahrt oder einer Aktion fotografiert?
+        Hier kannst du deine Fotos an den Stamm schicken. Sie werden
+        <strong>nicht automatisch veröffentlicht</strong>, sondern zunächst nur
+        für den Verein gesammelt – was davon später in die
+        <a href="/fotos">Galerie</a> kommt, entscheidet die Stammesführung.
+      </p>
+
+      <form action="/upload.php" method="post" enctype="multipart/form-data">
+        <label>
+          Dein Name
+          <input type="text" name="name" required maxlength="100" autocomplete="name" />
+        </label>
+        <label>
+          E-Mail (für Rückfragen)
+          <input type="email" name="email" maxlength="150" autocomplete="email" />
+        </label>
+        <label>
+          Zu welcher Veranstaltung gehören die Fotos?
+          <input type="text" name="veranstaltung" required maxlength="120" placeholder="z. B. Herbstlager 2026" />
+        </label>
+        <label>
+          Nachricht (optional)
+          <textarea name="nachricht" rows="3" maxlength="1000"></textarea>
+        </label>
+        <label>
+          Fotos auswählen (bis zu 30 Stück, je max. 20 MB)
+          <input type="file" name="fotos[]" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" multiple required />
+        </label>
+        <input type="text" name="webseite" class="honig" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <label class="einverstaendnis">
+          <input type="checkbox" name="einverstaendnis" value="ja" required />
+          <span>
+            Ich habe die Fotos selbst aufgenommen bzw. darf sie weitergeben und
+            bin einverstanden, dass der Stamm Hubertus Siegen e. V. sie speichert
+            und – nach Rücksprache mit den abgebildeten Personen bzw. deren
+            Eltern – ggf. auf dieser Website veröffentlicht.
+          </span>
+        </label>
+        <button class="btn" type="submit">Fotos hochladen</button>
+      </form>
+
+      <p class="hinweis">
+        Der Upload kann bei vielen Fotos einen Moment dauern – bitte das Fenster
+        offen lassen. Bei Problemen erreichst du uns auch per E-Mail an
+        <a href="mailto:stamm-hubertus-bdp@outlook.de">stamm-hubertus-bdp@outlook.de</a>.
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // Fehlermeldung aus upload.php (?fehler=...) anzeigen
+  const fehler = new URLSearchParams(location.search).get('fehler');
+  if (fehler) {
+    const meldungen: Record<string, string> = {
+      'keine-dateien': 'Es sind keine Dateien angekommen – bitte versuche es noch einmal.',
+      'zu-gross': 'Mindestens eine Datei war zu groß (max. 20 MB pro Foto).',
+      'zu-viele': 'Bitte höchstens 30 Fotos auf einmal hochladen.',
+      'kein-bild': 'Es sind nur Bilddateien (JPG, PNG, WebP, HEIC) erlaubt.',
+      'unvollstaendig': 'Bitte fülle alle Pflichtfelder aus und bestätige das Einverständnis.',
+      'technik': 'Beim Speichern ist etwas schiefgelaufen – bitte versuche es später noch einmal.',
+    };
+    const p = document.createElement('p');
+    p.className = 'fehlermeldung';
+    p.setAttribute('role', 'alert');
+    p.textContent = meldungen[fehler] ?? meldungen['technik'];
+    document.querySelector('form')!.before(p);
+  }
+</script>
+
+<style>
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    margin-top: 1.5rem;
+    max-width: 34rem;
+  }
+  label { display: flex; flex-direction: column; gap: 0.3rem; font-weight: 700; }
+  input[type='text'], input[type='email'], textarea, input[type='file'] {
+    font: inherit;
+    font-weight: 400;
+    padding: 0.55rem 0.7rem;
+    border: 1px solid var(--linie);
+    border-radius: 4px;
+    background: #fff;
+    color: var(--ink);
+  }
+  input:focus-visible, textarea:focus-visible {
+    outline: 3px solid var(--woelflingsgelb);
+    outline-offset: 1px;
+  }
+  .einverstaendnis {
+    flex-direction: row;
+    gap: 0.6rem;
+    align-items: flex-start;
+    font-weight: 400;
+    font-size: 0.92rem;
+  }
+  .einverstaendnis input { margin-top: 0.25rem; }
+  .honig { position: absolute; left: -9999px; }
+  button.btn { align-self: flex-start; border: 0; cursor: pointer; font: inherit; font-weight: 700; }
+  .hinweis { font-size: 0.9rem; color: var(--ink-soft); margin-top: 1.5rem; }
+  :global(.fehlermeldung) {
+    background: #fbe9ec;
+    border-left: 4px solid var(--rr-rot);
+    color: var(--rr-rot);
+    padding: 0.7rem 1rem;
+    border-radius: 0 4px 4px 0;
+    font-weight: 700;
+  }
+</style>

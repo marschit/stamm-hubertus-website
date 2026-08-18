@@ -63,9 +63,10 @@ const datumFormat = new Intl.DateTimeFormat('de-DE', { dateStyle: 'long' });
     </div>
   </section>
 
-  <section class="foto-band" aria-hidden="true">
+  <a class="foto-band" href="/fotos" aria-label="Zur Fotogalerie">
     <img src="/bilder/gruppenfoto.jpg" alt="" loading="lazy" />
-  </section>
+    <span>Mehr Bilder in der Fotogalerie →</span>
+  </a>
 
   {news.length > 0 && (
     <section>
@@ -167,11 +168,23 @@ const datumFormat = new Intl.DateTimeFormat('de-DE', { dateStyle: 'long' });
     margin-top: 1.5rem;
   }
 
-  .foto-band { padding: 0; line-height: 0; }
+  .foto-band { display: block; position: relative; line-height: 0; }
   .foto-band img {
     width: 100%;
     max-height: 26rem;
     object-fit: cover;
+  }
+  .foto-band span {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    line-height: 1.4;
+    background: var(--woelflingsgelb);
+    color: var(--pfadiblau);
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
   }
 
   .news-raster {

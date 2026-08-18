@@ -16,6 +16,7 @@ const nav = [
   { href: '/ueber-uns', label: 'Über uns' },
   { href: '/gruppen', label: 'Gruppen' },
   { href: '/termine', label: 'Termine' },
+  { href: '/fotos', label: 'Fotos' },
   { href: '/aktuelles', label: 'Aktuelles' },
   { href: '/heim', label: 'Heim mieten' },
   { href: '/foerderverein', label: 'Förderverein' },
@@ -71,6 +72,7 @@ const pfad = Astro.url.pathname.replace(/\/$/, '') || '/';
         </div>
         <div class="fuss-links">
           <a href="/termine">Termine</a>
+          <a href="/fotos-einreichen">Fotos einreichen</a>
           <a href="/spenden">Spenden</a>
           <a href={einstellungen.facebook}>Facebook</a>
           <a href="/impressum">Impressum</a>
