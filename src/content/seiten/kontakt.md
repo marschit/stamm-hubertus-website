@@ -4,16 +4,12 @@ untertitel: Komm vorbei oder schreib uns
 ---
 Wir treffen uns **jeden Samstag von 15 bis 17 Uhr** in unserem Stammesheim:
 
-> **Stamm Hubertus Siegen e. V.**
-> Seilereiweg 8
-> 57074 Siegen
-
 Zum Reinschnuppern brauchst du keine Anmeldung – komm einfach vorbei.
 
 ## Ansprechpartner
 
 - **Ernie** (Jan Philip Berg) 
-- **Samson** (Marco Schmidt) 
+- **Samson** (Marco Schmidt)
 
 ## So erreichst du uns
 
