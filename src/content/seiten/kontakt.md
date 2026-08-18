@@ -12,8 +12,8 @@ Zum Reinschnuppern brauchst du keine Anmeldung – komm einfach vorbei.
 
 ## Ansprechpartner
 
-- **Ernie** (Kontaktdaten folgen)
-- **Marco Schmidt** (Samson) – 
+- **Ernie** (Jan Philip Berg) - 
+- **Samson** (Marco Schmidt) –
 
 ## So erreichst du uns
 
