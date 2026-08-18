@@ -21,8 +21,7 @@ auf Wunsch automatisch zu.
 
 1. [Beitrittserklärung herunterladen (PDF)](/dokumente/beitrittserklaerung-foerderverein.pdf)
    – mit Formular und SEPA-Lastschriftmandat
-2. Ausfüllen und per Post an *Ralf Jakubowski, Baumschulenweg 17,
-   57076 Siegen* senden – oder eingescannt per E-Mail an
+2. Ausfüllen, einscannen (oder abfotografieren) und per E-Mail senden an
    [fv@stamm-hubertus-siegen.de](mailto:fv@stamm-hubertus-siegen.de)
 
 Fragen zum Förderverein? Schreib uns an
