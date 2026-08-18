@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
-import { KATEGORIEN, alsIso, formatDatum, formatMonat, monatsSchluessel } from '../lib/termine';
+import { KATEGORIEN, alsIso, formatDatum, formatMonat, monatsSchluessel, heimabendSamstage } from '../lib/termine';
 
 const heute = alsIso(new Date());
 const alle = (await getCollection('termine'))
@@ -12,7 +12,18 @@ const gerendert = await Promise.all(
   alle.map(async (t) => ({ termin: t, Inhalt: (await render(t)).Content }))
 );
 
-const monate = [...new Map(alle.map((t) => [monatsSchluessel(t.data.datum), t.data.datum]))];
+const heimabende = heimabendSamstage(heute).map((iso) => new Date(iso));
+
+const zeilen = [
+  ...gerendert.map((g) => ({ art: 'termin' as const, ...g, iso: alsIso(g.termin.data.datum) })),
+  ...heimabende.map((d) => ({ art: 'heimabend' as const, datum: d, iso: alsIso(d) })),
+].sort((a, b) => a.iso.localeCompare(b.iso));
+
+const monate = [
+  ...new Map(
+    [...alle.map((t) => t.data.datum), ...heimabende].map((d) => [monatsSchluessel(d), d])
+  ),
+].sort((a, b) => a[0].localeCompare(b[0]));
 
 const feedUrl = new URL('/termine.ics', Astro.site).href;
 const webcalUrl = feedUrl.replace(/^https?:/, 'webcal:');
@@ -24,9 +35,8 @@ const webcalUrl = feedUrl.replace(/^https?:/, 'webcal:');
       <h1>Termine</h1>
       <p class="intro">
         Unser <strong>Heimabend</strong> ist jeden Samstag von 15 bis 17 Uhr im
-        Stammesheim – außer in den NRW-Schulferien. Er steckt auch im
-        Kalender-Abo unten. Hier stehen alle weiteren Termine – Lager, Fahrten
-        und Aktionen.
+        Stammesheim – außer in den NRW-Schulferien. Dazu kommen Lager, Fahrten
+        und Aktionen. Alles zusammen gibt es unten auch als Kalender-Abo.
       </p>
 
       <div class="filter" role="group" aria-label="Nach Gruppe filtern">
@@ -41,32 +51,45 @@ const webcalUrl = feedUrl.replace(/^https?:/, 'webcal:');
           <div class="monat" data-monat={schluessel}>
             <h2>{formatMonat(datum)}</h2>
             <ul>
-              {gerendert
-                .filter(({ termin }) => monatsSchluessel(termin.data.datum) === schluessel)
-                .map(({ termin, Inhalt }) => (
-                  <li
-                    class="termin"
-                    data-kategorie={termin.data.kategorie}
-                    data-ende={alsIso(termin.data.endDatum ?? termin.data.datum)}
-                  >
-                    <div class="wann">
-                      <span class="tag">{formatDatum(termin.data.datum)}</span>
-                      {termin.data.endDatum && (
-                        <span class="bis">bis {formatDatum(termin.data.endDatum)}</span>
-                      )}
-                      {termin.data.zeit && <span class="zeit">{termin.data.zeit} Uhr</span>}
-                    </div>
-                    <div class="was">
-                      <span
-                        class={`badge ${KATEGORIEN[termin.data.kategorie].hell ? 'badge--hell' : ''}`}
-                        style={`background:${KATEGORIEN[termin.data.kategorie].farbe}`}
-                      >{KATEGORIEN[termin.data.kategorie].label}</span>
-                      <strong>{termin.data.titel}</strong>
-                      {termin.data.ort && <span class="ort">{termin.data.ort}</span>}
-                      <div class="beschreibung"><Inhalt /></div>
-                    </div>
-                  </li>
-                ))}
+              {zeilen
+                .filter((z) => z.iso.slice(0, 7) === schluessel)
+                .map((z) =>
+                  z.art === 'heimabend' ? (
+                    <li class="termin termin--heimabend" data-kategorie="stamm" data-ende={z.iso}>
+                      <div class="wann">
+                        <span class="tag">{formatDatum(z.datum)}</span>
+                        <span class="zeit">15:00 – 17:00 Uhr</span>
+                      </div>
+                      <div class="was">
+                        <strong>Heimabend</strong>
+                        <span class="ort">Stammesheim</span>
+                      </div>
+                    </li>
+                  ) : (
+                    <li
+                      class="termin"
+                      data-kategorie={z.termin.data.kategorie}
+                      data-ende={alsIso(z.termin.data.endDatum ?? z.termin.data.datum)}
+                    >
+                      <div class="wann">
+                        <span class="tag">{formatDatum(z.termin.data.datum)}</span>
+                        {z.termin.data.endDatum && (
+                          <span class="bis">bis {formatDatum(z.termin.data.endDatum)}</span>
+                        )}
+                        {z.termin.data.zeit && <span class="zeit">{z.termin.data.zeit} Uhr</span>}
+                      </div>
+                      <div class="was">
+                        <span
+                          class={`badge ${KATEGORIEN[z.termin.data.kategorie].hell ? 'badge--hell' : ''}`}
+                          style={`background:${KATEGORIEN[z.termin.data.kategorie].farbe}`}
+                        >{KATEGORIEN[z.termin.data.kategorie].label}</span>
+                        <strong>{z.termin.data.titel}</strong>
+                        {z.termin.data.ort && <span class="ort">{z.termin.data.ort}</span>}
+                        <div class="beschreibung"><z.Inhalt /></div>
+                      </div>
+                    </li>
+                  )
+                )}
             </ul>
           </div>
         ))}
@@ -160,6 +183,15 @@ const webcalUrl = feedUrl.replace(/^https?:/, 'webcal:');
     gap: 0.4rem 2.5rem;
     padding: 1.1rem 0;
     border-bottom: 1px solid var(--linie);
+  }
+  .termin--heimabend { padding: 0.5rem 0; }
+  .termin--heimabend .wann { flex-direction: row; gap: 0 0.8rem; align-items: baseline; }
+  .termin--heimabend .tag { font-weight: 700; }
+  .termin--heimabend .was { flex-direction: row; gap: 0 0.8rem; align-items: baseline; }
+  .termin--heimabend .was strong {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
   }
   .wann {
     flex: 0 0 11.5rem;
