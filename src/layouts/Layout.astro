@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import '../styles/global.css';
 import einstellungen from '../data/einstellungen.json';
 
@@ -15,15 +16,26 @@ const beschreibungstext = beschreibung ?? 'Pfadfinden in Siegen: Der BdP Stamm H
 const kanonisch = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', Astro.site).href;
 const vorschaubild = new URL(bild ?? '/bilder/gruppenfoto.jpg', Astro.site).href;
 
+const gruppenEintraege = (await getCollection('gruppen')).sort(
+  (a, b) => a.data.reihenfolge - b.data.reihenfolge
+);
+
 const nav = [
   { href: '/', label: 'Start' },
-  { href: '/gruppen', label: 'Gruppen' },
+  {
+    href: '/ueber-uns',
+    label: 'Über uns',
+    unter: [
+      { href: '/gruppen', label: 'Unsere Gruppen' },
+      ...gruppenEintraege.map((g) => ({ href: `/gruppen/${g.id}`, label: g.data.name })),
+    ],
+  },
   { href: '/termine', label: 'Termine' },
   { href: '/aktuelles', label: 'Aktuelles' },
   { href: '/fotos', label: 'Fotos' },
-  { href: '/ueber-uns', label: 'Über uns' },
   { href: '/heim', label: 'Heim mieten' },
   { href: '/foerderverein', label: 'Förderverein' },
+  { href: '/spenden', label: 'Spenden' },
   { href: '/kontakt', label: 'Kontakt' },
 ];
 const pfad = Astro.url.pathname.replace(/\/$/, '') || '/';
@@ -67,8 +79,21 @@ const pfad = Astro.url.pathname.replace(/\/$/, '') || '/';
         <nav id="hauptnav" aria-label="Hauptnavigation">
           <ul>
             {nav.map((n) => (
-              <li>
-                <a href={n.href} aria-current={pfad === n.href ? 'page' : undefined}>{n.label}</a>
+              <li class={'unter' in n ? 'hat-unter' : undefined}>
+                <a
+                  href={n.href}
+                  aria-current={pfad === n.href ? 'page' : undefined}
+                  class={'unter' in n && (pfad.startsWith('/gruppen') || pfad === n.href) ? 'eltern-aktiv' : undefined}
+                >{n.label}{'unter' in n && <span class="pfeil" aria-hidden="true"> ▾</span>}</a>
+                {'unter' in n && n.unter && (
+                  <ul class="untermenu">
+                    {n.unter.map((u) => (
+                      <li>
+                        <a href={u.href} aria-current={pfad === u.href ? 'page' : undefined}>{u.label}</a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </li>
             ))}
           </ul>
@@ -213,7 +238,42 @@ const pfad = Astro.url.pathname.replace(/\/$/, '') || '/';
     border-bottom: 3px solid transparent;
   }
   nav a:hover { border-bottom-color: var(--woelflingsgelb); }
-  nav a[aria-current='page'] { border-bottom-color: var(--woelflingsgelb); }
+  nav a[aria-current='page'], nav a.eltern-aktiv { border-bottom-color: var(--woelflingsgelb); }
+  .pfeil { font-size: 0.7em; }
+
+  .hat-unter { position: relative; }
+  .untermenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -0.75rem;
+    min-width: 13rem;
+    flex-direction: column;
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0.4rem 0;
+    background: var(--papier);
+    border: 1px solid var(--linie);
+    border-top: 3px solid var(--woelflingsgelb);
+    border-radius: 0 0 6px 6px;
+    box-shadow: 0 12px 28px rgb(14 66 120 / 0.18);
+    z-index: 30;
+  }
+  .hat-unter:hover .untermenu,
+  .hat-unter:focus-within .untermenu { display: flex; }
+  .untermenu a {
+    display: block;
+    padding: 0.5rem 0.9rem;
+    border-bottom: none;
+    font-weight: 700;
+  }
+  .untermenu a:hover,
+  .untermenu a[aria-current='page'] {
+    background: var(--pfadiblau-hell);
+    border-bottom: none;
+  }
+  .untermenu li:first-child a { border-bottom: 1px solid var(--linie); }
 
   @media (max-width: 900px) {
     .nav-knopf { display: flex; }
@@ -247,6 +307,22 @@ const pfad = Astro.url.pathname.replace(/\/$/, '') || '/';
       border-left-color: var(--woelflingsgelb);
       padding-left: 0.75rem;
     }
+    nav a.eltern-aktiv { border-bottom: none; }
+    .pfeil { display: none; }
+    .untermenu {
+      display: flex;
+      position: static;
+      min-width: 0;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      padding: 0 0 0.4rem 1.1rem;
+      background: transparent;
+    }
+    .untermenu a { font-weight: 400; font-size: 1rem; padding: 0.55rem 0.25rem; }
+    .untermenu li:first-child a { border-bottom: none; }
+    .untermenu a:hover { background: transparent; }
+    .untermenu li + li { border-top: 1px solid var(--linie); }
   }
 
   .fuss {
