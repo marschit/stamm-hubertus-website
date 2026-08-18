@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /fotoeingang/
+
+Sitemap: https://stamm-hubertus-siegen.de/sitemap-index.xml

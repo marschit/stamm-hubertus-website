@@ -11,7 +11,7 @@ const { beitrag } = Astro.props;
 const { Content } = await render(beitrag);
 const datumFormat = new Intl.DateTimeFormat('de-DE', { dateStyle: 'long' });
 ---
-<Layout titel={beitrag.data.titel}>
+<Layout titel={beitrag.data.titel} bild={beitrag.data.bild}>
   <section>
     <article class="wrap-text">
       <time class="eyebrow" datetime={beitrag.data.datum.toISOString().slice(0, 10)}>
