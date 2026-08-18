@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import { marked } from 'marked';
 import KarteAnfahrt from '../components/KarteAnfahrt.astro';
 import KontaktFormular from '../components/KontaktFormular.astro';
 
@@ -11,17 +12,38 @@ export async function getStaticPaths() {
 
 const { eintrag } = Astro.props;
 const { Content } = await render(eintrag);
-const mitKarte = ['kontakt', 'heim'].includes(eintrag.id);
+
+// Auf der Kontaktseite sitzt die Karte mitten im Inhalt: direkt nach dem
+// ersten Absatz samt Adress-Block. Dafür wird der Markdown-Text dort geteilt.
+let vorKarte: string | null = null;
+let nachKarte: string | null = null;
+if (eintrag.id === 'kontakt' && eintrag.body) {
+  const teile = eintrag.body.match(/^([\s\S]*?\n(?:>[^\n]*\n)+)\s*([\s\S]*)$/);
+  if (teile) {
+    vorKarte = (await marked.parse(teile[1])) as string;
+    nachKarte = (await marked.parse(teile[2])) as string;
+  }
+}
 ---
 <Layout titel={eintrag.data.titel} beschreibung={eintrag.data.untertitel}>
   <section>
     <div class="wrap-text">
       {eintrag.data.untertitel && <span class="eyebrow">{eintrag.data.untertitel}</span>}
       <h1>{eintrag.data.titel}</h1>
-      {eintrag.id === 'kontakt' && <KarteAnfahrt />}
-      <div class="prose">
-        <Content />
-      </div>
+      {vorKarte !== null && nachKarte !== null ? (
+        <>
+          <div class="prose" set:html={vorKarte} />
+          <KarteAnfahrt />
+          <div class="prose" set:html={nachKarte} />
+        </>
+      ) : (
+        <>
+          {eintrag.id === 'kontakt' && <KarteAnfahrt />}
+          <div class="prose">
+            <Content />
+          </div>
+        </>
+      )}
       {eintrag.id === 'kontakt' && <KontaktFormular />}
       {eintrag.id === 'heim' && <KarteAnfahrt />}
     </div>
