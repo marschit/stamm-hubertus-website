@@ -1,0 +1,51 @@
+name: Auf IONOS-Webspace veröffentlichen
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    # Wöchentlich neu bauen, damit vergangene Termine verschwinden
+    - cron: '0 4 * * 1'
+
+concurrency:
+  group: ionos-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Zugangsdaten prüfen
+        id: secrets
+        run: echo "vorhanden=${{ secrets.IONOS_HOST != '' && secrets.IONOS_USER != '' && secrets.IONOS_PASSWORD != '' }}" >> "$GITHUB_OUTPUT"
+
+      - name: Hinweis bei fehlenden Zugangsdaten
+        if: steps.secrets.outputs.vorhanden != 'true'
+        run: echo "IONOS_HOST/IONOS_USER/IONOS_PASSWORD sind nicht als Repo-Secrets hinterlegt – Deploy übersprungen."
+
+      - uses: actions/checkout@v4
+        if: steps.secrets.outputs.vorhanden == 'true'
+
+      - uses: actions/setup-node@v4
+        if: steps.secrets.outputs.vorhanden == 'true'
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+        if: steps.secrets.outputs.vorhanden == 'true'
+
+      - run: npm run build
+        if: steps.secrets.outputs.vorhanden == 'true'
+
+      - name: Per SFTP hochladen
+        if: steps.secrets.outputs.vorhanden == 'true'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.IONOS_HOST }}
+          username: ${{ secrets.IONOS_USER }}
+          password: ${{ secrets.IONOS_PASSWORD }}
+          protocol: ftps
+          local-dir: dist/
+          server-dir: ${{ secrets.IONOS_DIR || './' }}

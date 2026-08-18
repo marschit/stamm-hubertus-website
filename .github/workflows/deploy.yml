@@ -4,10 +4,6 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
-  schedule:
-    # Wöchentlich neu bauen, damit vergangene Termine auch ohne
-    # Inhaltsänderung von der Terminseite verschwinden
-    - cron: '0 4 * * 1'
 
 permissions:
   contents: read

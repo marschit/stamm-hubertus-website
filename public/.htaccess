@@ -1,0 +1,33 @@
+# Weiterleitungen der alten WordPress-URLs auf die neue Seitenstruktur
+RewriteEngine On
+
+# Immer HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+RewriteRule ^wir-ueber-uns/?$ /ueber-uns [R=301,L]
+RewriteRule ^wir-ueber-uns/pfadfindergeschichte/?$ /ueber-uns [R=301,L]
+RewriteRule ^pfadfindergeschichte/?$ /ueber-uns [R=301,L]
+RewriteRule ^zu-vermieten/?$ /heim [R=301,L]
+RewriteRule ^heim-zu-vermieten/?$ /heim [R=301,L]
+RewriteRule ^aktionen/?$ /termine [R=301,L]
+RewriteRule ^intern/?$ / [R=301,L]
+RewriteRule ^meute-schwarzkittel/?$ /gruppen/meute-schwarzkittel [R=301,L]
+RewriteRule ^sippe-werwolf/?$ /gruppen/sippe-werwolf [R=301,L]
+RewriteRule ^sippe-pegasus/?$ /gruppen/sippe-pegasus [R=301,L]
+RewriteRule ^gilde/?$ /gruppen/gilde [R=301,L]
+RewriteRule ^pfadfinder/?$ /gruppen [R=301,L]
+
+ErrorDocument 404 /404.html
+
+# Statische Assets lange cachen
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType font/otf "access plus 1 year"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType text/css "access plus 1 week"
+</IfModule>
+
+AddType text/calendar .ics
