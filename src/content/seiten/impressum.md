@@ -1,7 +1,6 @@
 ---
 titel: Impressum
 ---
-
 ## Angaben gemäß § 5 DDG
 
 > **BdP Stamm Hubertus Siegen e. V.**
@@ -11,13 +10,12 @@ titel: Impressum
 **Vertreten durch den Vorstand:**
 Marco Schmidt
 
-**Kontakt:**
-Telefon: [+49 160 5331360](tel:+491605331360)
-E-Mail: [kontakt@stamm-hubertus-siegen.de](mailto:kontakt@stamm-hubertus-siegen.de)
+**Kontakt:**  
+E-Mail: [kontakt@stamm-hubertus-siegen.de](mailto:kontakt@stamm-hubertus-siegen.de) oder [https://stamm-hubertus-siegen.de/kontakt/](https://stamm-hubertus-siegen.de/kontakt/)
 
-**Registereintrag:**
-Eingetragen im Vereinsregister des Amtsgerichts Siegen
-Registernummer: VR <!-- TODO: Nummer vom Eintragungsbescheid ergänzen -->
+**Registereintrag:**  
+Eingetragen im Vereinsregister des Amtsgerichts Siegen  
+Registernummer: VR 2549
 
 **Inhaltlich verantwortlich gemäß § 18 Abs. 2 MStV:**
 Marco Schmidt, Seilereiweg 8, 57074 Siegen
