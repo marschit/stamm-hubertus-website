@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import KarteAnfahrt from '../components/KarteAnfahrt.astro';
 
 export async function getStaticPaths() {
   const seiten = await getCollection('seiten');
@@ -9,6 +10,7 @@ export async function getStaticPaths() {
 
 const { eintrag } = Astro.props;
 const { Content } = await render(eintrag);
+const mitKarte = ['kontakt', 'heim'].includes(eintrag.id);
 ---
 <Layout titel={eintrag.data.titel} beschreibung={eintrag.data.untertitel}>
   <section>
@@ -18,6 +20,7 @@ const { Content } = await render(eintrag);
       <div class="prose">
         <Content />
       </div>
+      {mitKarte && <KarteAnfahrt />}
     </div>
   </section>
 </Layout>

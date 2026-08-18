@@ -1,0 +1,75 @@
+---
+// Anfahrtskarte: lokal gehostetes OSM-Kartenbild (kein externer Abruf,
+// datenschutzfreundlich) mit Routenplaner-Links für Google/Apple/OSM.
+import einstellungen from '../data/einstellungen.json';
+
+const LAT = 50.8639197;
+const LON = 8.0463747;
+const zielText = encodeURIComponent(einstellungen.adresse);
+---
+<div class="karte">
+  <a
+    class="karte-bild"
+    href={`https://www.google.com/maps/dir/?api=1&destination=${zielText}`}
+    title="Route mit Google Maps planen"
+  >
+    <img src="/bilder/karte-heim.png" alt={`Karte: Stammesheim, ${einstellungen.adresse}`} width="640" height="360" loading="lazy" />
+    <span class="karte-pin">Stammesheim · {einstellungen.adresse}</span>
+  </a>
+  <div class="karte-fuss">
+    <span class="karte-routen">
+      Route planen mit:
+      <a href={`https://www.google.com/maps/dir/?api=1&destination=${zielText}`}>Google Maps</a> ·
+      <a href={`https://maps.apple.com/?daddr=${zielText}`}>Apple Karten</a> ·
+      <a href={`https://www.openstreetmap.org/directions?to=${LAT}%2C${LON}`}>OpenStreetMap</a>
+    </span>
+    <span class="karte-lizenz">
+      Karte: <a href="https://www.openstreetmap.org/copyright">© OpenStreetMap-Mitwirkende</a>
+    </span>
+  </div>
+</div>
+
+<style>
+  .karte {
+    margin: 2rem 0 1rem;
+    border: 1px solid var(--linie);
+    border-radius: 6px;
+    overflow: hidden;
+    background: #fff;
+  }
+  .karte-bild {
+    display: block;
+    position: relative;
+    line-height: 0;
+  }
+  .karte-bild img {
+    width: 100%;
+    height: auto;
+    transition: transform 200ms ease;
+  }
+  .karte-bild:hover img { transform: scale(1.02); }
+  .karte-pin {
+    position: absolute;
+    left: 0.9rem;
+    bottom: 0.9rem;
+    line-height: 1.4;
+    background: var(--pfadiblau);
+    color: var(--papier);
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.25);
+  }
+  .karte-fuss {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.4rem 1.5rem;
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
+  }
+  .karte-routen { font-weight: 700; }
+  .karte-routen a { white-space: nowrap; }
+  .karte-lizenz { color: var(--ink-soft); font-size: 0.8rem; align-self: center; }
+</style>
