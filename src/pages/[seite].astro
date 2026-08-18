@@ -18,11 +18,12 @@ const mitKarte = ['kontakt', 'heim'].includes(eintrag.id);
     <div class="wrap-text">
       {eintrag.data.untertitel && <span class="eyebrow">{eintrag.data.untertitel}</span>}
       <h1>{eintrag.data.titel}</h1>
+      {eintrag.id === 'kontakt' && <KarteAnfahrt />}
       <div class="prose">
         <Content />
       </div>
       {eintrag.id === 'kontakt' && <KontaktFormular />}
-      {mitKarte && <KarteAnfahrt />}
+      {eintrag.id === 'heim' && <KarteAnfahrt />}
     </div>
   </section>
 </Layout>
