@@ -12,7 +12,14 @@ const gerendert = await Promise.all(
   alle.map(async (t) => ({ termin: t, Inhalt: (await render(t)).Content }))
 );
 
-const heimabende = heimabendSamstage(heute).map((iso) => new Date(iso));
+// Auf der Seite nur die Heimabende der nächsten ~10 Wochen zeigen —
+// im Kalender-Abo (ICS) bleibt der volle Zeitraum enthalten
+const horizont = new Date();
+horizont.setUTCDate(horizont.getUTCDate() + 70);
+const horizontIso = alsIso(horizont);
+const heimabende = heimabendSamstage(heute)
+  .filter((iso) => iso <= horizontIso)
+  .map((iso) => new Date(iso));
 
 const zeilen = [
   ...gerendert.map((g) => ({ art: 'termin' as const, ...g, iso: alsIso(g.termin.data.datum) })),
@@ -37,6 +44,10 @@ const webcalUrl = feedUrl.replace(/^https?:/, 'webcal:');
         Unser <strong>Heimabend</strong> ist jeden Samstag von 15 bis 17 Uhr im
         Stammesheim – außer in den NRW-Schulferien. Dazu kommen Lager, Fahrten
         und Aktionen. Alles zusammen gibt es unten auch als Kalender-Abo.
+      </p>
+      <p class="intro-hinweis">
+        In seltenen Fällen kann ein Heimabend ausfallen, etwa wegen Krankheit –
+        kurzfristige Änderungen erfahrt ihr über eure Gruppenleitung.
       </p>
 
       <div class="filter" role="group" aria-label="Nach Gruppe filtern">
@@ -145,6 +156,12 @@ const webcalUrl = feedUrl.replace(/^https?:/, 'webcal:');
 
 <style>
   .intro { max-width: 44rem; }
+  .intro-hinweis {
+    max-width: 44rem;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    margin-top: -0.3rem;
+  }
 
   .filter {
     display: flex;
