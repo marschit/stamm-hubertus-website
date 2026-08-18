@@ -39,6 +39,40 @@ const nav = [
   { href: '/kontakt', label: 'Kontakt' },
 ];
 const pfad = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+const strukturDaten = {
+  '@context': 'https://schema.org',
+  '@type': 'NGO',
+  name: 'Stamm Hubertus Siegen e.V.',
+  alternateName: 'BdP Stamm Hubertus Siegen',
+  description:
+    'Pfadfinderstamm im Bund der Pfadfinderinnen und Pfadfinder (BdP) in Siegen: wöchentliche Gruppenstunden, Fahrten und Zeltlager für Kinder und Jugendliche ab 6 Jahren.',
+  url: 'https://stamm-hubertus-siegen.de',
+  logo: 'https://stamm-hubertus-siegen.de/bilder/hubertus-logo-192.png',
+  image: 'https://stamm-hubertus-siegen.de/bilder/gruppenfoto.jpg',
+  email: einstellungen.email,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Seilereiweg 8',
+    postalCode: '57074',
+    addressLocality: 'Siegen',
+    addressRegion: 'Nordrhein-Westfalen',
+    addressCountry: 'DE',
+  },
+  location: {
+    '@type': 'Place',
+    name: 'Stammesheim Stamm Hubertus',
+    address: { '@type': 'PostalAddress', streetAddress: 'Seilereiweg 8', postalCode: '57074', addressLocality: 'Siegen', addressCountry: 'DE' },
+    geo: { '@type': 'GeoCoordinates', latitude: 50.8639197, longitude: 8.0463747 },
+  },
+  areaServed: 'Siegen und Siegen-Wittgenstein',
+  sameAs: [einstellungen.instagram, einstellungen.facebook],
+  memberOf: {
+    '@type': 'Organization',
+    name: 'Bund der Pfadfinderinnen und Pfadfinder e.V.',
+    url: 'https://www.pfadfinden.de',
+  },
+};
 ---
 <!doctype html>
 <html lang="de">
@@ -59,6 +93,7 @@ const pfad = Astro.url.pathname.replace(/\/$/, '') || '/';
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" type="image/png" href="/bilder/hubertus-logo-192.png" />
     <link rel="apple-touch-icon" href="/bilder/hubertus-logo-192.png" />
+    <script type="application/ld+json" set:html={JSON.stringify(strukturDaten)} />
     <link rel="preload" href="/fonts/einfachBdP-Superfett.otf" as="font" type="font/otf" crossorigin />
     <link rel="preload" href="/fonts/einfachBdP-Klassisch.otf" as="font" type="font/otf" crossorigin />
   </head>

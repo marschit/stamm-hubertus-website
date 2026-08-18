@@ -13,6 +13,13 @@ export async function getStaticPaths() {
 const { eintrag } = Astro.props;
 const { Content } = await render(eintrag);
 
+// Meta-Description aus dem Seitenanfang ableiten
+const klartext = (eintrag.body ?? '')
+  .replace(/[#>*_`]|\[([^\]]*)\]\([^)]*\)/g, '$1')
+  .replace(/\s+/g, ' ')
+  .trim();
+const beschreibung = klartext.length > 20 ? klartext.slice(0, 155) + '…' : eintrag.data.untertitel;
+
 // Auf der Kontaktseite sitzt die Karte mitten im Inhalt: nach dem ersten
 // Absatz (inkl. eines direkt folgenden Adress-Blocks, falls vorhanden).
 let vorKarte: string | null = null;
@@ -28,7 +35,7 @@ if (eintrag.id === 'kontakt' && eintrag.body) {
   }
 }
 ---
-<Layout titel={eintrag.data.titel} beschreibung={eintrag.data.untertitel}>
+<Layout titel={eintrag.data.titel} beschreibung={beschreibung}>
   <section>
     <div class="wrap-text">
       {eintrag.data.untertitel && <span class="eyebrow">{eintrag.data.untertitel}</span>}

@@ -20,7 +20,7 @@ const news = (await getCollection('aktuelles'))
   .slice(0, 3);
 const datumFormat = new Intl.DateTimeFormat('de-DE', { dateStyle: 'long' });
 ---
-<Layout>
+<Layout beschreibung="Pfadfinder in Siegen: Der Stamm Hubertus bietet Kindern und Jugendlichen ab 6 Jahren Gruppenstunden, Zeltlager und Abenteuer in der Natur – jeden Samstag 15–17 Uhr, Seilereiweg 8. Einfach vorbeikommen!">
   <div class="held">
     <div class="wrap held-innen">
       <div class="held-text">
@@ -86,6 +86,29 @@ const datumFormat = new Intl.DateTimeFormat('de-DE', { dateStyle: 'long' });
       </div>
     </section>
   )}
+
+  <section>
+    <div class="wrap-text">
+      <span class="eyebrow">Mitmachen</span>
+      <h2>Pfadfinder in Siegen – für Kinder und Jugendliche ab 6 Jahren</h2>
+      <p>
+        Du suchst eine Jugendgruppe oder ein Freizeitangebot für dein Kind in
+        Siegen? Bei uns erleben Kinder und Jugendliche echte Abenteuer statt
+        Bildschirm: wöchentliche Gruppenstunden, Zeltlager, Fahrten und
+        Lagerfeuer – und dabei ganz nebenbei Selbstständigkeit, Teamgeist und
+        Verantwortung. Als Teil des Bundes der Pfadfinderinnen und Pfadfinder
+        (BdP) machen wir seit über 70 Jahren Jugendarbeit in Siegen.
+      </p>
+      <p>
+        Mitmachen ist unkompliziert: Komm einfach zu einem
+        <strong>Heimabend am Samstag von 15 bis 17 Uhr</strong> in unser
+        Stammesheim in der Fludersbach (Seilereiweg 8) und schnupper rein –
+        ohne Anmeldung, kostenlos und unverbindlich. Für jedes Alter gibt es
+        die <a href="/gruppen">passende Gruppe</a>: Wölflinge ab 6, Pfadis ab
+        11 und Ranger &amp; Rover ab 16 Jahren.
+      </p>
+    </div>
+  </section>
 
   <section class="zweispalt-band">
     <div class="wrap zweispalt">
