@@ -15,7 +15,7 @@ Zum Reinschnuppern brauchst du keine Anmeldung – komm einfach vorbei.
 
 - **Ernie** (Kontaktdaten folgen)
 - **Malte** (Kontaktdaten folgen)
-- **Marco Schmidt** (Samson)
+- **Marco Schmidt** (Samson) – [Marco.Samson@web.de](mailto:Marco.Samson@web.de), [0160 5331360](tel:+491605331360)
 
 ## So erreichst du uns
 

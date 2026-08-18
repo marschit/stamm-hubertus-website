@@ -39,13 +39,21 @@ jobs:
       - run: npm run build
         if: steps.secrets.outputs.vorhanden == 'true'
 
-      - name: Per SFTP hochladen
+      - name: Per rsync über SSH hochladen
         if: steps.secrets.outputs.vorhanden == 'true'
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.IONOS_HOST }}
-          username: ${{ secrets.IONOS_USER }}
-          password: ${{ secrets.IONOS_PASSWORD }}
-          protocol: ftps
-          local-dir: dist/
-          server-dir: ${{ secrets.IONOS_DIR || './' }}
+        env:
+          SSHPASS: ${{ secrets.IONOS_PASSWORD }}
+          IONOS_HOST: ${{ secrets.IONOS_HOST }}
+          IONOS_USER: ${{ secrets.IONOS_USER }}
+          IONOS_DIR: ${{ secrets.IONOS_DIR }}
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq sshpass rsync
+          # fotoeingang/: Sperr-.htaccess mit hochladen, eingereichte Fotos
+          # auf dem Server aber weder überschreiben noch löschen
+          sshpass -e rsync -rltz --delete \
+            --include='fotoeingang/' \
+            --include='fotoeingang/.htaccess' \
+            --exclude='fotoeingang/*' \
+            -e "ssh -p 22 -o StrictHostKeyChecking=accept-new" \
+            dist/ "$IONOS_USER@$IONOS_HOST:$IONOS_DIR"

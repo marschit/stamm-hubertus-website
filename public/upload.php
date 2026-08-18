@@ -80,6 +80,10 @@ $ordner = __DIR__ . '/fotoeingang/' . date('Y-m-d') . '_' . $slug . '_' . substr
 if (!is_dir(__DIR__ . '/fotoeingang') && !mkdir(__DIR__ . '/fotoeingang', 0755)) {
     zurueck('technik');
 }
+// Zugriffssperre sicherstellen, falls die .htaccess fehlt
+if (!is_file(__DIR__ . '/fotoeingang/.htaccess')) {
+    file_put_contents(__DIR__ . '/fotoeingang/.htaccess', "Require all denied\n");
+}
 if (!mkdir($ordner, 0755)) {
     zurueck('technik');
 }
