@@ -84,7 +84,10 @@ const pfad = Astro.url.pathname.replace(/\/$/, '') || '/';
                   href={n.href}
                   aria-current={pfad === n.href ? 'page' : undefined}
                   class={'unter' in n && (pfad.startsWith('/gruppen') || pfad === n.href) ? 'eltern-aktiv' : undefined}
-                >{n.label}{'unter' in n && <span class="pfeil" aria-hidden="true"> ▾</span>}</a>
+                >{n.label}</a>
+                {'unter' in n && (
+                  <button class="unter-knopf" type="button" aria-expanded="false" aria-label={`Untermenü ${n.label} aufklappen`}>▾</button>
+                )}
                 {'unter' in n && n.unter && (
                   <ul class="untermenu">
                     {n.unter.map((u) => (
@@ -115,6 +118,13 @@ const pfad = Astro.url.pathname.replace(/\/$/, '') || '/';
       });
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && menue.classList.contains('offen')) knopf.click();
+      });
+      document.querySelectorAll<HTMLButtonElement>('.unter-knopf').forEach((k) => {
+        k.addEventListener('click', () => {
+          const unter = k.nextElementSibling as HTMLElement;
+          const offen = unter.classList.toggle('offen');
+          k.setAttribute('aria-expanded', String(offen));
+        });
       });
     </script>
 
@@ -239,9 +249,20 @@ const pfad = Astro.url.pathname.replace(/\/$/, '') || '/';
   }
   nav a:hover { border-bottom-color: var(--woelflingsgelb); }
   nav a[aria-current='page'], nav a.eltern-aktiv { border-bottom-color: var(--woelflingsgelb); }
-  .pfeil { font-size: 0.7em; }
 
   .hat-unter { position: relative; }
+  .unter-knopf {
+    font: inherit;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--pfadiblau);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.3rem 0.2rem;
+    transition: transform 150ms ease;
+  }
+  .unter-knopf[aria-expanded='true'] { transform: rotate(180deg); }
   .untermenu {
     display: none;
     position: absolute;
@@ -261,7 +282,8 @@ const pfad = Astro.url.pathname.replace(/\/$/, '') || '/';
     z-index: 30;
   }
   .hat-unter:hover .untermenu,
-  .hat-unter:focus-within .untermenu { display: flex; }
+  .hat-unter:focus-within .untermenu,
+  .untermenu.offen { display: flex; }
   .untermenu a {
     display: block;
     padding: 0.5rem 0.9rem;
@@ -308,9 +330,17 @@ const pfad = Astro.url.pathname.replace(/\/$/, '') || '/';
       padding-left: 0.75rem;
     }
     nav a.eltern-aktiv { border-bottom: none; }
-    .pfeil { display: none; }
-    .untermenu {
+    .hat-unter {
       display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .hat-unter > a { flex: 1; }
+    .unter-knopf { font-size: 1rem; padding: 0.5rem 0.9rem; }
+    .untermenu {
+      display: none;
+      flex-basis: 100%;
       position: static;
       min-width: 0;
       border: none;
