@@ -38,4 +38,4 @@ dem Webserver gespeichert. Eine Weitergabe an Dritte findet nicht statt.
 
 Du hast das Recht auf Auskunft, Berichtigung und Löschung deiner
 personenbezogenen Daten. Wende dich dazu einfach an
-[stamm-hubertus-bdp@outlook.de](mailto:stamm-hubertus-bdp@outlook.de).
+[kontakt@stamm-hubertus-siegen.de](mailto:kontakt@stamm-hubertus-siegen.de).

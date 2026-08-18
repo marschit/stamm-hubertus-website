@@ -17,7 +17,7 @@ Zum Reinschnuppern brauchst du keine Anmeldung – komm einfach vorbei.
 
 ## So erreichst du uns
 
-- **E-Mail:** [stamm-hubertus-bdp@outlook.de](mailto:stamm-hubertus-bdp@outlook.de)
+- **E-Mail:** [kontakt@stamm-hubertus-siegen.de](mailto:kontakt@stamm-hubertus-siegen.de)
 - **Facebook:** [facebook.com/stammhubertus](https://facebook.com/stammhubertus)
 - **Instagram: folgt**
 

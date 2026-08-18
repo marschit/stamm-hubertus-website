@@ -26,5 +26,5 @@ Haltestelle „Fludersbach Seilereiweg“.
 ## Anfragen
 
 Schreib uns einfach eine E-Mail an
-[stamm-hubertus-bdp@outlook.de](mailto:stamm-hubertus-bdp@outlook.de) –
+[kontakt@stamm-hubertus-siegen.de](mailto:kontakt@stamm-hubertus-siegen.de) –
 wir melden uns mit Terminen und Konditionen zurück.

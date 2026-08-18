@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-const EMPFAENGER = 'stamm-hubertus-bdp@outlook.de';
+const EMPFAENGER = 'kontakt@stamm-hubertus-siegen.de';
 const ABSENDER   = 'website@stamm-hubertus-siegen.de';
 const MAX_PRO_TAG = 5; // Nachrichten pro IP und Tag
 

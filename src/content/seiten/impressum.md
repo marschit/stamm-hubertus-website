@@ -13,7 +13,7 @@ Marco Schmidt
 
 **Kontakt:**
 Telefon: [+49 160 5331360](tel:+491605331360)
-E-Mail: [stamm-hubertus-bdp@outlook.de](mailto:stamm-hubertus-bdp@outlook.de)
+E-Mail: [kontakt@stamm-hubertus-siegen.de](mailto:kontakt@stamm-hubertus-siegen.de)
 
 **Registereintrag:**
 Eingetragen im Vereinsregister des Amtsgerichts Siegen
