@@ -28,9 +28,11 @@ jederzeit per E-Mail verlangen.
 
 ## Kontaktaufnahme
 
-Wenn du uns per E-Mail kontaktierst, verwenden wir deine Angaben
-ausschließlich zur Bearbeitung deiner Anfrage. Eine Weitergabe an Dritte
-findet nicht statt.
+Wenn du uns per E-Mail oder über das Kontaktformular kontaktierst,
+verwenden wir deine Angaben (Name, E-Mail-Adresse, Nachricht)
+ausschließlich zur Bearbeitung deiner Anfrage. Nachrichten aus dem
+Kontaktformular werden direkt per E-Mail an uns zugestellt und nicht auf
+dem Webserver gespeichert. Eine Weitergabe an Dritte findet nicht statt.
 
 ## Deine Rechte
 

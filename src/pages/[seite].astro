@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import KarteAnfahrt from '../components/KarteAnfahrt.astro';
+import KontaktFormular from '../components/KontaktFormular.astro';
 
 export async function getStaticPaths() {
   const seiten = await getCollection('seiten');
@@ -20,6 +21,7 @@ const mitKarte = ['kontakt', 'heim'].includes(eintrag.id);
       <div class="prose">
         <Content />
       </div>
+      {eintrag.id === 'kontakt' && <KontaktFormular />}
       {mitKarte && <KarteAnfahrt />}
     </div>
   </section>

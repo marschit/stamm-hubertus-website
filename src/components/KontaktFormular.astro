@@ -1,0 +1,113 @@
+---
+// Kontaktformular – versendet über /kontakt.php (PHP auf dem IONOS-Webspace)
+---
+<div class="formular-karte" id="kontaktformular">
+  <h2>Schreib uns</h2>
+  <p class="formular-intro">
+    Du hast eine Frage, möchtest dein Kind anmelden oder das Heim mieten?
+    Schreib uns einfach – wir melden uns so schnell wie möglich.
+  </p>
+
+  <form action="/kontakt.php" method="post">
+    <div class="zeile">
+      <label>
+        Dein Name
+        <input type="text" name="name" required maxlength="100" autocomplete="name" />
+      </label>
+      <label>
+        E-Mail (für die Antwort)
+        <input type="email" name="email" required maxlength="150" autocomplete="email" />
+      </label>
+    </div>
+    <label>
+      Betreff (optional)
+      <input type="text" name="betreff" maxlength="150" placeholder="z. B. Schnuppern bei den Wölflingen" />
+    </label>
+    <label>
+      Deine Nachricht
+      <textarea name="nachricht" rows="6" required maxlength="5000"></textarea>
+    </label>
+    <input type="text" name="webseite" class="honig" tabindex="-1" autocomplete="off" aria-hidden="true" />
+    <p class="formular-hinweis">
+      Deine Angaben verwenden wir nur zur Beantwortung deiner Nachricht
+      (<a href="/datenschutz">Datenschutz</a>).
+    </p>
+    <button class="btn" type="submit">Nachricht senden</button>
+  </form>
+</div>
+
+<script>
+  const params = new URLSearchParams(location.search);
+  const formularKarte = document.getElementById('kontaktformular')!;
+  if (params.has('gesendet')) {
+    const p = document.createElement('p');
+    p.className = 'formular-erfolg';
+    p.setAttribute('role', 'status');
+    p.textContent = 'Danke, deine Nachricht ist unterwegs! Wir melden uns bei dir.';
+    formularKarte.querySelector('form')!.replaceWith(p);
+  } else if (params.get('fehler')) {
+    const meldungen: Record<string, string> = {
+      'unvollstaendig': 'Bitte fülle Name, E-Mail und Nachricht aus.',
+      'zu-lang': 'Die Nachricht ist zu lang – bitte kürze sie etwas.',
+      'rate-limit': 'Für heute sind genug Nachrichten angekommen – bitte versuche es morgen wieder oder schreib uns direkt per E-Mail.',
+      'technik': 'Der Versand hat leider nicht geklappt – bitte schreib uns direkt per E-Mail.',
+    };
+    const p = document.createElement('p');
+    p.className = 'formular-fehler';
+    p.setAttribute('role', 'alert');
+    p.textContent = meldungen[params.get('fehler')!] ?? meldungen['technik'];
+    formularKarte.querySelector('form')!.before(p);
+    formularKarte.scrollIntoView({ block: 'center' });
+  }
+</script>
+
+<style>
+  .formular-karte {
+    margin: 2.5rem 0 1rem;
+    background: var(--pfadiblau-hell);
+    border-radius: 6px;
+    padding: 1.75rem;
+  }
+  .formular-karte h2 { margin-top: 0; font-size: 1.4rem; }
+  .formular-intro { max-width: 34rem; margin-top: -0.3rem; }
+  form { display: flex; flex-direction: column; gap: 1rem; }
+  .zeile {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1rem;
+  }
+  label { display: flex; flex-direction: column; gap: 0.3rem; font-weight: 700; font-size: 0.95rem; }
+  input, textarea {
+    font: inherit;
+    font-weight: 400;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--linie);
+    border-radius: 4px;
+    background: #fff;
+    color: var(--ink);
+  }
+  input:focus-visible, textarea:focus-visible {
+    outline: 3px solid var(--woelflingsgelb);
+    outline-offset: 1px;
+  }
+  textarea { resize: vertical; }
+  .honig { position: absolute; left: -9999px; }
+  .formular-hinweis { font-size: 0.85rem; color: var(--ink-soft); margin: 0; }
+  button.btn { align-self: flex-start; border: 0; cursor: pointer; font: inherit; font-weight: 700; }
+  .formular-erfolg {
+    background: #e4f2e6;
+    border-left: 4px solid var(--waldgruen);
+    color: #235c2f;
+    font-weight: 700;
+    padding: 0.9rem 1.1rem;
+    border-radius: 0 4px 4px 0;
+  }
+  .formular-fehler {
+    background: #fbe9ec;
+    border-left: 4px solid var(--rr-rot);
+    color: var(--rr-rot);
+    font-weight: 700;
+    padding: 0.9rem 1.1rem;
+    border-radius: 0 4px 4px 0;
+  }
+</style>
