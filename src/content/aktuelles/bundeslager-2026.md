@@ -10,8 +10,8 @@ Dieses Jahr war es wieder so weit: Der Stamm Hubertus war auf dem
 Pfadfinden in Immenhausen, zusammen mit rund 5.000 Pfadfinderinnen und
 Pfadfindern aus aller Welt.
 
-Besonders schön: Wie schon 2017 waren wir auch diesmal **gemeinsam mit
-unserem Partnerstamm Sakarya aus Istanbul** unterwegs – zehn Tage Lagerleben,
+Besonders schön: Wie schon beim Bundeslager 2022 waren wir auch diesmal
+**gemeinsam mit unserem Partnerstamm Sakarya aus Istanbul** unterwegs – zehn Tage Lagerleben,
 Kohten, internationale Abende und jede Menge neue Freundschaften.
 
 Ein ausführlicher Bericht folgt bald an dieser Stelle – **und es wird
