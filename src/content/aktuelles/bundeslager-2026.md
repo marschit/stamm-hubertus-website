@@ -1,6 +1,7 @@
 ---
 titel: Wir waren auf dem Bundeslager – wieder gemeinsam mit Stamm Sakarya
 datum: 2026-08-18
+bild: /bilder/bundeslager-2026-jurten.jpg
 ---
 
 Dieses Jahr war es wieder so weit: Der Stamm Hubertus war auf dem
