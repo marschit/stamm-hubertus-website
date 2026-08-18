@@ -44,6 +44,8 @@ const pfad = Astro.url.pathname.replace(/\/$/, '') || '/';
         <a href="/" class="marke" aria-label="Startseite Stamm Hubertus Siegen">
           <img class="marke-logo" src="/bilder/hubertus-logo.svg" alt="" width="52" height="52" />
           <span class="marke-name">Stamm Hubertus<br />Siegen</span>
+          <span class="marke-trenner" aria-hidden="true"></span>
+          <img class="marke-bdp" src="/bdp/klilie-neu.svg" alt="Bund der Pfadfinder*innen" width="45" height="44" />
         </a>
         <nav aria-label="Hauptnavigation">
           <ul>
@@ -64,7 +66,7 @@ const pfad = Astro.url.pathname.replace(/\/$/, '') || '/';
     <footer class="fuss">
       <div class="wrap fuss-innen">
         <div class="fuss-marke">
-          <img src="/bdp/klilie-gelb.svg" alt="" width="64" height="64" />
+          <img src="/bilder/hubertus-logo.svg" alt="" width="64" height="64" />
           <div>
             <strong>{einstellungen.verein}</strong><br />
             {einstellungen.adresse}<br />
@@ -79,7 +81,10 @@ const pfad = Astro.url.pathname.replace(/\/$/, '') || '/';
           <a href="/impressum">Impressum</a>
           <a href="/datenschutz">Datenschutz</a>
         </div>
-        <p class="fuss-bund">Mitglied im Bund der Pfadfinderinnen und Pfadfinder e.&nbsp;V.</p>
+        <p class="fuss-bund">
+          <span>Mitglied im</span>
+          <img src="/bdp/bundeszeichen-negativ.svg" alt="Bund der Pfadfinder*innen" height="38" />
+        </p>
       </div>
     </footer>
   </body>
@@ -118,6 +123,15 @@ const pfad = Astro.url.pathname.replace(/\/$/, '') || '/';
   }
   .marke img { display: block; }
   .marke-logo { border-radius: 50%; }
+  .marke-trenner {
+    width: 1px;
+    height: 2.5rem;
+    background: var(--linie);
+    margin: 0 0.2rem;
+  }
+  @media (max-width: 480px) {
+    .marke-trenner, .marke-bdp { display: none; }
+  }
   .marke-name {
     font-weight: 900;
     line-height: 1.1;
@@ -172,5 +186,10 @@ const pfad = Astro.url.pathname.replace(/\/$/, '') || '/';
     border-top: 1px solid rgb(253 252 248 / 0.25);
     font-size: 0.9rem;
     color: rgb(253 252 248 / 0.75);
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    flex-wrap: wrap;
   }
+  .fuss-bund img { height: 2.4rem; width: auto; display: block; }
 </style>
