@@ -13,12 +13,15 @@ export async function getStaticPaths() {
 const { eintrag } = Astro.props;
 const { Content } = await render(eintrag);
 
-// Auf der Kontaktseite sitzt die Karte mitten im Inhalt: direkt nach dem
-// ersten Absatz samt Adress-Block. Dafür wird der Markdown-Text dort geteilt.
+// Auf der Kontaktseite sitzt die Karte mitten im Inhalt: nach dem ersten
+// Absatz (inkl. eines direkt folgenden Adress-Blocks, falls vorhanden).
 let vorKarte: string | null = null;
 let nachKarte: string | null = null;
 if (eintrag.id === 'kontakt' && eintrag.body) {
-  const teile = eintrag.body.match(/^([\s\S]*?\n(?:>[^\n]*\n)+)\s*([\s\S]*)$/);
+  const body = eintrag.body.trim();
+  const teile =
+    body.match(/^([\s\S]*?\n(?:>[^\n]*\n)+)\s*([\s\S]*)$/) ??
+    body.match(/^([\s\S]*?)\n\s*\n([\s\S]*)$/);
   if (teile) {
     vorKarte = (await marked.parse(teile[1])) as string;
     nachKarte = (await marked.parse(teile[2])) as string;
