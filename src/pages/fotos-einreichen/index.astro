@@ -33,7 +33,7 @@ const fehler = null;
           <textarea name="nachricht" rows="3" maxlength="1000"></textarea>
         </label>
         <label>
-          Fotos auswählen (bis zu 30 Stück, je max. 20 MB)
+          Fotos auswählen (auch viele hundert auf einmal – je Foto max. 20 MB)
           <input type="file" name="fotos[]" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" multiple required />
         </label>
         <input type="text" name="webseite" class="honig" tabindex="-1" autocomplete="off" aria-hidden="true" />
@@ -47,6 +47,11 @@ const fehler = null;
           </span>
         </label>
         <button class="btn" type="submit">Fotos hochladen</button>
+
+        <div class="fortschritt" hidden>
+          <progress max="100" value="0"></progress>
+          <p class="fortschritt-text" role="status"></p>
+        </div>
       </form>
 
       <p class="hinweis">
@@ -59,23 +64,105 @@ const fehler = null;
 </Layout>
 
 <script>
-  // Fehlermeldung aus upload.php (?fehler=...) anzeigen
-  const fehler = new URLSearchParams(location.search).get('fehler');
-  if (fehler) {
-    const meldungen: Record<string, string> = {
-      'keine-dateien': 'Es sind keine Dateien angekommen – bitte versuche es noch einmal.',
-      'zu-gross': 'Mindestens eine Datei war zu groß (max. 20 MB pro Foto).',
-      'zu-viele': 'Bitte höchstens 30 Fotos auf einmal hochladen.',
-      'kein-bild': 'Es sind nur Bilddateien (JPG, PNG, WebP, HEIC) erlaubt.',
-      'unvollstaendig': 'Bitte fülle alle Pflichtfelder aus und bestätige das Einverständnis.',
-      'technik': 'Beim Speichern ist etwas schiefgelaufen – bitte versuche es später noch einmal.',
-    };
+  const meldungen: Record<string, string> = {
+    'keine-dateien': 'Es sind keine Dateien angekommen – bitte versuche es noch einmal.',
+    'zu-gross': 'Mindestens eine Datei war zu groß (max. 20 MB pro Foto).',
+    'zu-viele': 'Bitte höchstens 2.000 Fotos pro Einreichung hochladen.',
+    'kein-bild': 'Es sind nur Bilddateien (JPG, PNG, WebP, HEIC) erlaubt.',
+    'unvollstaendig': 'Bitte fülle alle Pflichtfelder aus und bestätige das Einverständnis.',
+    'rate-limit': 'Für heute ist das Upload-Limit erreicht – bitte versuche es morgen noch einmal oder melde dich per E-Mail.',
+    'technik': 'Beim Speichern ist etwas schiefgelaufen – bitte versuche es später noch einmal.',
+  };
+
+  function zeigeFehler(code: string) {
+    document.querySelector('.fehlermeldung')?.remove();
     const p = document.createElement('p');
     p.className = 'fehlermeldung';
     p.setAttribute('role', 'alert');
-    p.textContent = meldungen[fehler] ?? meldungen['technik'];
+    p.textContent = meldungen[code] ?? meldungen['technik'];
     document.querySelector('form')!.before(p);
+    p.scrollIntoView({ block: 'center' });
   }
+
+  // Fehlermeldung aus dem No-JS-Fallback (?fehler=...) anzeigen
+  const ausUrl = new URLSearchParams(location.search).get('fehler');
+  if (ausUrl) zeigeFehler(ausUrl);
+
+  // Moderner Weg: Fotos einzeln hochladen – so gehen auch tausende
+  const form = document.querySelector('form')!;
+  const dateiFeld = form.querySelector<HTMLInputElement>('input[type="file"]')!;
+  const knopf = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+  const fortschritt = form.querySelector<HTMLElement>('.fortschritt')!;
+  const balken = fortschritt.querySelector('progress')!;
+  const statusText = fortschritt.querySelector<HTMLElement>('.fortschritt-text')!;
+
+  form.addEventListener('submit', async (e) => {
+    const dateien = [...(dateiFeld.files ?? [])];
+    if (!window.fetch || dateien.length === 0) return; // klassischer Fallback
+    e.preventDefault();
+
+    if (dateien.length > 2000) return zeigeFehler('zu-viele');
+    const zuGross = dateien.find((d) => d.size > 20 * 1024 * 1024);
+    if (zuGross) return zeigeFehler('zu-gross');
+
+    knopf.disabled = true;
+    fortschritt.hidden = false;
+    balken.max = dateien.length;
+    balken.value = 0;
+    statusText.textContent = 'Einreichung wird angelegt …';
+
+    try {
+      const meta = new FormData(form);
+      meta.delete('fotos[]');
+      meta.append('a', 'init');
+      const initAntwort = await fetch('/upload.php', { method: 'POST', body: meta });
+      const init = await initAntwort.json();
+      if (!initAntwort.ok) throw new Error(init.fehler ?? 'technik');
+
+      let fertig = 0;
+      const fehlgeschlagen: string[] = [];
+      let naechste = 0;
+
+      async function arbeiter() {
+        while (naechste < dateien.length) {
+          const index = naechste++;
+          const datei = dateien[index];
+          let ok = false;
+          for (let versuch = 0; versuch < 3 && !ok; versuch++) {
+            try {
+              const fd = new FormData();
+              fd.append('a', 'datei');
+              fd.append('ordner', init.ordner);
+              fd.append('token', init.token);
+              fd.append('index', String(index + 1));
+              fd.append('foto', datei);
+              const r = await fetch('/upload.php', { method: 'POST', body: fd });
+              if (r.ok) ok = true;
+              else if (r.status !== 500) { break; } // 4xx: erneuter Versuch bringt nichts
+            } catch { /* Netzwerkfehler: erneut versuchen */ }
+          }
+          if (!ok) fehlgeschlagen.push(datei.name);
+          fertig++;
+          balken.value = fertig;
+          statusText.textContent = `${fertig} von ${dateien.length} Fotos hochgeladen …`;
+        }
+      }
+      await Promise.all([arbeiter(), arbeiter(), arbeiter()]);
+
+      if (fehlgeschlagen.length === 0) {
+        location.href = '/fotos-einreichen/danke/';
+      } else if (fehlgeschlagen.length < dateien.length) {
+        statusText.textContent = `${dateien.length - fehlgeschlagen.length} Fotos angekommen, ${fehlgeschlagen.length} fehlgeschlagen (z. B. ${fehlgeschlagen[0]}). Du kannst die fehlenden erneut einreichen.`;
+        knopf.disabled = false;
+      } else {
+        throw new Error('technik');
+      }
+    } catch (err) {
+      zeigeFehler(err instanceof Error ? err.message : 'technik');
+      fortschritt.hidden = true;
+      knopf.disabled = false;
+    }
+  });
 </script>
 
 <style>
@@ -111,6 +198,8 @@ const fehler = null;
   .honig { position: absolute; left: -9999px; }
   button.btn { align-self: flex-start; border: 0; cursor: pointer; font: inherit; font-weight: 700; }
   .hinweis { font-size: 0.9rem; color: var(--ink-soft); margin-top: 1.5rem; }
+  .fortschritt progress { width: 100%; height: 1.1rem; accent-color: var(--pfadiblau); }
+  .fortschritt-text { font-size: 0.95rem; font-weight: 700; color: var(--pfadiblau); margin: 0.4rem 0 0; }
   :global(.fehlermeldung) {
     background: #fbe9ec;
     border-left: 4px solid var(--rr-rot);
