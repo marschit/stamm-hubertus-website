@@ -1,0 +1,172 @@
+---
+import '../styles/global.css';
+import einstellungen from '../data/einstellungen.json';
+
+interface Props {
+  titel?: string;
+  beschreibung?: string;
+}
+const { titel, beschreibung } = Astro.props;
+const seitentitel = titel
+  ? `${titel} – ${einstellungen.verein}`
+  : `${einstellungen.verein} – ${einstellungen.claim}`;
+
+const nav = [
+  { href: '/', label: 'Start' },
+  { href: '/ueber-uns', label: 'Über uns' },
+  { href: '/gruppen', label: 'Gruppen' },
+  { href: '/termine', label: 'Termine' },
+  { href: '/aktuelles', label: 'Aktuelles' },
+  { href: '/heim', label: 'Heim mieten' },
+  { href: '/foerderverein', label: 'Förderverein' },
+  { href: '/kontakt', label: 'Kontakt' },
+];
+const pfad = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{seitentitel}</title>
+    <meta name="description" content={beschreibung ?? 'Pfadfinden in Siegen: Der BdP Stamm Hubertus Siegen e.V. – jeden Samstag von 15 bis 17 Uhr am Seilereiweg 8.'} />
+    <link rel="icon" type="image/svg+xml" href="/bdp/klilie.svg" />
+    <link rel="preload" href="/fonts/einfachBdP-Superfett.otf" as="font" type="font/otf" crossorigin />
+    <link rel="preload" href="/fonts/einfachBdP-Klassisch.otf" as="font" type="font/otf" crossorigin />
+  </head>
+  <body>
+    <a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+    <header class="kopf">
+      <div class="wrap kopf-innen">
+        <a href="/" class="marke" aria-label="Startseite Stamm Hubertus Siegen">
+          <img src="/bdp/wbm.svg" alt="BdP – Bund der Pfadfinderinnen und Pfadfinder" width="130" height="42" />
+          <span class="marke-name">Stamm Hubertus<br />Siegen</span>
+        </a>
+        <nav aria-label="Hauptnavigation">
+          <ul>
+            {nav.map((n) => (
+              <li>
+                <a href={n.href} aria-current={pfad === n.href ? 'page' : undefined}>{n.label}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="inhalt">
+      <slot />
+    </main>
+
+    <footer class="fuss">
+      <div class="wrap fuss-innen">
+        <div class="fuss-marke">
+          <img src="/bdp/klilie.svg" alt="" width="64" height="64" />
+          <div>
+            <strong>{einstellungen.verein}</strong><br />
+            {einstellungen.adresse}<br />
+            <a href={`mailto:${einstellungen.email}`}>{einstellungen.email}</a>
+          </div>
+        </div>
+        <div class="fuss-links">
+          <a href="/termine">Termine</a>
+          <a href="/spenden">Spenden</a>
+          <a href={einstellungen.facebook}>Facebook</a>
+          <a href="/impressum">Impressum</a>
+          <a href="/datenschutz">Datenschutz</a>
+        </div>
+        <p class="fuss-bund">Mitglied im Bund der Pfadfinderinnen und Pfadfinder e.&nbsp;V.</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .skip {
+    position: absolute;
+    left: -999px;
+    top: 0;
+    background: var(--woelflingsgelb);
+    color: var(--pfadiblau);
+    padding: 0.5rem 1rem;
+    z-index: 10;
+  }
+  .skip:focus { left: 0; }
+
+  .kopf {
+    background: var(--papier);
+    border-bottom: 4px solid var(--pfadiblau);
+  }
+  .kopf-innen {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 2rem;
+    padding-top: 0.9rem;
+    padding-bottom: 0.9rem;
+  }
+  .marke {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    text-decoration: none;
+  }
+  .marke img { display: block; }
+  .marke-name {
+    font-weight: 900;
+    line-height: 1.1;
+    font-size: 1.05rem;
+    color: var(--pfadiblau);
+    letter-spacing: 0.01em;
+  }
+  nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.1rem 1.1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  nav a {
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    color: var(--pfadiblau);
+    padding: 0.3rem 0;
+    border-bottom: 3px solid transparent;
+  }
+  nav a:hover { border-bottom-color: var(--woelflingsgelb); }
+  nav a[aria-current='page'] { border-bottom-color: var(--woelflingsgelb); }
+
+  .fuss {
+    margin-top: 4rem;
+    background: var(--pfadiblau);
+    color: var(--papier);
+  }
+  .fuss-innen {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem 3rem;
+    align-items: flex-start;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+  .fuss a { color: var(--papier); }
+  .fuss-marke { display: flex; gap: 1rem; align-items: center; }
+  .fuss-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    font-weight: 700;
+  }
+  .fuss-bund {
+    width: 100%;
+    margin: 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgb(253 252 248 / 0.25);
+    font-size: 0.9rem;
+    color: rgb(253 252 248 / 0.75);
+  }
+</style>

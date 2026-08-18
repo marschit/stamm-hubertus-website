@@ -1,0 +1,219 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import GruppenKarte from '../components/GruppenKarte.astro';
+import KohteKante from '../components/KohteKante.astro';
+import einstellungen from '../data/einstellungen.json';
+import { alsIso, formatDatum } from '../lib/termine';
+
+const heute = alsIso(new Date());
+const naechste = (await getCollection('termine'))
+  .filter((t) => alsIso(t.data.endDatum ?? t.data.datum) >= heute)
+  .sort((a, b) => a.data.datum.valueOf() - b.data.datum.valueOf())
+  .slice(0, 3);
+
+const gruppen = (await getCollection('gruppen')).sort(
+  (a, b) => a.data.reihenfolge - b.data.reihenfolge
+);
+const news = (await getCollection('aktuelles'))
+  .sort((a, b) => b.data.datum.valueOf() - a.data.datum.valueOf())
+  .slice(0, 3);
+const datumFormat = new Intl.DateTimeFormat('de-DE', { dateStyle: 'long' });
+---
+<Layout>
+  <div class="held">
+    <div class="wrap held-innen">
+      <div class="held-text">
+        <h1>Abenteuer beginnt<br /><span class="gelb">vor der Haustür.</span></h1>
+        <p class="held-sub">
+          Wir sind die Pfadfinderinnen und Pfadfinder vom Stamm Hubertus in Siegen –
+          Lagerfeuer, Fahrten, Freundschaft und jede Menge draußen.
+        </p>
+        <div class="held-aktionen">
+          <a class="btn" href="/kontakt">Komm vorbei</a>
+          <a class="btn btn--ghost" href="/gruppen">Unsere Gruppen</a>
+        </div>
+      </div>
+      <div class="held-karte">
+        <span class="held-karte-label">Schnupperst du rein?</span>
+        <strong>{einstellungen.treffzeit}</strong>
+        <span>{einstellungen.adresse}</span>
+        <span class="held-karte-hinweis">Einfach vorbeikommen – ohne Anmeldung.</span>
+      </div>
+    </div>
+    <KohteKante />
+  </div>
+
+  <section id="gruppen">
+    <div class="wrap">
+      <span class="eyebrow">Von Wölfling bis Gilde</span>
+      <h2>Unsere Gruppen</h2>
+      <div class="gruppen-raster">
+        {gruppen.map((g) => (
+          <GruppenKarte
+            id={g.id}
+            name={g.data.name}
+            stufe={g.data.stufe}
+            alter={g.data.alter}
+            farbe={g.data.farbe}
+            icon={g.data.icon}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="foto-band" aria-hidden="true">
+    <img src="/bilder/gruppenfoto.jpg" alt="" loading="lazy" />
+  </section>
+
+  {news.length > 0 && (
+    <section>
+      <div class="wrap">
+        <span class="eyebrow">Aus dem Stammesleben</span>
+        <h2>Aktuelles</h2>
+        <div class="news-raster">
+          {news.map((n) => (
+            <a class="news-karte" href={`/aktuelles/${n.id}`}>
+              <time datetime={n.data.datum.toISOString().slice(0, 10)}>
+                {datumFormat.format(n.data.datum)}
+              </time>
+              <strong>{n.data.titel}</strong>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="zweispalt-band">
+    <div class="wrap zweispalt">
+      <div class="teaser">
+        <h2>Nächste Termine</h2>
+        {naechste.length > 0 ? (
+          <ul class="termin-liste">
+            {naechste.map((t) => (
+              <li>
+                <span class="termin-datum">{formatDatum(t.data.datum)}</span>
+                <span class="termin-titel">{t.data.titel}</span>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>Alle Lager, Fahrten und Aktionen findest du in unserem Kalender.</p>
+        )}
+        <a class="btn btn--blau" href="/termine">Alle Termine &amp; Kalender-Abo</a>
+      </div>
+      <div class="teaser">
+        <h2>Unser Heim</h2>
+        <p>
+          Unser Stammesheim in der Fludersbach können Pfadfinder- und andere
+          Gruppen für Wochenenden und Ferienfreizeiten mieten.
+        </p>
+        <a class="btn btn--blau" href="/heim">Heim ansehen</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .held {
+    background: var(--pfadiblau);
+    color: var(--papier);
+  }
+  .held-innen {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2.5rem 4rem;
+    padding-top: clamp(3rem, 7vw, 5.5rem);
+    padding-bottom: clamp(2rem, 5vw, 4rem);
+  }
+  .held-text { flex: 1 1 26rem; }
+  .held h1 { color: var(--papier); margin-bottom: 0.4em; }
+  .gelb { color: var(--woelflingsgelb); }
+  .held-sub {
+    font-size: 1.15rem;
+    max-width: 34rem;
+    color: rgb(253 252 248 / 0.88);
+  }
+  .held-aktionen { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.6rem; }
+
+  .held-karte {
+    flex: 0 1 19rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    background: var(--woelflingsgelb);
+    color: var(--pfadiblau);
+    padding: 1.5rem 1.6rem;
+    border-radius: 4px;
+    transform: rotate(-1.2deg);
+    box-shadow: 0 10px 30px rgb(0 0 0 / 0.25);
+  }
+  .held-karte-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .held-karte strong { font-weight: 900; font-size: 1.35rem; line-height: 1.2; }
+  .held-karte-hinweis { margin-top: 0.5rem; font-size: 0.9rem; }
+
+  .gruppen-raster {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+  }
+
+  .foto-band { padding: 0; line-height: 0; }
+  .foto-band img {
+    width: 100%;
+    max-height: 26rem;
+    object-fit: cover;
+  }
+
+  .news-raster {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+  }
+  .news-karte {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 1.3rem 1.4rem;
+    background: var(--pfadiblau-hell);
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .news-karte time {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--rr-rot);
+  }
+  .news-karte strong { font-weight: 900; font-size: 1.15rem; color: var(--pfadiblau); }
+  .news-karte:hover strong { text-decoration: underline; text-underline-offset: 3px; }
+
+  .zweispalt-band { background: #fff; border-top: 1px solid var(--linie); }
+  .zweispalt {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    gap: 2.5rem;
+  }
+  .teaser p { max-width: 30rem; }
+  .termin-liste {
+    list-style: none;
+    margin: 0 0 1.2rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .termin-liste li { display: flex; flex-direction: column; }
+  .termin-datum { font-size: 0.85rem; font-weight: 700; color: var(--rr-rot); }
+  .termin-titel { font-weight: 700; color: var(--pfadiblau); }
+</style>

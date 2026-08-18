@@ -1,0 +1,32 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const beitraege = await getCollection('aktuelles');
+  return beitraege.map((b) => ({ params: { id: b.id }, props: { beitrag: b } }));
+}
+
+const { beitrag } = Astro.props;
+const { Content } = await render(beitrag);
+const datumFormat = new Intl.DateTimeFormat('de-DE', { dateStyle: 'long' });
+---
+<Layout titel={beitrag.data.titel}>
+  <section>
+    <article class="wrap-text">
+      <time class="eyebrow" datetime={beitrag.data.datum.toISOString().slice(0, 10)}>
+        {datumFormat.format(beitrag.data.datum)}
+      </time>
+      <h1>{beitrag.data.titel}</h1>
+      {beitrag.data.bild && <img class="titelbild" src={beitrag.data.bild} alt="" />}
+      <div class="prose">
+        <Content />
+      </div>
+      <p><a href="/aktuelles">← Alle Beiträge</a></p>
+    </article>
+  </section>
+</Layout>
+
+<style>
+  .titelbild { border-radius: 4px; margin-bottom: 1rem; }
+</style>

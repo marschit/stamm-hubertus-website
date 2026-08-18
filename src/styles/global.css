@@ -1,0 +1,136 @@
+/* ==== BdP Corporate Design ==== */
+/* Farben lt. CD: Pfadiblau, Wölflingsgelb, R*R-Rot */
+
+@font-face {
+  font-family: 'einfachBdP';
+  src: url('/fonts/einfachBdP-Klassisch.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'einfachBdP';
+  src: url('/fonts/einfachBdP-Kursiv.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'einfachBdP';
+  src: url('/fonts/einfachBdP-Stark.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'einfachBdP';
+  src: url('/fonts/einfachBdP-Superfett.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --pfadiblau: #0e4278;
+  --pfadiblau-dunkel: #0a3057;
+  --pfadiblau-hell: #e8eef5;
+  --woelflingsgelb: #ffd208;
+  --rr-rot: #971b2f;
+  --waldgruen: #2f6b3c;
+
+  --papier: #fdfcf8;
+  --ink: #1c2733;
+  --ink-soft: #5b6b7a;
+  --linie: #e3e0d6;
+
+  --schrift: 'einfachBdP', 'Avenir Next', system-ui, sans-serif;
+  --breite: 68rem;
+  --breite-text: 44rem;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--papier);
+  color: var(--ink);
+  font-family: var(--schrift);
+  font-weight: 400;
+  line-height: 1.65;
+  font-size: 1.0625rem;
+}
+
+h1, h2, h3 {
+  font-weight: 900;
+  line-height: 1.12;
+  text-wrap: balance;
+  color: var(--pfadiblau);
+  margin: 0 0 0.6em;
+}
+h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); }
+h2 { font-size: clamp(1.5rem, 3.4vw, 2.1rem); }
+h3 { font-size: 1.2rem; font-weight: 700; }
+
+p { margin: 0.8em 0; }
+a { color: var(--pfadiblau); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--woelflingsgelb);
+  outline-offset: 2px;
+}
+img { max-width: 100%; height: auto; }
+
+.wrap { max-width: var(--breite); margin: 0 auto; padding: 0 1.25rem; }
+.wrap-text { max-width: var(--breite-text); margin: 0 auto; padding: 0 1.25rem; }
+
+.eyebrow {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rr-rot);
+  margin-bottom: 0.5rem;
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 3px;
+  background: var(--woelflingsgelb);
+  color: var(--pfadiblau);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgb(14 66 120 / 0.25); }
+.btn--ghost {
+  background: transparent;
+  color: var(--papier);
+  border: 2px solid rgb(253 252 248 / 0.7);
+}
+.btn--blau { background: var(--pfadiblau); color: var(--papier); }
+
+/* Fließtext-Bereiche (aus Markdown gerendert) */
+.prose { max-width: var(--breite-text); }
+.prose h2 { margin-top: 2em; font-size: 1.45rem; }
+.prose h3 { margin-top: 1.6em; }
+.prose ul, .prose ol { padding-left: 1.4rem; }
+.prose li { margin: 0.3em 0; }
+.prose blockquote {
+  margin: 1.2em 0;
+  padding: 0.2em 1.2em;
+  border-left: 4px solid var(--woelflingsgelb);
+  background: var(--pfadiblau-hell);
+  border-radius: 0 4px 4px 0;
+}
+.prose table { border-collapse: collapse; width: 100%; }
+.prose th, .prose td { border-bottom: 1px solid var(--linie); padding: 0.5em 0.7em; text-align: left; }
+
+section { padding: 3.5rem 0; }

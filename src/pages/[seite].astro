@@ -1,0 +1,23 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const seiten = await getCollection('seiten');
+  return seiten.map((s) => ({ params: { seite: s.id }, props: { eintrag: s } }));
+}
+
+const { eintrag } = Astro.props;
+const { Content } = await render(eintrag);
+---
+<Layout titel={eintrag.data.titel} beschreibung={eintrag.data.untertitel}>
+  <section>
+    <div class="wrap-text">
+      {eintrag.data.untertitel && <span class="eyebrow">{eintrag.data.untertitel}</span>}
+      <h1>{eintrag.data.titel}</h1>
+      <div class="prose">
+        <Content />
+      </div>
+    </div>
+  </section>
+</Layout>

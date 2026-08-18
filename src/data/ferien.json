@@ -1,0 +1,9 @@
+{
+  "ferien": [
+    { "name": "Sommerferien 2026", "von": "2026-07-20", "bis": "2026-09-01" },
+    { "name": "Herbstferien 2026", "von": "2026-10-17", "bis": "2026-10-31" },
+    { "name": "Weihnachtsferien 2026/27", "von": "2026-12-23", "bis": "2027-01-06" },
+    { "name": "Osterferien 2027", "von": "2027-03-22", "bis": "2027-04-03" },
+    { "name": "Sommerferien 2027", "von": "2027-07-19", "bis": "2027-08-31" }
+  ]
+}

@@ -1,0 +1,200 @@
+media:
+  input: public/bilder
+  output: /bilder
+
+content:
+  - name: aktuelles
+    label: Aktuelles
+    description: Neuigkeiten und Berichte aus dem Stammesleben
+    type: collection
+    path: src/content/aktuelles
+    view:
+      fields: [titel, datum]
+      sort: [datum]
+      default:
+        sort: datum
+        order: desc
+    fields:
+      - name: titel
+        label: Titel
+        type: string
+        required: true
+      - name: datum
+        label: Datum
+        type: date
+        required: true
+      - name: bild
+        label: Titelbild (optional)
+        type: image
+      - name: body
+        label: Text
+        type: rich-text
+
+  - name: termine
+    label: Termine
+    description: Lager, Fahrten und Aktionen – erscheinen auf der Terminseite und im Kalender-Abo
+    type: collection
+    path: src/content/termine
+    view:
+      fields: [titel, datum, kategorie]
+      sort: [datum]
+      default:
+        sort: datum
+        order: desc
+    fields:
+      - name: titel
+        label: Titel
+        type: string
+        required: true
+      - name: datum
+        label: Datum (bei mehrtägigen Terminen der erste Tag)
+        type: date
+        required: true
+      - name: endDatum
+        label: End-Datum (nur bei mehrtägigen Terminen)
+        type: date
+      - name: zeit
+        label: Uhrzeit (optional, z. B. "15:00" oder "15:00 – 17:00" – leer lassen für ganztägig)
+        type: string
+      - name: ort
+        label: Ort (optional)
+        type: string
+      - name: kategorie
+        label: Für wen?
+        type: select
+        default: stamm
+        options:
+          values:
+            - value: stamm
+              label: Ganzer Stamm
+            - value: meute
+              label: Meute
+            - value: sippen
+              label: Sippen
+            - value: gilde
+              label: Gilde
+            - value: foerderverein
+              label: Förderverein
+      - name: body
+        label: Beschreibung (optional)
+        type: rich-text
+
+  - name: gruppen
+    label: Gruppen
+    description: Die Gruppen des Stammes (Meute, Sippen, Gilde)
+    type: collection
+    path: src/content/gruppen
+    view:
+      fields: [name, stufe, alter]
+      sort: [reihenfolge]
+    fields:
+      - name: name
+        label: Name der Gruppe
+        type: string
+        required: true
+      - name: stufe
+        label: Stufe
+        type: string
+        description: z. B. Wölflingsstufe, Pfadfinderstufe, Ranger & Rover
+        required: true
+      - name: alter
+        label: Altersangabe
+        type: string
+        required: true
+      - name: farbe
+        label: Farbe der Karte
+        type: select
+        options:
+          values:
+            - value: gelb
+              label: Wölflingsgelb
+            - value: blau
+              label: Pfadiblau
+            - value: rot
+              label: R*R-Rot
+            - value: gruen
+              label: Waldgrün
+      - name: icon
+        label: Icon (BdP-Icon aus /bdp/)
+        type: string
+        default: /bdp/icon-kohte.png
+      - name: reihenfolge
+        label: Reihenfolge
+        type: number
+      - name: treffzeit
+        label: Eigene Treffzeit (optional, sonst gilt die Standard-Treffzeit)
+        type: string
+      - name: body
+        label: Beschreibung
+        type: rich-text
+
+  - name: seiten
+    label: Seiten
+    description: Feste Seiten wie Über uns, Kontakt, Förderverein
+    type: collection
+    path: src/content/seiten
+    view:
+      fields: [titel]
+    fields:
+      - name: titel
+        label: Seitentitel
+        type: string
+        required: true
+      - name: untertitel
+        label: Untertitel (optional)
+        type: string
+      - name: body
+        label: Inhalt
+        type: rich-text
+
+  - name: ferien
+    label: Schulferien (NRW)
+    description: In diesen Zeiträumen fällt der Heimabend aus – bitte jedes Jahr um die neuen NRW-Ferien ergänzen (schulministerium.nrw)
+    type: file
+    path: src/data/ferien.json
+    fields:
+      - name: ferien
+        label: Ferienzeiträume
+        type: object
+        list: true
+        fields:
+          - name: name
+            label: Name (z. B. Herbstferien 2026)
+            type: string
+            required: true
+          - name: von
+            label: Erster Ferientag
+            type: date
+            required: true
+          - name: bis
+            label: Letzter Ferientag
+            type: date
+            required: true
+
+  - name: einstellungen
+    label: Einstellungen
+    description: Adresse, Treffzeit, Kontaktdaten, Kalender-Links
+    type: file
+    path: src/data/einstellungen.json
+    fields:
+      - name: verein
+        label: Vereinsname
+        type: string
+      - name: claim
+        label: Kurzbeschreibung
+        type: string
+      - name: treffzeit
+        label: Treffzeit
+        type: string
+      - name: adresse
+        label: Adresse
+        type: string
+      - name: email
+        label: E-Mail
+        type: string
+      - name: telefon
+        label: Telefon
+        type: string
+      - name: facebook
+        label: Facebook-Link
+        type: string

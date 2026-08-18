@@ -1,0 +1,56 @@
+---
+interface Props {
+  id: string;
+  name: string;
+  stufe: string;
+  alter: string;
+  farbe: 'gelb' | 'blau' | 'rot' | 'gruen';
+  icon: string;
+}
+const { id, name, stufe, alter, farbe, icon } = Astro.props;
+---
+<a class={`karte farbe-${farbe}`} href={`/gruppen/${id}`}>
+  <img src={icon} alt="" width="72" height="72" loading="lazy" />
+  <span class="stufe">{stufe}</span>
+  <span class="name">{name}</span>
+  <span class="alter">{alter}</span>
+</a>
+
+<style>
+  .karte {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 1.5rem 1.4rem 1.3rem;
+    background: #fff;
+    border: 1px solid var(--linie);
+    border-top: 6px solid var(--pfadiblau);
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform 130ms ease, box-shadow 130ms ease;
+  }
+  .karte:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgb(14 66 120 / 0.14);
+  }
+  .karte img { width: 72px; height: 72px; object-fit: contain; margin-bottom: 0.6rem; }
+  .farbe-gelb { border-top-color: var(--woelflingsgelb); }
+  .farbe-blau { border-top-color: var(--pfadiblau); }
+  .farbe-rot { border-top-color: var(--rr-rot); }
+  .farbe-gruen { border-top-color: var(--waldgruen); }
+  .stufe {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .name {
+    font-weight: 900;
+    font-size: 1.25rem;
+    color: var(--pfadiblau);
+    line-height: 1.2;
+  }
+  .alter { font-size: 0.95rem; color: var(--ink-soft); }
+</style>

@@ -1,0 +1,16 @@
+---
+// Kohten-Anschnitt lt. BdP-CD: ein Anschnitt pro Gestaltung, am Rand platziert.
+// Die Kohtensilhouette sitzt als Abschluss an der Unterkante des Heros.
+---
+<svg class="kohte" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0,70 L0,54 L690,54 L790,4 L890,54 L1200,54 L1200,70 Z" fill="currentColor" />
+</svg>
+
+<style>
+  .kohte {
+    display: block;
+    width: 100%;
+    height: clamp(36px, 6vw, 70px);
+    color: var(--papier);
+  }
+</style>

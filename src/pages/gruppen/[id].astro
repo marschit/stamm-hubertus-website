@@ -1,0 +1,38 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import einstellungen from '../../data/einstellungen.json';
+
+export async function getStaticPaths() {
+  const gruppen = await getCollection('gruppen');
+  return gruppen.map((g) => ({ params: { id: g.id }, props: { gruppe: g } }));
+}
+
+const { gruppe } = Astro.props;
+const { Content } = await render(gruppe);
+---
+<Layout titel={gruppe.data.name} beschreibung={`${gruppe.data.name} (${gruppe.data.stufe}, ${gruppe.data.alter}) beim Stamm Hubertus Siegen.`}>
+  <section>
+    <div class="wrap-text">
+      <span class="eyebrow">{gruppe.data.stufe} · {gruppe.data.alter}</span>
+      <h1>{gruppe.data.name}</h1>
+      <p class="treff">
+        <strong>Gruppenstunde:</strong>
+        {gruppe.data.treffzeit ?? einstellungen.treffzeit} · {einstellungen.adresse}
+      </p>
+      <div class="prose">
+        <Content />
+      </div>
+      <p><a class="btn" href="/kontakt">Mitmachen? Melde dich!</a></p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .treff {
+    background: var(--pfadiblau-hell);
+    border-radius: 4px;
+    padding: 0.7rem 1rem;
+    display: inline-block;
+  }
+</style>

@@ -1,0 +1,207 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import { KATEGORIEN, alsIso, formatDatum, formatMonat, monatsSchluessel } from '../lib/termine';
+
+const heute = alsIso(new Date());
+const alle = (await getCollection('termine'))
+  .filter((t) => alsIso(t.data.endDatum ?? t.data.datum) >= heute)
+  .sort((a, b) => a.data.datum.valueOf() - b.data.datum.valueOf());
+
+const gerendert = await Promise.all(
+  alle.map(async (t) => ({ termin: t, Inhalt: (await render(t)).Content }))
+);
+
+const monate = [...new Map(alle.map((t) => [monatsSchluessel(t.data.datum), t.data.datum]))];
+
+const feedUrl = new URL('/termine.ics', Astro.site).href;
+const webcalUrl = feedUrl.replace(/^https?:/, 'webcal:');
+---
+<Layout titel="Termine" beschreibung="Alle Termine des Stamm Hubertus Siegen: Gruppenstunden, Lager, Fahrten und Aktionen – mit Kalender-Abo.">
+  <section>
+    <div class="wrap">
+      <span class="eyebrow">Lager, Fahrten &amp; Aktionen</span>
+      <h1>Termine</h1>
+      <p class="intro">
+        Unser <strong>Heimabend</strong> ist jeden Samstag von 15 bis 17 Uhr im
+        Stammesheim – außer in den NRW-Schulferien. Er steckt auch im
+        Kalender-Abo unten. Hier stehen alle weiteren Termine – Lager, Fahrten
+        und Aktionen.
+      </p>
+
+      <div class="filter" role="group" aria-label="Nach Gruppe filtern">
+        <button type="button" data-filter="alle" aria-pressed="true">Alle</button>
+        {Object.entries(KATEGORIEN).map(([schluessel, k]) => (
+          <button type="button" data-filter={schluessel} aria-pressed="false">{k.label}</button>
+        ))}
+      </div>
+
+      <div class="termine">
+        {monate.map(([schluessel, datum]) => (
+          <div class="monat" data-monat={schluessel}>
+            <h2>{formatMonat(datum)}</h2>
+            <ul>
+              {gerendert
+                .filter(({ termin }) => monatsSchluessel(termin.data.datum) === schluessel)
+                .map(({ termin, Inhalt }) => (
+                  <li
+                    class="termin"
+                    data-kategorie={termin.data.kategorie}
+                    data-ende={alsIso(termin.data.endDatum ?? termin.data.datum)}
+                  >
+                    <div class="wann">
+                      <span class="tag">{formatDatum(termin.data.datum)}</span>
+                      {termin.data.endDatum && (
+                        <span class="bis">bis {formatDatum(termin.data.endDatum)}</span>
+                      )}
+                      {termin.data.zeit && <span class="zeit">{termin.data.zeit} Uhr</span>}
+                    </div>
+                    <div class="was">
+                      <span
+                        class={`badge ${KATEGORIEN[termin.data.kategorie].hell ? 'badge--hell' : ''}`}
+                        style={`background:${KATEGORIEN[termin.data.kategorie].farbe}`}
+                      >{KATEGORIEN[termin.data.kategorie].label}</span>
+                      <strong>{termin.data.titel}</strong>
+                      {termin.data.ort && <span class="ort">{termin.data.ort}</span>}
+                      <div class="beschreibung"><Inhalt /></div>
+                    </div>
+                  </li>
+                ))}
+            </ul>
+          </div>
+        ))}
+        <p class="leer" hidden>Aktuell stehen hier keine Termine – schau bald wieder vorbei!</p>
+      </div>
+
+      <div class="abo">
+        <h2>Kalender abonnieren</h2>
+        <p>
+          Abonniere unseren Kalender, dann erscheinen neue Termine automatisch auf
+          deinem Handy oder Computer:
+        </p>
+        <p>
+          <a class="btn btn--blau" href={webcalUrl}>In Kalender-App öffnen</a>
+        </p>
+        <p class="abo-url">
+          Oder füge diese Adresse in deiner Kalender-App als Abonnement hinzu:<br />
+          <code>{feedUrl}</code>
+        </p>
+        <p class="abo-hinweis">
+          Nur die Termine einer Gruppe? Dafür gibt es eigene Kalender, z.&nbsp;B.
+          {Object.entries(KATEGORIEN).map(([schluessel, k], i) => (
+            <>{i > 0 && ' · '}<a href={`/termine-${schluessel}.ics`}>{k.label}</a></>
+          ))}
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // Vergangene Termine ausblenden (die Seite wird nur beim Deploy neu gebaut)
+  const heute = new Date().toLocaleDateString('sv-SE');
+  document.querySelectorAll<HTMLElement>('.termin').forEach((t) => {
+    if ((t.dataset.ende ?? '') < heute) t.remove();
+  });
+
+  const knoepfe = document.querySelectorAll<HTMLButtonElement>('.filter button');
+  function anwenden(filter: string) {
+    knoepfe.forEach((k) => k.setAttribute('aria-pressed', String(k.dataset.filter === filter)));
+    document.querySelectorAll<HTMLElement>('.termin').forEach((t) => {
+      t.hidden = filter !== 'alle' && t.dataset.kategorie !== filter;
+    });
+    document.querySelectorAll<HTMLElement>('.monat').forEach((m) => {
+      m.hidden = !m.querySelector('.termin:not([hidden])');
+    });
+    const leer = document.querySelector<HTMLElement>('.leer');
+    if (leer) leer.hidden = !!document.querySelector('.monat:not([hidden])');
+  }
+  knoepfe.forEach((k) => k.addEventListener('click', () => anwenden(k.dataset.filter!)));
+  anwenden('alle');
+</script>
+
+<style>
+  .intro { max-width: 44rem; }
+
+  .filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1.5rem 0 0.5rem;
+  }
+  .filter button {
+    font: inherit;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 0.4rem 1rem;
+    border-radius: 999px;
+    border: 2px solid var(--pfadiblau);
+    background: transparent;
+    color: var(--pfadiblau);
+    cursor: pointer;
+  }
+  .filter button[aria-pressed='true'] {
+    background: var(--pfadiblau);
+    color: var(--papier);
+  }
+
+  .monat h2 {
+    font-size: 1.15rem;
+    margin: 2.2rem 0 0.6rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 2px solid var(--woelflingsgelb);
+    display: inline-block;
+  }
+  .monat ul { list-style: none; margin: 0; padding: 0; }
+
+  .termin {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 2.5rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--linie);
+  }
+  .wann {
+    flex: 0 0 11.5rem;
+    display: flex;
+    flex-direction: column;
+    font-variant-numeric: tabular-nums;
+  }
+  .tag { font-weight: 900; color: var(--pfadiblau); }
+  .bis, .zeit { font-size: 0.9rem; color: var(--ink-soft); }
+  .was { flex: 1 1 18rem; display: flex; flex-direction: column; gap: 0.15rem; }
+  .was strong { font-weight: 900; font-size: 1.15rem; color: var(--pfadiblau); }
+  .ort { font-size: 0.9rem; color: var(--ink-soft); }
+  .beschreibung { font-size: 0.95rem; }
+  .beschreibung :global(p) { margin: 0.3em 0 0; }
+  .badge {
+    align-self: flex-start;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+  }
+  .badge--hell { color: var(--pfadiblau); }
+
+  .abo {
+    margin-top: 3rem;
+    background: var(--pfadiblau-hell);
+    border-radius: 4px;
+    padding: 1.5rem 1.75rem 1.75rem;
+  }
+  .abo h2 { font-size: 1.3rem; }
+  .abo-url code {
+    display: inline-block;
+    margin-top: 0.3rem;
+    background: #fff;
+    border: 1px solid var(--linie);
+    border-radius: 4px;
+    padding: 0.35rem 0.6rem;
+    font-size: 0.85rem;
+    word-break: break-all;
+  }
+  .abo-hinweis { font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 0; }
+</style>

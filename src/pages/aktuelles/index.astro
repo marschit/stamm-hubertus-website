@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+const beitraege = (await getCollection('aktuelles')).sort(
+  (a, b) => b.data.datum.valueOf() - a.data.datum.valueOf()
+);
+const datumFormat = new Intl.DateTimeFormat('de-DE', { dateStyle: 'long' });
+---
+<Layout titel="Aktuelles" beschreibung="Neuigkeiten und Berichte aus dem Stammesleben des Stamm Hubertus Siegen.">
+  <section>
+    <div class="wrap-text">
+      <span class="eyebrow">Aus dem Stammesleben</span>
+      <h1>Aktuelles</h1>
+      <ul class="liste">
+        {beitraege.map((b) => (
+          <li>
+            <a href={`/aktuelles/${b.id}`}>
+              <time datetime={b.data.datum.toISOString().slice(0, 10)}>
+                {datumFormat.format(b.data.datum)}
+              </time>
+              <strong>{b.data.titel}</strong>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .liste { list-style: none; margin: 1.5rem 0 0; padding: 0; }
+  .liste li { border-bottom: 1px solid var(--linie); }
+  .liste a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 1.1rem 0;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .liste time { font-size: 0.85rem; font-weight: 700; color: var(--rr-rot); }
+  .liste strong { font-weight: 900; font-size: 1.2rem; color: var(--pfadiblau); }
+  .liste a:hover strong { text-decoration: underline; text-underline-offset: 3px; }
+</style>
