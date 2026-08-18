@@ -263,7 +263,7 @@ const pfad = Astro.url.pathname.replace(/\/$/, '') || '/';
     transition: transform 150ms ease;
   }
   .unter-knopf[aria-expanded='true'] { transform: rotate(180deg); }
-  .untermenu {
+  .hat-unter .untermenu {
     display: none;
     position: absolute;
     top: 100%;
@@ -283,7 +283,7 @@ const pfad = Astro.url.pathname.replace(/\/$/, '') || '/';
   }
   .hat-unter:hover .untermenu,
   .hat-unter:focus-within .untermenu,
-  .untermenu.offen { display: flex; }
+  .hat-unter .untermenu.offen { display: flex; }
   .untermenu a {
     display: block;
     padding: 0.5rem 0.9rem;
@@ -338,7 +338,7 @@ const pfad = Astro.url.pathname.replace(/\/$/, '') || '/';
     }
     .hat-unter > a { flex: 1; }
     .unter-knopf { font-size: 1rem; padding: 0.5rem 0.9rem; }
-    .untermenu {
+    .hat-unter .untermenu {
       display: none;
       flex-basis: 100%;
       position: static;
