@@ -23,10 +23,10 @@ auf Wunsch automatisch zu.
    – mit Formular und SEPA-Lastschriftmandat
 2. Ausfüllen und per Post an *Ralf Jakubowski, Baumschulenweg 17,
    57076 Siegen* senden – oder eingescannt per E-Mail an
-   [föve@stamm-hubertus-siegen.de](mailto:föve@stamm-hubertus-siegen.de)
+   [fv@stamm-hubertus-siegen.de](mailto:fv@stamm-hubertus-siegen.de)
 
 Fragen zum Förderverein? Schreib uns an
-[föve@stamm-hubertus-siegen.de](mailto:föve@stamm-hubertus-siegen.de).
+[fv@stamm-hubertus-siegen.de](mailto:fv@stamm-hubertus-siegen.de).
 
 ## Spendenkonto des Fördervereins
 
