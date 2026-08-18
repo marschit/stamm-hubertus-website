@@ -31,7 +31,8 @@ const pfad = Astro.url.pathname.replace(/\/$/, '') || '/';
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{seitentitel}</title>
     <meta name="description" content={beschreibung ?? 'Pfadfinden in Siegen: Der BdP Stamm Hubertus Siegen e.V. – jeden Samstag von 15 bis 17 Uhr am Seilereiweg 8.'} />
-    <link rel="icon" type="image/svg+xml" href="/bdp/klilie.svg" />
+    <link rel="icon" type="image/png" href="/bilder/hubertus-logo-192.png" />
+    <link rel="apple-touch-icon" href="/bilder/hubertus-logo-192.png" />
     <link rel="preload" href="/fonts/einfachBdP-Superfett.otf" as="font" type="font/otf" crossorigin />
     <link rel="preload" href="/fonts/einfachBdP-Klassisch.otf" as="font" type="font/otf" crossorigin />
   </head>
@@ -41,7 +42,7 @@ const pfad = Astro.url.pathname.replace(/\/$/, '') || '/';
     <header class="kopf">
       <div class="wrap kopf-innen">
         <a href="/" class="marke" aria-label="Startseite Stamm Hubertus Siegen">
-          <img src="/bdp/wbm.svg" alt="BdP – Bund der Pfadfinderinnen und Pfadfinder" width="130" height="42" />
+          <img class="marke-logo" src="/bilder/hubertus-logo.jpg" alt="" width="52" height="52" />
           <span class="marke-name">Stamm Hubertus<br />Siegen</span>
         </a>
         <nav aria-label="Hauptnavigation">
@@ -116,6 +117,7 @@ const pfad = Astro.url.pathname.replace(/\/$/, '') || '/';
     text-decoration: none;
   }
   .marke img { display: block; }
+  .marke-logo { border-radius: 50%; }
   .marke-name {
     font-weight: 900;
     line-height: 1.1;
