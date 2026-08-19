@@ -54,6 +54,21 @@ const fehler = null;
         </div>
       </form>
 
+      <div class="alternative">
+        <span class="oder" aria-hidden="true">oder</span>
+        <h2>Direkt in unsere Cloud laden</h2>
+        <p>
+          Du magst lieber ohne Formular? Leg deine Fotos einfach in unserer
+          Vereins-Cloud ab – funktioniert auch prima mit ganzen Ordnern vom
+          Computer. Bitte benenne die Dateien oder den Ordner nach der
+          Veranstaltung (z.&nbsp;B. „Herbstlager 2026 – Anna“), damit wir die
+          Bilder zuordnen können.
+        </p>
+        <a class="btn btn--blau" href="https://cloud.stamm-hubertus-siegen.de/index.php/s/GScM95gbeLT3MfW">
+          Zur Cloud-Ablage
+        </a>
+      </div>
+
       <p class="hinweis">
         Der Upload kann bei vielen Fotos einen Moment dauern – bitte das Fenster
         offen lassen. Bei Problemen erreichst du uns auch per E-Mail an
@@ -197,6 +212,29 @@ const fehler = null;
   .einverstaendnis input { margin-top: 0.25rem; }
   .honig { position: absolute; left: -9999px; }
   button.btn { align-self: flex-start; border: 0; cursor: pointer; font: inherit; font-weight: 700; }
+  .alternative {
+    margin-top: 2.5rem;
+    background: var(--pfadiblau-hell);
+    border-radius: 6px;
+    padding: 1.5rem 1.75rem;
+    max-width: 34rem;
+    position: relative;
+  }
+  .oder {
+    position: absolute;
+    top: -0.85rem;
+    left: 1.5rem;
+    background: var(--woelflingsgelb);
+    color: var(--pfadiblau);
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.8rem;
+    border-radius: 999px;
+  }
+  .alternative h2 { margin: 0 0 0.4rem; font-size: 1.25rem; }
+  .alternative p { margin-top: 0; }
   .hinweis { font-size: 0.9rem; color: var(--ink-soft); margin-top: 1.5rem; }
   .fortschritt progress { width: 100%; height: 1.1rem; accent-color: var(--pfadiblau); }
   .fortschritt-text { font-size: 0.95rem; font-weight: 700; color: var(--pfadiblau); margin: 0.4rem 0 0; }
