@@ -1,0 +1,170 @@
+/* Gemeinsame Druckvorlage im Stammes-/BdP-Design (A4, Chrome --print-to-pdf) */
+
+@font-face {
+  font-family: 'einfachBdP';
+  src: url('../public/fonts/einfachBdP-Klassisch.otf') format('opentype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'einfachBdP';
+  src: url('../public/fonts/einfachBdP-Stark.otf') format('opentype');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'einfachBdP';
+  src: url('../public/fonts/einfachBdP-Superfett.otf') format('opentype');
+  font-weight: 900;
+}
+
+@page { size: A4; margin: 18mm 18mm 20mm; }
+
+:root {
+  --pfadiblau: #0e4278;
+  --gelb: #ffd208;
+  --rot: #971b2f;
+  --ink: #1c2733;
+  --grau: #5b6b7a;
+  --linie: #c9ccd1;
+  --hell: #eef2f7;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'einfachBdP', sans-serif;
+  font-size: 10pt;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+/* Briefkopf */
+.kopf {
+  display: flex;
+  align-items: center;
+  gap: 5mm;
+  padding-bottom: 4mm;
+  border-bottom: 1.2mm solid var(--gelb);
+  margin-bottom: 7mm;
+}
+.kopf img.logo { width: 17mm; height: 17mm; }
+.kopf .titelblock { flex: 1; }
+.kopf .verein {
+  font-weight: 900;
+  font-size: 14pt;
+  color: var(--pfadiblau);
+  line-height: 1.15;
+}
+.kopf .dokument {
+  font-weight: 700;
+  font-size: 8pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rot);
+}
+.kopf img.klilie { width: 15mm; height: 15mm; }
+
+h1 {
+  font-weight: 900;
+  font-size: 17pt;
+  color: var(--pfadiblau);
+  margin: 0 0 2mm;
+  line-height: 1.2;
+}
+.untertitel { color: var(--grau); margin: 0 0 6mm; font-size: 10.5pt; }
+
+h2 {
+  font-weight: 900;
+  font-size: 11.5pt;
+  color: var(--pfadiblau);
+  margin: 6mm 0 2mm;
+  break-after: avoid;
+}
+h3 {
+  font-weight: 700;
+  font-size: 10.5pt;
+  color: var(--pfadiblau);
+  margin: 4mm 0 1.5mm;
+  break-after: avoid;
+}
+p { margin: 0 0 2.5mm; }
+ul { margin: 0 0 2.5mm; padding-left: 5mm; }
+li { margin-bottom: 1mm; }
+
+/* Fußzeile: fixiert im unteren Seitenrand (Chrome positioniert relativ zum Papier) */
+.fuss {
+  position: fixed;
+  bottom: 6mm;
+  left: 18mm;
+  right: 18mm;
+  font-size: 7.5pt;
+  color: var(--grau);
+  display: flex;
+  justify-content: space-between;
+  border-top: 0.3pt solid var(--linie);
+  padding-top: 1.5mm;
+}
+
+/* Formulare */
+.feldgruppe {
+  border: 0.4pt solid var(--linie);
+  border-left: 1.2mm solid var(--pfadiblau);
+  border-radius: 1mm;
+  padding: 3.5mm 4mm 1mm;
+  margin-bottom: 4mm;
+  break-inside: avoid;
+}
+.feldgruppe .gruppentitel {
+  font-weight: 900;
+  font-size: 10pt;
+  color: var(--pfadiblau);
+  margin: 0 0 2.5mm;
+}
+.felder { display: flex; flex-wrap: wrap; gap: 0 6mm; }
+.feld { flex: 1 1 calc(50% - 3mm); margin-bottom: 2.8mm; }
+.feld.breit { flex-basis: 100%; }
+.feld .label {
+  font-size: 7.5pt;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--grau);
+}
+.feld .zeile { border-bottom: 0.5pt solid var(--ink); height: 5.5mm; }
+
+.kasten {
+  background: var(--hell);
+  border-radius: 1.5mm;
+  padding: 3.5mm 4mm;
+  margin-bottom: 4mm;
+  break-inside: avoid;
+}
+.kasten.gelb { background: #fff7d1; }
+
+.checkzeile { display: flex; gap: 8mm; margin: 2mm 0 3mm; }
+.check { display: flex; align-items: center; gap: 2mm; font-weight: 700; }
+.check .box {
+  width: 4.5mm; height: 4.5mm;
+  border: 0.6pt solid var(--ink);
+  border-radius: 0.7mm;
+  display: inline-block;
+}
+
+.unterschrift { margin-top: 5mm; break-inside: avoid; }
+.unterschrift .linie {
+  border-bottom: 0.5pt solid var(--ink);
+  height: 9mm;
+}
+.unterschrift .hinweis { font-size: 7.5pt; color: var(--grau); margin-top: 1mm; }
+.unterschrift-reihe { display: flex; gap: 8mm; }
+.unterschrift-reihe .unterschrift { flex: 1; }
+
+.klein { font-size: 8pt; color: var(--grau); }
+.betont { font-weight: 700; }
+.blau { color: var(--pfadiblau); }
+
+table.daten { border-collapse: collapse; margin: 0 0 3mm; }
+table.daten td { padding: 0.6mm 4mm 0.6mm 0; vertical-align: top; }
+table.daten td:first-child { font-weight: 700; white-space: nowrap; }
+
+.seitenumbruch { break-before: page; }
+.absatz { break-inside: avoid; }
