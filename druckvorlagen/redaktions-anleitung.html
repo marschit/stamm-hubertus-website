@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Anleitung Website-Redaktion – Stamm Hubertus Siegen</title>
+<link rel="stylesheet" href="druck.css">
+<style>
+  .schrittkasten { border: 0.4pt solid var(--linie); border-left: 1.2mm solid var(--gelb); border-radius: 1mm; padding: 3mm 4mm; margin: 0 0 3.5mm; break-inside: avoid; }
+  .schrittkasten .nr { font-weight: 900; color: var(--pfadiblau); }
+  .url { font-family: ui-monospace, Menlo, monospace; font-size: 9pt; background: var(--hell); padding: 0.3mm 1.5mm; border-radius: 1mm; }
+</style>
+</head>
+<body>
+
+<div class="kopf">
+  <img class="logo" src="../public/bilder/hubertus-logo.svg" alt="">
+  <div class="titelblock">
+    <div class="dokument">Anleitung Website-Redaktion · Stand 08/2026</div>
+    <div class="verein">Stamm Hubertus Siegen e.&nbsp;V.</div>
+  </div>
+  <img class="klilie" src="../public/bdp/klilie-neu.svg" alt="">
+</div>
+
+<h1>Inhalte auf stamm-hubertus-siegen.de pflegen</h1>
+<p class="untertitel">Einrichtung und redaktionelles Arbeiten mit Pages CMS – Schritt für Schritt</p>
+
+<div class="kasten gelb">
+  <span class="betont">Das Wichtigste vorweg: Du kannst nichts kaputt machen.</span> Jede Änderung wird
+  automatisch als Version gespeichert und lässt sich jederzeit wiederherstellen. Nach dem Speichern dauert
+  es etwa <span class="betont">2 Minuten</span>, bis die Änderung auf der Website sichtbar ist.
+</div>
+
+<h2>So hängt alles zusammen</h2>
+<p>Unsere Website ist eine moderne, „statische“ Seite – es gibt kein WordPress und nichts, was gewartet
+werden muss. Die Inhalte liegen in einem Projektordner auf der Plattform <span class="betont">GitHub</span>;
+bearbeitet werden sie über die freundliche Redaktionsoberfläche <span class="betont">Pages CMS</span> im
+Browser. Nach jedem Speichern baut sich die Website automatisch neu.</p>
+<table class="daten">
+  <tr><td>Pages CMS</td><td><span class="url">app.pagescms.org</span> – Beiträge, Fotoalben, Seiten, Einstellungen</td></tr>
+  <tr><td>Vereins-Cloud</td><td><span class="url">cloud.stamm-hubertus-siegen.de</span> – Termine (Kalender), eingereichte Fotos</td></tr>
+  <tr><td>Vereinspostfach</td><td><span class="url">kontakt@stamm-hubertus-siegen.de</span> – Kontaktformular &amp; Foto-Benachrichtigungen</td></tr>
+</table>
+
+<h2>Teil 1 · Einmalige Einrichtung (ca. 10 Minuten)</h2>
+
+<div class="schrittkasten">
+  <p><span class="nr">Schritt 1 – GitHub-Konto erstellen.</span><br>
+  Öffne <span class="url">github.com</span> und klicke oben rechts auf <span class="betont">Sign up</span>.
+  Du brauchst nur eine E-Mail-Adresse, ein Passwort und einen Nutzernamen. Das Konto ist kostenlos.<br>
+  <span class="klein">Tipp: Der Nutzername ist später öffentlich bei den Website-Änderungen sichtbar.
+  Wer das nicht möchte, wählt einen neutralen Namen (z.&nbsp;B. „hubertus-max“). Bestätige danach die
+  E-Mail, die GitHub dir schickt.</span></p>
+</div>
+
+<div class="schrittkasten">
+  <p><span class="nr">Schritt 2 – Konto absichern (empfohlen).</span><br>
+  In den GitHub-Einstellungen unter <span class="betont">Password and authentication</span> die
+  Zwei-Faktor-Authentifizierung aktivieren – am einfachsten per Authenticator-App auf dem Handy.
+  GitHub verlangt das über kurz oder lang ohnehin.</p>
+</div>
+
+<div class="schrittkasten">
+  <p><span class="nr">Schritt 3 – Einladung erhalten und annehmen.</span><br>
+  Schicke deinen GitHub-Nutzernamen an Malte
+  (<span class="url">malte@marschall.support</span>). Er lädt dich ins Website-Projekt
+  <span class="betont">stamm-hubertus-website</span> ein. Du bekommst dann eine E-Mail von GitHub
+  („Invitation to collaborate“) – dort auf <span class="betont">Accept invitation</span> klicken.
+  Erst danach funktioniert der nächste Schritt!</p>
+</div>
+
+<div class="schrittkasten">
+  <p><span class="nr">Schritt 4 – Bei Pages CMS anmelden.</span><br>
+  Öffne <span class="url">app.pagescms.org</span> und klicke auf
+  <span class="betont">Sign in with GitHub</span>. GitHub fragt einmalig, ob Pages CMS zugreifen darf –
+  mit <span class="betont">Authorize</span> bestätigen. Falls eine Liste von Projekten erscheint, in der
+  unseres fehlt: auf „Configure“ bzw. „Add repository“ gehen und
+  <span class="betont">stamm-hubertus-website</span> freigeben.</p>
+</div>
+
+<div class="schrittkasten">
+  <p><span class="nr">Schritt 5 – Projekt öffnen.</span><br>
+  Nach der Anmeldung erscheint <span class="betont">marschit/stamm-hubertus-website</span> in deiner
+  Projektliste. Einmal anklicken – fertig! Links siehst du jetzt alle Inhaltsbereiche der Website.
+  Ab jetzt reicht künftig: <span class="url">app.pagescms.org</span> öffnen → anmelden → loslegen.</p>
+</div>
+
+<div class="seitenumbruch"></div>
+
+<div class="kopf">
+  <img class="logo" src="../public/bilder/hubertus-logo.svg" alt="">
+  <div class="titelblock">
+    <div class="dokument">Anleitung Website-Redaktion · Teil 2</div>
+    <div class="verein">Stamm Hubertus Siegen e.&nbsp;V.</div>
+  </div>
+  <img class="klilie" src="../public/bdp/klilie-neu.svg" alt="">
+</div>
+
+<h1>Teil 2 · Redaktionell arbeiten</h1>
+
+<h2>Die Oberfläche</h2>
+<p>Links in Pages CMS findest du die Inhaltsbereiche – sie entsprechen genau der Website:</p>
+<table class="daten">
+  <tr><td>Aktuelles</td><td>News-Beiträge (erscheinen auch auf der Startseite)</td></tr>
+  <tr><td>Termine</td><td>Termine über das CMS – Haupweg ist aber der Cloud-Kalender, s.&nbsp;u.</td></tr>
+  <tr><td>Gruppen</td><td>Meute, Sippen, Gilde: Texte, Alter, Abzeichen</td></tr>
+  <tr><td>Fotoalben</td><td>Alben für die Galerie</td></tr>
+  <tr><td>Seiten</td><td>Über uns, Kontakt, Förderverein, Heim, Spenden, Pfadfinderregeln …</td></tr>
+  <tr><td>Schulferien (NRW)</td><td>steuert, wann der Heimabend automatisch pausiert</td></tr>
+  <tr><td>Einstellungen</td><td>Adresse, Treffzeit, E-Mail, Instagram – gilt überall auf der Seite</td></tr>
+  <tr><td>Media</td><td>Bilderablage der Website (zum Hochladen von Fotos)</td></tr>
+</table>
+<p>Jeder Eintrag ist ein Formular: Felder ausfüllen, Text im Editor schreiben (funktioniert wie ein
+einfaches Word – fett, Listen, Links), oben rechts <span class="betont">Save</span>. Nach etwa zwei
+Minuten ist alles live.</p>
+
+<h2>Einen Beitrag unter „Aktuelles“ veröffentlichen</h2>
+<p>Bereich <span class="betont">Aktuelles</span> → <span class="betont">Add Entry</span> → Titel und
+Datum eintragen, optional ein Titelbild hochladen, Text schreiben → <span class="betont">Save</span>.
+Zum Ändern einfach den Beitrag anklicken; zum Entfernen im Beitragsmenü
+<span class="betont">Delete</span> wählen.</p>
+<p class="klein">Tipp: Beiträge mit Titelbild wirken deutlich besser – das Bild wird auch zur Vorschau,
+wenn jemand den Link per WhatsApp teilt.</p>
+
+<h2>Fotoalben für die Galerie</h2>
+<p>Erst die Fotos unter <span class="betont">Media</span> hochladen (ideal: vorher auf ca. 1600–2000
+Pixel Breite verkleinern). Dann <span class="betont">Fotoalben → Add Entry</span>: Titel, Datum der
+Veranstaltung, unter „Fotos“ die Bilder auswählen und gern Bildunterschriften ergänzen →
+<span class="betont">Save</span>. Das Album erscheint in der Galerie mit automatischer Großansicht.</p>
+<div class="kasten">
+  <span class="betont">Personenfotos nur mit Einverständnis!</span> Veröffentliche nur Bilder von
+  Personen, für die eine unterschriebene Einverständniserklärung vorliegt (bei Kindern von den
+  Eltern). Das Formular gibt es auf der Website unter Fotos. Im Zweifel: weglassen oder nachfragen.
+</div>
+
+<h2>Termine – am einfachsten über den Cloud-Kalender</h2>
+<p>Termine trägst du am besten <span class="betont">nicht</span> im CMS ein, sondern im Kalender der
+Vereins-Cloud (<span class="url">cloud.stamm-hubertus-siegen.de</span> → Kalender-App). Dort gibt es
+fünf Kalender – einen je Zielgruppe: <span class="betont">termine-stamm</span> (ganzer Stamm),
+<span class="betont">-meute</span>, <span class="betont">-sippen</span>, <span class="betont">-gilde</span>,
+<span class="betont">-foerderverein</span>. Termin in den passenden Kalender klicken: Titel, Datum
+(Lager mit End-Datum), Uhrzeit, Ort. Die Website übernimmt ihn automatisch – spätestens nach zwei
+Stunden – samt Kalender-Abo der Familien.</p>
+<p class="klein">Der wöchentliche Heimabend (Sa 15–17 Uhr) trägt sich von selbst ein und pausiert
+automatisch in den NRW-Schulferien. Einzige Pflege: einmal im Jahr die neuen Ferientermine in
+Pages CMS unter „Schulferien (NRW)“ nachtragen (Quelle: schulministerium.nrw).</p>
+
+<h2>Eingereichte Fotos sichten</h2>
+<p>Über die Website können Eltern Fotos einreichen. Kommt eine Einreichung an, geht eine E-Mail an
+<span class="url">kontakt@stamm-hubertus-siegen.de</span>, und die Bilder liegen in der Cloud im Ordner
+<span class="betont">„Foto-Einreichungen“</span> – mit einer Textdatei, wer sie geschickt hat.
+Workflow: sichten → Brauchbares ins Vereinsarchiv übernehmen → was veröffentlicht werden darf
+(Einverständnis!), als Album in die Galerie stellen.</p>
+
+<h2>Bitte nur nach Rücksprache ändern</h2>
+<div class="kasten">
+  <span class="betont">Impressum und Datenschutz</span> sind Rechtstexte, die
+  <span class="betont">PDF-Dokumente</span> (Satzung, Mitgliedsantrag, Beitrittserklärung,
+  Einverständniserklärung) kommen aus zentralen Druckvorlagen. Tippfehler bitte an Malte melden
+  statt selbst zu ändern.
+</div>
+
+<h2>Kurzreferenz</h2>
+<table class="daten">
+  <tr><td>Termin eintragen</td><td>Cloud → Kalender-App → passender Kalender</td></tr>
+  <tr><td>Lagerbericht veröffentlichen</td><td>Pages CMS → Aktuelles → Add Entry</td></tr>
+  <tr><td>Fotos in die Galerie</td><td>Pages CMS → Media hochladen → Fotoalben</td></tr>
+  <tr><td>Eingereichte Fotos ansehen</td><td>Cloud → Ordner „Foto-Einreichungen“</td></tr>
+  <tr><td>Seitentext ändern</td><td>Pages CMS → Seiten</td></tr>
+  <tr><td>Treffzeit / Adresse / Instagram</td><td>Pages CMS → Einstellungen</td></tr>
+  <tr><td>Neue NRW-Ferien</td><td>Pages CMS → Schulferien (NRW)</td></tr>
+  <tr><td>Etwas ist schiefgegangen</td><td>Ruhig bleiben – alles ist rückholbar. Malte Bescheid geben.</td></tr>
+</table>
+
+<p style="margin-top: 6mm;">Fragen, Wünsche, neue Zugänge: <span class="betont">Malte Marschall</span> ·
+<span class="url">malte@marschall.support</span></p>
+<p class="betont">Gut Pfad!</p>
+
+</body>
+</html>
