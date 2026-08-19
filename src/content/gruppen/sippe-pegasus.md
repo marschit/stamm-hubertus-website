@@ -3,7 +3,7 @@ name: Sippe Pegasus
 stufe: Pfadfinderstufe
 alter: 11–16 Jahre
 farbe: blau
-icon: /bdp/icon-kompass.png
+icon: /bdp/halstuch-blau-gelb.svg
 reihenfolge: 3
 ---
 

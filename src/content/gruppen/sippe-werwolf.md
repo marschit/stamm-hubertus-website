@@ -3,7 +3,7 @@ name: Sippe Werwolf
 stufe: Pfadfinderstufe
 alter: 11–16 Jahre
 farbe: blau
-icon: /bdp/icon-kohte.png
+icon: /bdp/halstuch-blau-gelb.svg
 reihenfolge: 2
 ---
 

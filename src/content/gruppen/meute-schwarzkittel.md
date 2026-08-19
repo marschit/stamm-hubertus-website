@@ -3,7 +3,7 @@ name: Meute Schwarzkittel
 stufe: Wölflingsstufe
 alter: 6–11 Jahre
 farbe: gelb
-icon: /bdp/icon-wald.png
+icon: /bdp/halstuch-gelb.svg
 reihenfolge: 1
 ---
 

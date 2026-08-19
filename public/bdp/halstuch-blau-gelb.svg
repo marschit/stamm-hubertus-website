@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 150">
+  <!-- Pfadi-Halstuch (blau-gelb gestreift) – Stamm Hubertus Siegen -->
+  <defs>
+    <pattern id="streifen" patternUnits="userSpaceOnUse" width="18" height="18" patternTransform="rotate(45)">
+      <rect width="18" height="18" fill="#0e4278"/>
+      <rect y="9" width="18" height="9" fill="#ffd208"/>
+    </pattern>
+  </defs>
+  <g stroke-linecap="round" fill="none">
+    <path d="M60,16 C28,22 22,52 47,77" stroke="#0a3057" stroke-width="17"/>
+    <path d="M60,16 C92,22 98,52 73,77" stroke="#0a3057" stroke-width="17"/>
+    <path d="M60,16 C28,22 22,52 47,77" stroke="url(#streifen)" stroke-width="13"/>
+    <path d="M60,16 C92,22 98,52 73,77" stroke="url(#streifen)" stroke-width="13"/>
+  </g>
+  <g stroke="#0a3057" stroke-width="2" stroke-linejoin="round">
+    <path d="M51,90 L59,90 L47,141 L39,132 Z" fill="url(#streifen)"/>
+    <path d="M61,90 L69,90 L81,132 L73,141 Z" fill="url(#streifen)"/>
+  </g>
+  <rect x="45" y="68" width="30" height="26" rx="6" fill="#c99a63" stroke="#8f6132" stroke-width="2"/>
+  <path d="M60,74 C56,78 56,82 60,86 C64,82 64,78 60,74 Z" fill="none" stroke="#8f6132" stroke-width="1.6"/>
+</svg>

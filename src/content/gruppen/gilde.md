@@ -3,7 +3,7 @@ name: Gilde
 stufe: Ranger & Rover
 alter: ab 16 Jahren
 farbe: rot
-icon: /bdp/icon-feuerkreis.png
+icon: /bdp/rr-abzeichen.svg
 reihenfolge: 4
 ---
 
