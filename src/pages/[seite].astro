@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import { marked } from 'marked';
 import KarteAnfahrt from '../components/KarteAnfahrt.astro';
 import KontaktFormular from '../components/KontaktFormular.astro';
+import StreetviewHeim from '../components/StreetviewHeim.astro';
 
 export async function getStaticPaths() {
   const seiten = await getCollection('seiten');
@@ -55,6 +56,7 @@ if (eintrag.id === 'kontakt' && eintrag.body) {
         </>
       )}
       {eintrag.id === 'kontakt' && <KontaktFormular />}
+      {eintrag.id === 'heim' && <StreetviewHeim />}
       {eintrag.id === 'heim' && <KarteAnfahrt />}
     </div>
   </section>

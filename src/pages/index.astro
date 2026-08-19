@@ -205,7 +205,9 @@ const datumFormat = new Intl.DateTimeFormat('de-DE', { dateStyle: 'long' });
   }
   .foto-band span {
     position: absolute;
-    right: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
     bottom: 1rem;
     line-height: 1.4;
     background: var(--woelflingsgelb);

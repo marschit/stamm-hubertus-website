@@ -1,0 +1,76 @@
+---
+// 360°-Street-View am Stammesheim – als Zwei-Klick-Lösung:
+// Google wird erst nach ausdrücklichem Klick geladen (Datenschutz).
+const EMBED = 'https://www.google.com/maps/embed?pb=!4v1755600000000!6m8!1m7!1sQo9E6n4IAD1b954tmeJSMA!2m2!1d50.8639197!2d8.0463747!3f18.04!4f0!5f0.7820865974627469';
+---
+<div class="streetview">
+  <h2>Schau dich um – 360°-Blick am Heim</h2>
+  <div class="sv-rahmen" data-embed={EMBED}>
+    <img src="/bilder/kohte-sonnenaufgang.jpg" alt="" loading="lazy" />
+    <div class="sv-overlay">
+      <button class="btn" type="button">360°-Ansicht laden</button>
+      <p class="sv-hinweis">
+        Beim Laden wird eine Verbindung zu Google (Street View) aufgebaut und
+        dabei deine IP-Adresse übertragen.
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const rahmen = document.querySelector<HTMLElement>('.sv-rahmen');
+  rahmen?.querySelector('button')?.addEventListener('click', () => {
+    const iframe = document.createElement('iframe');
+    iframe.src = rahmen.dataset.embed!;
+    iframe.title = '360°-Ansicht am Stammesheim (Google Street View)';
+    iframe.allowFullscreen = true;
+    iframe.referrerPolicy = 'no-referrer-when-downgrade';
+    iframe.loading = 'lazy';
+    rahmen.replaceChildren(iframe);
+  });
+</script>
+
+<style>
+  .streetview { margin: 2rem 0 1rem; }
+  .streetview h2 { font-size: 1.45rem; }
+  .sv-rahmen {
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    background: var(--pfadiblau);
+  }
+  .sv-rahmen img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.55) saturate(0.8);
+  }
+  .sv-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    text-align: center;
+    padding: 1rem;
+  }
+  .sv-overlay .btn { border: 0; cursor: pointer; font: inherit; font-weight: 700; }
+  .sv-hinweis {
+    color: rgb(253 252 248 / 0.85);
+    font-size: 0.82rem;
+    max-width: 28rem;
+    margin: 0;
+  }
+  .sv-rahmen :global(iframe) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+</style>

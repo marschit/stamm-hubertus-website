@@ -26,6 +26,15 @@ erkennbaren Personen – nach Rücksprache mit den Abgebildeten bzw. deren
 Erziehungsberechtigten. Du kannst die Löschung deiner eingereichten Fotos
 jederzeit per E-Mail verlangen.
 
+## Google Street View (nur nach Klick)
+
+Auf der Seite [Heim](/heim) bieten wir eine 360°-Ansicht über Google
+Street View an. Diese wird **erst nach deinem ausdrücklichen Klick**
+geladen; erst dann wird eine Verbindung zu Google (Google Ireland Ltd.)
+aufgebaut und dabei technisch bedingt deine IP-Adresse übertragen. Ohne
+Klick werden keine Daten an Google übermittelt. Es gelten die
+[Datenschutzhinweise von Google](https://policies.google.com/privacy).
+
 ## Kontaktaufnahme
 
 Wenn du uns per E-Mail oder über das Kontaktformular kontaktierst,
