@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import { KATEGORIEN, alsIso, heimabendSamstage, zeitenAus, type Kategorie } from '../lib/termine';
+import { ladeCloudTermine } from '../lib/nextcloud-termine';
 
 export async function getStaticPaths() {
   return [
@@ -110,6 +111,34 @@ export const GET: APIRoute = async ({ params }) => {
     if (t.data.ort) zeilen.push(`LOCATION:${escapeText(t.data.ort)}`);
     zeilen.push(`CATEGORIES:${escapeText(KATEGORIEN[t.data.kategorie].label)}`);
     if (t.body?.trim()) zeilen.push(`DESCRIPTION:${escapeText(t.body.trim())}`);
+    zeilen.push('END:VEVENT');
+  }
+
+  // Termine aus dem Nextcloud-Kalender des Teams
+  const cloudTermine = (await ladeCloudTermine()).filter(
+    (t) => !kategorie || t.kategorie === kategorie
+  );
+  for (const t of cloudTermine) {
+    const start = kompakt(alsIso(t.datum));
+    let zeiten = zeitenAus(t.zeit);
+    if (t.endDatum && zeiten.length < 2) zeiten = [];
+
+    zeilen.push('BEGIN:VEVENT');
+    zeilen.push(`UID:cloud-${t.id}@stamm-hubertus-siegen.de`);
+    zeilen.push(`DTSTAMP:${dtstamp}`);
+    zeilen.push(`SUMMARY:${escapeText(t.titel)}`);
+    if (zeiten.length > 0) {
+      zeilen.push(`DTSTART;TZID=Europe/Berlin:${start}T${zeiten[0].replace(':', '')}00`);
+      if (zeiten.length > 1) {
+        zeilen.push(`DTEND;TZID=Europe/Berlin:${start}T${zeiten[1].replace(':', '')}00`);
+      }
+    } else {
+      zeilen.push(`DTSTART;VALUE=DATE:${start}`);
+      zeilen.push(`DTEND;VALUE=DATE:${tagDanach(t.endDatum ?? t.datum)}`);
+    }
+    if (t.ort) zeilen.push(`LOCATION:${escapeText(t.ort)}`);
+    zeilen.push(`CATEGORIES:${escapeText(KATEGORIEN[t.kategorie].label)}`);
+    if (t.beschreibung) zeilen.push(`DESCRIPTION:${escapeText(t.beschreibung)}`);
     zeilen.push('END:VEVENT');
   }
 

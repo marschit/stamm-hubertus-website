@@ -2,8 +2,12 @@
 import { getCollection, render } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import { KATEGORIEN, alsIso, formatDatum, formatMonat, monatsSchluessel, heimabendSamstage } from '../lib/termine';
+import { ladeCloudTermine } from '../lib/nextcloud-termine';
 
 const heute = alsIso(new Date());
+const cloudTermine = (await ladeCloudTermine()).filter(
+  (t) => alsIso(t.endDatum ?? t.datum) >= heute
+);
 const alle = (await getCollection('termine'))
   .filter((t) => alsIso(t.data.endDatum ?? t.data.datum) >= heute)
   .sort((a, b) => a.data.datum.valueOf() - b.data.datum.valueOf());
@@ -23,12 +27,15 @@ const heimabende = heimabendSamstage(heute)
 
 const zeilen = [
   ...gerendert.map((g) => ({ art: 'termin' as const, ...g, iso: alsIso(g.termin.data.datum) })),
+  ...cloudTermine.map((t) => ({ art: 'cloud' as const, cloud: t, iso: alsIso(t.datum) })),
   ...heimabende.map((d) => ({ art: 'heimabend' as const, datum: d, iso: alsIso(d) })),
 ].sort((a, b) => a.iso.localeCompare(b.iso));
 
 const monate = [
   ...new Map(
-    [...alle.map((t) => t.data.datum), ...heimabende].map((d) => [monatsSchluessel(d), d])
+    [...alle.map((t) => t.data.datum), ...cloudTermine.map((t) => t.datum), ...heimabende].map(
+      (d) => [monatsSchluessel(d), d]
+    )
   ),
 ].sort((a, b) => a[0].localeCompare(b[0]));
 
@@ -65,7 +72,28 @@ const webcalUrl = feedUrl.replace(/^https?:/, 'webcal:');
               {zeilen
                 .filter((z) => z.iso.slice(0, 7) === schluessel)
                 .map((z) =>
-                  z.art === 'heimabend' ? (
+                  z.art === 'cloud' ? (
+                    <li
+                      class="termin"
+                      data-kategorie={z.cloud.kategorie}
+                      data-ende={alsIso(z.cloud.endDatum ?? z.cloud.datum)}
+                    >
+                      <div class="wann">
+                        <span class="tag">{formatDatum(z.cloud.datum)}</span>
+                        {z.cloud.endDatum && <span class="bis">bis {formatDatum(z.cloud.endDatum)}</span>}
+                        {z.cloud.zeit && <span class="zeit">{z.cloud.zeit} Uhr</span>}
+                      </div>
+                      <div class="was">
+                        <span
+                          class={`badge ${KATEGORIEN[z.cloud.kategorie].hell ? 'badge--hell' : ''}`}
+                          style={`background:${KATEGORIEN[z.cloud.kategorie].farbe}`}
+                        >{KATEGORIEN[z.cloud.kategorie].label}</span>
+                        <strong>{z.cloud.titel}</strong>
+                        {z.cloud.ort && <span class="ort">{z.cloud.ort}</span>}
+                        {z.cloud.beschreibung && <div class="beschreibung"><p>{z.cloud.beschreibung}</p></div>}
+                      </div>
+                    </li>
+                  ) : z.art === 'heimabend' ? (
                     <li class="termin termin--heimabend" data-kategorie="stamm" data-ende={z.iso}>
                       <div class="wann">
                         <span class="tag">{formatDatum(z.datum)}</span>

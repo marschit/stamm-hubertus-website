@@ -5,11 +5,15 @@ import GruppenKarte from '../components/GruppenKarte.astro';
 import KohteKante from '../components/KohteKante.astro';
 import einstellungen from '../data/einstellungen.json';
 import { alsIso, formatDatum } from '../lib/termine';
+import { ladeCloudTermine } from '../lib/nextcloud-termine';
 
 const heute = alsIso(new Date());
-const naechste = (await getCollection('termine'))
-  .filter((t) => alsIso(t.data.endDatum ?? t.data.datum) >= heute)
-  .sort((a, b) => a.data.datum.valueOf() - b.data.datum.valueOf())
+const naechste = [
+  ...(await getCollection('termine')).map((t) => ({ titel: t.data.titel, datum: t.data.datum, ende: t.data.endDatum ?? t.data.datum })),
+  ...(await ladeCloudTermine()).map((t) => ({ titel: t.titel, datum: t.datum, ende: t.endDatum ?? t.datum })),
+]
+  .filter((t) => alsIso(t.ende) >= heute)
+  .sort((a, b) => a.datum.valueOf() - b.datum.valueOf())
   .slice(0, 3);
 
 const gruppen = (await getCollection('gruppen')).sort(
@@ -118,8 +122,8 @@ const datumFormat = new Intl.DateTimeFormat('de-DE', { dateStyle: 'long' });
           <ul class="termin-liste">
             {naechste.map((t) => (
               <li>
-                <span class="termin-datum">{formatDatum(t.data.datum)}</span>
-                <span class="termin-titel">{t.data.titel}</span>
+                <span class="termin-datum">{formatDatum(t.datum)}</span>
+                <span class="termin-titel">{t.titel}</span>
               </li>
             ))}
           </ul>
