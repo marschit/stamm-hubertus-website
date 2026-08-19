@@ -119,25 +119,40 @@ export function parseKalender(ics: string): CloudTermin[] {
   return termine;
 }
 
+/** Ein Kalender je Website-Kategorie: termine-stamm, termine-meute, … */
+const KALENDER: Kategorie[] = ['stamm', 'meute', 'sippen', 'gilde', 'foerderverein'];
+
+let zwischenspeicher: CloudTermin[] | null = null;
+
 export async function ladeCloudTermine(): Promise<CloudTermin[]> {
-  const url = import.meta.env.NC_KALENDER_URL ?? process.env.NC_KALENDER_URL;
+  if (zwischenspeicher) return zwischenspeicher;
+  const basis = import.meta.env.NC_KALENDER_URL ?? process.env.NC_KALENDER_URL;
   const user = import.meta.env.NC_KALENDER_USER ?? process.env.NC_KALENDER_USER;
   const pass = import.meta.env.NC_KALENDER_PASS ?? process.env.NC_KALENDER_PASS;
-  if (!url || !user || !pass) {
+  if (!basis || !user || !pass) {
     console.warn('[termine] NC_KALENDER_* nicht gesetzt – baue ohne Cloud-Termine.');
     return [];
   }
-  try {
-    const antwort = await fetch(url, {
-      headers: { Authorization: 'Basic ' + Buffer.from(`${user}:${pass}`).toString('base64') },
-      signal: AbortSignal.timeout(20000),
-    });
-    if (!antwort.ok) throw new Error(`HTTP ${antwort.status}`);
-    const termine = parseKalender(await antwort.text());
-    console.log(`[termine] ${termine.length} Termine aus dem Cloud-Kalender geladen.`);
-    return termine;
-  } catch (fehler) {
-    console.warn('[termine] Cloud-Kalender nicht erreichbar – baue ohne Cloud-Termine:', fehler);
-    return [];
-  }
+  const auth = { Authorization: 'Basic ' + Buffer.from(`${user}:${pass}`).toString('base64') };
+  const alle: CloudTermin[] = [];
+  await Promise.all(
+    KALENDER.map(async (kategorie) => {
+      try {
+        const antwort = await fetch(`${basis}termine-${kategorie}/?export`, {
+          headers: auth,
+          signal: AbortSignal.timeout(20000),
+        });
+        if (antwort.status === 404) return; // Kalender gelöscht? Still überspringen
+        if (!antwort.ok) throw new Error(`HTTP ${antwort.status}`);
+        for (const t of parseKalender(await antwort.text())) {
+          alle.push({ ...t, kategorie });
+        }
+      } catch (fehler) {
+        console.warn(`[termine] Kalender termine-${kategorie} nicht ladbar:`, fehler);
+      }
+    })
+  );
+  console.log(`[termine] ${alle.length} Termine aus den Cloud-Kalendern geladen.`);
+  zwischenspeicher = alle;
+  return alle;
 }
