@@ -19,5 +19,5 @@ Zum Reinschnuppern brauchst du keine Anmeldung – komm einfach vorbei.
 ## So erreichst du uns
 
 - **E-Mail:** [kontakt@stamm-hubertus-siegen.de](mailto:kontakt@stamm-hubertus-siegen.de)
-- **Facebook:** [facebook.com/stammhubertus](https://facebook.com/stammhubertus)
-- **Instagram:** [@stamm_hubertus.siegen](https://www.instagram.com/stamm_hubertus.siegen/)
+- **Förderverein:** - [fv@stamm-hubertus-siegen.de](mailto:fv@stamm-hubertus-siegen.de)
+
