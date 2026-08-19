@@ -47,10 +47,10 @@ if (mb_strlen($name) > 100 || mb_strlen($betreff) > 150 || mb_strlen($nachricht)
     zurueck('fehler=zu-lang');
 }
 
-// Spam-Heuristik: echte Anfragen an einen Pfadfinderstamm enthalten
-// praktisch nie mehrere Links – Spam fast immer.
+// Spam-Heuristik: mehr als ein Link ist fast immer Spam – aber ein
+// Mensch könnte es sein, daher ehrliche Fehlermeldung statt stillem Verwerfen.
 if (preg_match_all('/https?:\/\/|www\./i', $nachricht . ' ' . $betreff . ' ' . $name) > 1) {
-    zurueck('gesendet=1'); // still verwerfen, kein Hinweis an den Bot
+    zurueck('fehler=links');
 }
 
 // Lokale Sperrliste: bekannte Spam-Absender/-Domains (bei Bedarf ergänzen)
