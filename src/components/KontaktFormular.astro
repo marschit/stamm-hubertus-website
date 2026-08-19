@@ -67,10 +67,12 @@
     };
     const p = document.createElement('p');
     p.className = 'formular-fehler';
+    p.setAttribute('tabindex', '-1');
     p.setAttribute('role', 'alert');
     p.textContent = meldungen[params.get('fehler')!] ?? meldungen['technik'];
     formularKarte.querySelector('form')!.before(p);
-    formularKarte.scrollIntoView({ block: 'center' });
+    p.scrollIntoView({ block: 'center' });
+    p.focus({ preventScroll: true });
   }
 </script>
 
@@ -116,11 +118,29 @@
     border-radius: 0 4px 4px 0;
   }
   .formular-fehler {
-    background: #fbe9ec;
-    border-left: 4px solid var(--rr-rot);
-    color: var(--rr-rot);
+    background: var(--rr-rot);
+    color: #fff;
     font-weight: 700;
-    padding: 0.9rem 1.1rem;
-    border-radius: 0 4px 4px 0;
+    font-size: 1.05rem;
+    padding: 1rem 1.2rem 1rem 3rem;
+    border-radius: 6px;
+    position: relative;
+    box-shadow: 0 4px 14px rgb(151 27 47 / 0.35);
+    animation: fehler-puls 500ms ease 2;
+    outline: none;
+  }
+  .formular-fehler::before {
+    content: '⚠';
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.3rem;
+  }
+  @keyframes fehler-puls {
+    50% { transform: scale(1.015); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .formular-fehler { animation: none; }
   }
 </style>
