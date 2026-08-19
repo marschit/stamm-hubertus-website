@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 160">
+  <!-- Pfadfindergruß (linke Hand): drei Finger gestreckt, Daumen über dem kleinen Finger -->
+  <g fill="#ffd208" stroke="#0e4278" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+    <!-- Handfläche -->
+    <path d="M34,88 L96,88 L96,128 Q96,146 78,146 L52,146 Q34,146 34,128 Z"/>
+    <!-- Ringfinger -->
+    <rect x="46" y="26" width="14" height="68" rx="7"/>
+    <!-- Mittelfinger -->
+    <rect x="62" y="16" width="14" height="78" rx="7"/>
+    <!-- Zeigefinger -->
+    <rect x="78" y="26" width="14" height="68" rx="7"/>
+    <!-- kleiner Finger (eingeklappt) -->
+    <rect x="30" y="66" width="13" height="26" rx="6.5"/>
+    <!-- Daumen: quer über den kleinen Finger -->
+    <path d="M98,112 C96,96 78,84 56,80 L38,77 Q30,76 31,84 Q32,91 40,92 L56,94 C72,97 84,104 86,116 Q88,124 96,122 Q100,120 98,112 Z"/>
+  </g>
+</svg>

@@ -27,6 +27,8 @@ gibt es zwei einfache Regeln, die alles Wichtige zusammenfassen:
 
 ## Der Pfadfindergruß
 
+![Der Pfadfindergruß: linke Hand, drei gestreckte Finger, Daumen über dem kleinen Finger](/bdp/pfadfindergruss.svg)
+
 Pfadfinderinnen und Pfadfinder auf der ganzen Welt grüßen sich mit der
 linken Hand – der Hand, die näher am Herzen ist. Dabei sind drei Finger
 ausgestreckt, und der Daumen liegt über dem kleinen Finger:
