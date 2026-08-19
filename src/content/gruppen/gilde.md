@@ -4,6 +4,8 @@ stufe: Ranger & Rover
 alter: ab 16 Jahren
 farbe: rot
 icon: /bdp/rr-abzeichen.svg
+abzeichen: /bdp/rr-abzeichen.svg
+abzeichenText: Das R/R-Abzeichen der Ranger & Rover
 reihenfolge: 4
 ---
 

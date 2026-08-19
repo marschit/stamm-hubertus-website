@@ -20,8 +20,16 @@ const { Content } = await render(gruppe);
         <strong>Gruppenstunde:</strong>
         {gruppe.data.treffzeit ?? einstellungen.treffzeit} · {einstellungen.adresse}
       </p>
-      <div class="prose">
-        <Content />
+      <div class="inhalt-mit-abzeichen">
+        <div class="prose">
+          <Content />
+        </div>
+        {gruppe.data.abzeichen && (
+          <figure class="abzeichen">
+            <img src={gruppe.data.abzeichen} alt={gruppe.data.abzeichenText ?? 'Abzeichen'} width="130" height="130" />
+            {gruppe.data.abzeichenText && <figcaption>{gruppe.data.abzeichenText}</figcaption>}
+          </figure>
+        )}
       </div>
       <p><a class="btn" href="/kontakt">Mitmachen? Melde dich!</a></p>
     </div>
@@ -34,5 +42,24 @@ const { Content } = await render(gruppe);
     border-radius: 4px;
     padding: 0.7rem 1rem;
     display: inline-block;
+  }
+  .inhalt-mit-abzeichen {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem 2.5rem;
+    align-items: flex-start;
+  }
+  .inhalt-mit-abzeichen .prose { flex: 1 1 26rem; }
+  .abzeichen {
+    flex: 0 0 9rem;
+    margin: 0.5rem 0 0;
+    text-align: center;
+  }
+  .abzeichen img { width: 8rem; height: 8rem; object-fit: contain; }
+  .abzeichen figcaption {
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    margin-top: 0.5rem;
+    line-height: 1.4;
   }
 </style>

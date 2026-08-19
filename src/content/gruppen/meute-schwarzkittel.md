@@ -4,6 +4,8 @@ stufe: Wölflingsstufe
 alter: 6–11 Jahre
 farbe: gelb
 icon: /bdp/halstuch-gelb.svg
+abzeichen: /bdp/wolfskopf.svg
+abzeichenText: Der Wolfskopf – das Abzeichen der Wölflinge
 reihenfolge: 1
 ---
 

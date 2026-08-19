@@ -4,6 +4,8 @@ stufe: Pfadfinderstufe
 alter: 11–16 Jahre
 farbe: blau
 icon: /bdp/halstuch-blau-gelb.svg
+abzeichen: /bdp/klilie-neu.svg
+abzeichenText: Die Lilie – das Zeichen der Pfadfinder*innen
 reihenfolge: 2
 ---
 

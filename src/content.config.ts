@@ -9,6 +9,8 @@ const gruppen = defineCollection({
     alter: z.string(),
     farbe: z.enum(['gelb', 'blau', 'rot', 'gruen']).default('blau'),
     icon: z.string().default('/bdp/icon-kohte.png'),
+    abzeichen: z.string().optional(),
+    abzeichenText: z.string().optional(),
     reihenfolge: z.number().default(99),
     treffzeit: z.string().optional(),
   }),

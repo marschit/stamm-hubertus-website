@@ -118,6 +118,12 @@ content:
         label: Icon (BdP-Icon aus /bdp/)
         type: string
         default: /bdp/icon-kohte.png
+      - name: abzeichen
+        label: Abzeichen auf der Detailseite (Pfad, z. B. /bdp/wolfskopf.svg)
+        type: string
+      - name: abzeichenText
+        label: Bildunterschrift zum Abzeichen
+        type: string
       - name: reihenfolge
         label: Reihenfolge
         type: number
