@@ -38,7 +38,7 @@ if (eintrag.id === 'kontakt' && eintrag.body) {
 ---
 <Layout titel={eintrag.data.titel} beschreibung={beschreibung}>
   <section>
-    <div class="wrap-text">
+    <div class={`wrap-text seite-${eintrag.id}`}>
       {eintrag.data.untertitel && <span class="eyebrow">{eintrag.data.untertitel}</span>}
       <h1>{eintrag.data.titel}</h1>
       {vorKarte !== null && nachKarte !== null ? (
@@ -61,3 +61,42 @@ if (eintrag.id === 'kontakt' && eintrag.body) {
     </div>
   </section>
 </Layout>
+
+<style is:global>
+  /* Pfadfinderregeln: nummerierte Listen als Regel-Karten */
+  .seite-pfadfinderregeln .prose ol {
+    list-style: none;
+    counter-reset: regel;
+    padding: 0;
+    display: grid;
+    gap: 0.7rem;
+    margin: 1.2rem 0 2rem;
+  }
+  .seite-pfadfinderregeln .prose ol li {
+    counter-increment: regel;
+    position: relative;
+    background: var(--pfadiblau-hell);
+    border-radius: 6px;
+    padding: 0.95rem 1.2rem 0.95rem 3.6rem;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--pfadiblau);
+    margin: 0;
+  }
+  .seite-pfadfinderregeln .prose ol li::before {
+    content: counter(regel);
+    position: absolute;
+    left: 0.85rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--woelflingsgelb);
+    color: var(--pfadiblau);
+    font-weight: 900;
+    border-radius: 999px;
+  }
+</style>

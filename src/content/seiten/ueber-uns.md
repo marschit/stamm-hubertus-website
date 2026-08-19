@@ -34,6 +34,8 @@ heute Hilfsbereitschaft, Toleranz, Respekt und Verantwortungsbewusstsein.
 - Natur erleben statt Bildschirm: Wald, Lagerfeuer, Fahrten, Zeltlager
 - Und vor allem: eine Menge Spaß
 
+Wonach wir dabei handeln, zeigen unsere [Pfadfinderregeln](/pfadfinderregeln).
+
 ## Unser Verein
 
 Der Stamm ist ein eingetragener, gemeinnütziger Verein. Wer es genau wissen
