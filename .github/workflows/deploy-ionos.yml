@@ -15,6 +15,7 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Zugangsdaten prüfen
         id: secrets
@@ -55,5 +56,5 @@ jobs:
             --include='fotoeingang/' \
             --include='fotoeingang/.htaccess' \
             --exclude='fotoeingang/*' \
-            -e "ssh -p 22 -o StrictHostKeyChecking=accept-new" \
+            -e "ssh -p 22 -o StrictHostKeyChecking=accept-new -o ConnectTimeout=30 -o ServerAliveInterval=15 -o ServerAliveCountMax=4" \
             dist/ "$IONOS_USER@$IONOS_HOST:$IONOS_DIR"
