@@ -15,7 +15,7 @@
 
 declare(strict_types=1);
 
-const MELDUNG_AN = 'test@marschall.support'; // Benachrichtigung bei neuen Einreichungen
+const MELDUNG_AN = 'kontakt@stamm-hubertus-siegen.de'; // Benachrichtigung bei neuen Einreichungen
 const MELDUNG_VON = 'website@stamm-hubertus-siegen.de';
 
 const MAX_DATEIEN_EINREICHUNG = 2000;      // Fotos pro Einreichung
