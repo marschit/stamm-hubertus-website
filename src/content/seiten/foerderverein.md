@@ -19,7 +19,7 @@ auf Wunsch automatisch zu.
 
 **So wirst du Mitglied:**
 
-1. [Beitrittserklärung herunterladen (PDF)](/dokumente/beitrittserklaerung-foerderverein.pdf)
+1. [Beitrittserklärung herunterladen (PDF)](/dokumente/Beitrittserklaerung_Foerderverein-BdP-Siegerland_Stand-2026-08.pdf)
    – mit Formular und SEPA-Lastschriftmandat
 2. Ausfüllen, einscannen (oder abfotografieren) und per E-Mail senden an
    [fv@stamm-hubertus-siegen.de](mailto:fv@stamm-hubertus-siegen.de)
