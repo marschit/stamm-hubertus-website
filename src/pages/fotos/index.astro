@@ -17,6 +17,12 @@ const alben = (await getCollection('galerie'))
         hast selbst Fotos gemacht? <a href="/fotos-einreichen">Reich sie hier ein</a> –
         wir sammeln sie für den Stamm.
       </p>
+      <p class="einverstaendnis-hinweis">
+        Wir veröffentlichen Fotos nur mit Einverständnis der Abgebildeten:
+        <a href="/dokumente/Einverstaendniserklaerung_Foto-Video_Stamm-Hubertus-Siegen_Stand-2026-08.pdf">Einverständniserklärung Foto &amp; Video (PDF)</a>
+        – ausgefüllt einfach im Stammesheim abgeben oder an
+        <a href="mailto:kontakt@stamm-hubertus-siegen.de">kontakt@stamm-hubertus-siegen.de</a> senden.
+      </p>
       <div class="alben">
         {alben.map((a) => (
           <a class="album" href={`/fotos/${a.id}`}>
@@ -35,6 +41,13 @@ const alben = (await getCollection('galerie'))
 
 <style>
   .intro { max-width: 42rem; }
+  .einverstaendnis-hinweis {
+    max-width: 42rem;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    border-left: 3px solid var(--woelflingsgelb);
+    padding-left: 0.8rem;
+  }
   .alben {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
