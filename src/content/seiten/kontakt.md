@@ -11,6 +11,14 @@ Haltestelle „Fludersbach Seilereiweg“ (ca. 15 Minuten).
 
 Zum Reinschnuppern brauchst du keine Anmeldung – komm einfach vorbei.
 
+## Mitglied werden
+
+Nach dem Schnuppern dabei bleiben? So geht's:
+
+1. [Mitgliedsantrag herunterladen (PDF)](/dokumente/Mitgliedsantrag_Stamm-Hubertus-Siegen_Stand-2026-01.pdf)
+   – mit allen Infos zu Beiträgen und dem SEPA-Mandat
+2. Ausfüllen und einfach bei der Gruppenleitung im Stammesheim abgeben
+
 ## Ansprechpartner
 
 - **Ernie** (Jan Philip Berg) 

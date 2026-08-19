@@ -31,3 +31,10 @@ heute Hilfsbereitschaft, Toleranz, Respekt und Verantwortungsbewusstsein.
 - Selbstständigkeit und Verantwortung – altersgerecht und Schritt für Schritt
 - Natur erleben statt Bildschirm: Wald, Lagerfeuer, Fahrten, Zeltlager
 - Und vor allem: eine Menge Spaß
+
+## Unser Verein
+
+Der Stamm ist ein eingetragener, gemeinnütziger Verein. Wer es genau wissen
+will: Hier gibt es unsere
+[Satzung (PDF, Stand 24.10.2021)](/dokumente/Satzung_Stamm-Hubertus-Siegen_Stand-2021-10-24.pdf)
+– und wie du Mitglied wirst, steht auf der [Kontaktseite](/kontakt).
