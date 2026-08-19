@@ -56,10 +56,21 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y -qq sshpass rsync
           # fotoeingang/: Sperr-.htaccess mit hochladen, eingereichte Fotos
-          # auf dem Server aber weder überschreiben noch löschen
-          sshpass -e rsync -rltz --delete \
-            --include='fotoeingang/' \
-            --include='fotoeingang/.htaccess' \
-            --exclude='fotoeingang/*' \
-            -e "ssh -p 22 -o StrictHostKeyChecking=accept-new -o ConnectTimeout=30 -o ServerAliveInterval=15 -o ServerAliveCountMax=4" \
-            dist/ "$IONOS_USER@$IONOS_HOST:$IONOS_DIR"
+          # auf dem Server aber weder überschreiben noch löschen.
+          # IONOS drosselt Runner-IPs gelegentlich – daher 3 Versuche mit
+          # hartem Timeout pro Versuch.
+          for versuch in 1 2 3; do
+            if timeout 150 sshpass -e rsync -rltz --delete \
+              --include='fotoeingang/' \
+              --include='fotoeingang/.htaccess' \
+              --exclude='fotoeingang/*' \
+              -e "ssh -p 22 -o StrictHostKeyChecking=accept-new -o ConnectTimeout=30 -o ServerAliveInterval=15 -o ServerAliveCountMax=4" \
+              dist/ "$IONOS_USER@$IONOS_HOST:$IONOS_DIR"; then
+              echo "Deploy in Versuch $versuch erfolgreich."
+              exit 0
+            fi
+            echo "Versuch $versuch fehlgeschlagen – warte 45 s …"
+            sleep 45
+          done
+          echo "Alle Versuche fehlgeschlagen."
+          exit 1
