@@ -39,7 +39,12 @@ Klick werden keine Daten an Google übermittelt. Es gelten die
 
 Wenn du uns per E-Mail oder über das Kontaktformular kontaktierst,
 verwenden wir deine Angaben (Name, E-Mail-Adresse, Nachricht)
-ausschließlich zur Bearbeitung deiner Anfrage. Nachrichten aus dem
+ausschließlich zur Bearbeitung deiner Anfrage. Zur Abwehr von Spam wird
+beim Absenden des Kontaktformulars die angegebene E-Mail-Adresse und die
+IP-Adresse mit der Spam-Datenbank
+[StopForumSpam](https://www.stopforumspam.com) abgeglichen
+(berechtigtes Interesse, Art. 6 Abs. 1 lit. f DSGVO); dabei werden keine
+Nachrichteninhalte übertragen. Nachrichten aus dem
 Kontaktformular werden direkt per E-Mail an uns zugestellt und nicht auf
 dem Webserver gespeichert. Eine Weitergabe an Dritte findet nicht statt.
 

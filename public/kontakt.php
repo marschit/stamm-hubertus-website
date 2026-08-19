@@ -29,6 +29,12 @@ if (!empty($_POST['webseite'])) {
     zurueck('gesendet=1');
 }
 
+// JS-Token: wird erst im Browser bei echter Interaktion gesetzt.
+// Formular-Bots posten meist ohne JavaScript → still verwerfen.
+if (($_POST['pruef'] ?? '') !== 'gut-pfad-1907') {
+    zurueck('gesendet=1');
+}
+
 $name      = trim((string)($_POST['name'] ?? ''));
 $email     = trim((string)($_POST['email'] ?? ''));
 $betreff   = trim((string)($_POST['betreff'] ?? ''));
@@ -39,6 +45,40 @@ if ($name === '' || $nachricht === '' || !filter_var($email, FILTER_VALIDATE_EMA
 }
 if (mb_strlen($name) > 100 || mb_strlen($betreff) > 150 || mb_strlen($nachricht) > 5000) {
     zurueck('fehler=zu-lang');
+}
+
+// Spam-Heuristik: echte Anfragen an einen Pfadfinderstamm enthalten
+// praktisch nie mehrere Links – Spam fast immer.
+if (preg_match_all('/https?:\/\/|www\./i', $nachricht . ' ' . $betreff . ' ' . $name) > 1) {
+    zurueck('gesendet=1'); // still verwerfen, kein Hinweis an den Bot
+}
+
+// Lokale Sperrliste: bekannte Spam-Absender/-Domains (bei Bedarf ergänzen)
+$gesperrt = [
+    'dylan-wood32pjfj@gmx.us',
+];
+$emailKlein = mb_strtolower($email);
+$domain = substr(strrchr($emailKlein, '@') ?: '', 1);
+foreach ($gesperrt as $eintrag) {
+    if ($emailKlein === $eintrag || $domain === ltrim($eintrag, '@')) {
+        zurueck('gesendet=1');
+    }
+}
+
+// StopForumSpam: kollaborative Spam-Datenbank (fail-open bei Timeout)
+$sfs = @file_get_contents(
+    'https://api.stopforumspam.org/api?json&email=' . urlencode($emailKlein)
+    . '&ip=' . urlencode($_SERVER['REMOTE_ADDR'] ?? ''),
+    false,
+    stream_context_create(['http' => ['timeout' => 3]])
+);
+if ($sfs !== false) {
+    $d = json_decode($sfs, true);
+    $emailTreffer = (int)($d['email']['frequency'] ?? 0);
+    $ipTreffer    = (int)($d['ip']['frequency'] ?? 0);
+    if ($emailTreffer > 0 || $ipTreffer > 3) {
+        zurueck('gesendet=1');
+    }
 }
 
 // Tageslimit pro IP

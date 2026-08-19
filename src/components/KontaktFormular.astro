@@ -28,6 +28,7 @@
       <textarea name="nachricht" rows="6" required maxlength="5000"></textarea>
     </label>
     <input type="text" name="webseite" class="honig" tabindex="-1" autocomplete="off" aria-hidden="true" />
+    <input type="hidden" name="pruef" value="" />
     <p class="formular-hinweis">
       Deine Angaben verwenden wir nur zur Beantwortung deiner Nachricht
       (<a href="/datenschutz">Datenschutz</a>).
@@ -37,6 +38,17 @@
 </div>
 
 <script>
+  // Spamschutz: Das Prüf-Feld wird erst gesetzt, wenn ein Mensch mit dem
+  // Formular interagiert – Bots ohne Browser/JS fallen still durch.
+  const formular = document.querySelector<HTMLFormElement>('#kontaktformular form');
+  if (formular) {
+    const setzePruef = () => {
+      (formular.querySelector('input[name="pruef"]') as HTMLInputElement).value = 'gut-pfad-1907';
+    };
+    formular.addEventListener('focusin', setzePruef, { once: true });
+    formular.addEventListener('input', setzePruef, { once: true });
+  }
+
   const params = new URLSearchParams(location.search);
   const formularKarte = document.getElementById('kontaktformular')!;
   if (params.has('gesendet')) {
