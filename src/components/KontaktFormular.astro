@@ -109,7 +109,7 @@
   .honig { position: absolute; left: -9999px; }
   .formular-hinweis { font-size: 0.85rem; color: var(--ink-soft); margin: 0; }
   button.btn { align-self: flex-start; border: 0; cursor: pointer; font: inherit; font-weight: 700; }
-  .formular-erfolg {
+  :global(.formular-erfolg) {
     background: #e4f2e6;
     border-left: 4px solid var(--waldgruen);
     color: #235c2f;
@@ -117,7 +117,7 @@
     padding: 0.9rem 1.1rem;
     border-radius: 0 4px 4px 0;
   }
-  .formular-fehler {
+  :global(.formular-fehler) {
     background: var(--rr-rot);
     color: #fff;
     font-weight: 700;
@@ -129,7 +129,7 @@
     animation: fehler-puls 500ms ease 2;
     outline: none;
   }
-  .formular-fehler::before {
+  :global(.formular-fehler)::before {
     content: '⚠';
     position: absolute;
     left: 1rem;
@@ -141,6 +141,6 @@
     50% { transform: scale(1.015); }
   }
   @media (prefers-reduced-motion: reduce) {
-    .formular-fehler { animation: none; }
+    :global(.formular-fehler) { animation: none; }
   }
 </style>
