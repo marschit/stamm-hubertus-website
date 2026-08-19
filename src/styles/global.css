@@ -89,7 +89,9 @@ img { max-width: 100%; height: auto; }
 .wrap-text { max-width: var(--breite-text); margin: 0 auto; padding: 0 1.25rem; }
 
 .eyebrow {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
   font-weight: 700;
   font-size: 0.8rem;
   letter-spacing: 0.14em;
@@ -97,6 +99,8 @@ img { max-width: 100%; height: auto; }
   color: var(--rr-rot);
   margin-bottom: 0.5rem;
 }
+.eyebrow img { height: 1.7em; width: auto; }
+.h2-icon { height: 1.25em; width: auto; vertical-align: -0.22em; margin-right: 0.4rem; }
 
 .btn {
   display: inline-block;
@@ -130,6 +134,7 @@ img { max-width: 100%; height: auto; }
   background: var(--pfadiblau-hell);
   border-radius: 0 4px 4px 0;
 }
+.prose img { border-radius: 6px; margin: 0.5rem 0; }
 .prose table { border-collapse: collapse; width: 100%; }
 .prose th, .prose td { border-bottom: 1px solid var(--linie); padding: 0.5em 0.7em; text-align: left; }
 

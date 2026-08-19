@@ -26,6 +26,7 @@ const datumFormat = new Intl.DateTimeFormat('de-DE', { dateStyle: 'long' });
 ---
 <Layout beschreibung="Pfadfinder in Siegen: Der Stamm Hubertus bietet Kindern und Jugendlichen ab 6 Jahren Gruppenstunden, Zeltlager und Abenteuer in der Natur – jeden Samstag 15–17 Uhr, Seilereiweg 8. Einfach vorbeikommen!">
   <div class="held">
+    <div class="wrap"><div class="wimpelkette" aria-hidden="true"></div></div>
     <div class="wrap held-innen">
       <div class="held-text">
         <h1>Abenteuer beginnt<br /><span class="gelb">vor der Haustür.</span></h1>
@@ -50,7 +51,7 @@ const datumFormat = new Intl.DateTimeFormat('de-DE', { dateStyle: 'long' });
 
   <section id="gruppen">
     <div class="wrap">
-      <span class="eyebrow">Von Wölfling bis Gilde</span>
+      <span class="eyebrow"><img src="/bdp/icon-wald.png" alt="">Von Wölfling bis Gilde</span>
       <h2>Unsere Gruppen</h2>
       <div class="gruppen-raster">
         {gruppen.map((g) => (
@@ -75,7 +76,7 @@ const datumFormat = new Intl.DateTimeFormat('de-DE', { dateStyle: 'long' });
   {news.length > 0 && (
     <section>
       <div class="wrap">
-        <span class="eyebrow">Aus dem Stammesleben</span>
+        <span class="eyebrow"><img src="/bdp/icon-feuer.png" alt="">Aus dem Stammesleben</span>
         <h2>Aktuelles</h2>
         <div class="news-raster">
           {news.map((n) => (
@@ -93,7 +94,7 @@ const datumFormat = new Intl.DateTimeFormat('de-DE', { dateStyle: 'long' });
 
   <section>
     <div class="wrap-text">
-      <span class="eyebrow">Mitmachen</span>
+      <span class="eyebrow"><img src="/bdp/icon-karte.png" alt="">Mitmachen</span>
       <h2>Pfadfinder in Siegen – für Kinder und Jugendliche ab 6 Jahren</h2>
       <p>
         Du suchst eine Jugendgruppe oder ein Freizeitangebot für dein Kind in
@@ -117,7 +118,7 @@ const datumFormat = new Intl.DateTimeFormat('de-DE', { dateStyle: 'long' });
   <section class="zweispalt-band">
     <div class="wrap zweispalt">
       <div class="teaser">
-        <h2>Nächste Termine</h2>
+        <h2><img class="h2-icon" src="/bdp/icon-kompass.png" alt="">Nächste Termine</h2>
         {naechste.length > 0 ? (
           <ul class="termin-liste">
             {naechste.map((t) => (
@@ -133,7 +134,7 @@ const datumFormat = new Intl.DateTimeFormat('de-DE', { dateStyle: 'long' });
         <a class="btn btn--blau" href="/termine">Alle Termine &amp; Kalender-Abo</a>
       </div>
       <div class="teaser">
-        <h2>Unser Heim</h2>
+        <h2><img class="h2-icon" src="/bdp/icon-kohte.png" alt="">Unser Heim</h2>
         <p>
           Unser Stammesheim in der Fludersbach können Pfadfinder- und andere
           Gruppen für Wochenenden und Ferienfreizeiten mieten.
@@ -146,8 +147,16 @@ const datumFormat = new Intl.DateTimeFormat('de-DE', { dateStyle: 'long' });
 
 <style>
   .held {
-    background: var(--pfadiblau);
+    background:
+      linear-gradient(175deg, rgb(10 48 87 / 0.72) 0%, rgb(14 66 120 / 0.88) 55%, rgb(14 66 120 / 0.97) 100%),
+      url('/bilder/kohte-sonnenaufgang.jpg') center 35% / cover no-repeat var(--pfadiblau);
     color: var(--papier);
+  }
+  .wimpelkette {
+    height: 26px;
+    background: url('/bdp/girlande-gelb.svg') left center / auto 26px repeat-x;
+    opacity: 0.95;
+    margin-bottom: 0.5rem;
   }
   .held-innen {
     display: flex;

@@ -12,6 +12,8 @@ auf Fahrten und in Lagern.
 Wir treffen uns **jeden Samstag von 15 bis 17 Uhr** in unserem Stammesheim
 am Seilereiweg 8 in Siegen. Wer reinschnuppern möchte, kommt einfach vorbei.
 
+![Unsere Jurten mit den Fahnen von Stamm Hubertus und Stamm Sakarya auf dem Bundeslager](/bilder/bundeslager-2026-jurten.jpg)
+
 ## Woher kommen die Pfadfinder?
 
 Die Pfadfinderbewegung wurde 1907 vom britischen General Robert Baden-Powell
