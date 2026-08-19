@@ -15,6 +15,9 @@
 
 declare(strict_types=1);
 
+const MELDUNG_AN = 'test@marschall.support'; // Benachrichtigung bei neuen Einreichungen
+const MELDUNG_VON = 'website@stamm-hubertus-siegen.de';
+
 const MAX_DATEIEN_EINREICHUNG = 2000;      // Fotos pro Einreichung
 const MAX_GROESSE = 20 * 1024 * 1024;      // 20 MB pro Foto
 const MAX_INITS_PRO_TAG = 10;              // Einreichungen pro IP und Tag
@@ -110,6 +113,28 @@ function ordner_anlegen(string $basis, string $veranstaltung): string
     return $ordner;
 }
 
+function meldung_senden(string $ordner, int $anzahl): void
+{
+    $info = @file_get_contents($ordner . '/einreichung.txt') ?: '';
+    $body = "Neue Foto-Einreichung über die Website\n"
+          . str_repeat('-', 50) . "\n"
+          . $info
+          . "Fotos angekommen: $anzahl\n"
+          . "Ordner: " . basename($ordner) . "\n\n"
+          . "Die Bilder liegen in der Nextcloud unter „Foto-Einreichungen“:\n"
+          . "https://cloud.stamm-hubertus-siegen.de\n";
+    @mail(
+        MELDUNG_AN,
+        mb_encode_mimeheader("Foto-Einreichung: $anzahl Fotos (" . basename($ordner) . ')', 'UTF-8'),
+        $body,
+        implode("\r\n", [
+            'From: Website Stamm Hubertus <' . MELDUNG_VON . '>',
+            'MIME-Version: 1.0',
+            'Content-Type: text/plain; charset=UTF-8',
+        ])
+    );
+}
+
 function einreichung_notieren(string $pfad, string $name, string $email, string $veranstaltung, string $nachricht): void
 {
     file_put_contents($pfad . '/einreichung.txt', implode("\n", [
@@ -191,6 +216,26 @@ if ($aktion === 'datei') {
     json_antwort(200, ['ok' => true]);
 }
 
+/* ---------- Schritt 3 (JS): Einreichung abschließen ---------- */
+if ($aktion === 'fertig') {
+    $ordner = basename((string)($_POST['ordner'] ?? ''));
+    $token  = (string)($_POST['token'] ?? '');
+    $ziel   = $basis . '/' . $ordner;
+    if ($ordner === '' || !is_dir($ziel)
+        || !hash_equals(hash_hmac('sha256', $ordner, geheimnis($basis)), $token)) {
+        json_antwort(403, ['fehler' => 'token']);
+    }
+    if (is_file($ziel . '/.gemeldet')) {          // Doppelmeldungen vermeiden
+        json_antwort(200, ['ok' => true]);
+    }
+    $anzahl = count(glob($ziel . '/foto-*') ?: []);
+    if ($anzahl > 0) {
+        file_put_contents($ziel . '/.gemeldet', '1');
+        meldung_senden($ziel, $anzahl);
+    }
+    json_antwort(200, ['ok' => true]);
+}
+
 /* ---------- Fallback ohne JavaScript: klassischer Multipart-Post ---------- */
 
 if (!empty($_POST['webseite'])) {                            // Honeypot
@@ -243,5 +288,6 @@ foreach ($geprueft as $i => $datei) {
     }
 }
 einreichung_notieren($basis . '/' . $ordner, $name, $email, $veranstaltung, $nachricht);
+meldung_senden($basis . '/' . $ordner, count($geprueft));
 header('Location: /fotos-einreichen/danke/', true, 303);
 exit;

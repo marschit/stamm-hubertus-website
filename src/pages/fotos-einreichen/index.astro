@@ -166,6 +166,15 @@ const fehler = null;
       }
       await Promise.all([arbeiter(), arbeiter(), arbeiter()]);
 
+      // Einreichung abschließen → benachrichtigt den Stamm
+      if (fertig > fehlgeschlagen.length) {
+        const fd = new FormData();
+        fd.append('a', 'fertig');
+        fd.append('ordner', init.ordner);
+        fd.append('token', init.token);
+        await fetch('/upload.php', { method: 'POST', body: fd }).catch(() => {});
+      }
+
       if (fehlgeschlagen.length === 0) {
         location.href = '/fotos-einreichen/danke/';
       } else if (fehlgeschlagen.length < dateien.length) {
