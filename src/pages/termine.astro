@@ -260,6 +260,11 @@ const webcalUrl = feedUrl.replace(/^https?:/, 'webcal:');
   }
   .monat ul { list-style: none; margin: 0; padding: 0; }
 
+  /* display:flex würde das hidden-Attribut sonst aushebeln */
+  .termin[hidden],
+  .monat[hidden] {
+    display: none !important;
+  }
   .termin {
     display: flex;
     flex-wrap: wrap;
