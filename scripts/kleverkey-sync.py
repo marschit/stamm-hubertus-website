@@ -80,10 +80,15 @@ def nc_put(name: str, inhalt: str):
             urllib.request.urlopen(req, timeout=60)
             break
         except urllib.error.HTTPError as e:
-            # 423 = Datei kurzzeitig gesperrt (Nextcloud-Locking) → warten
-            if e.code == 423 and versuch < 3:
-                time.sleep(10)
-                continue
+            # 423 = Datei gesperrt – z. B. weil jemand sie gerade im
+            # Nextcloud-Editor offen hat. Kurz warten, sonst überspringen
+            # (der nächste tägliche Lauf aktualisiert sie dann).
+            if e.code == 423:
+                if versuch < 3:
+                    time.sleep(10)
+                    continue
+                print(f"  ÜBERSPRUNGEN (gesperrt, vermutlich im Editor geöffnet): {name}")
+                return
             raise
     print(f"  hochgeladen: {NC_ORDNER}/{name} ({len(inhalt)} Zeichen)")
 
