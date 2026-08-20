@@ -16,7 +16,7 @@ from datetime import datetime, timezone
 
 API = "https://api.kleverkey.com"
 NC_BASIS = "https://cloud.stamm-hubertus-siegen.de/remote.php/dav/files/admin"
-NC_ORDNER = "Vereinsarchiv/Dokumente/Schliesssystem"
+NC_ORDNER = "Verein/Schließsystem"
 
 API_KEY = os.environ.get("KLEVERKEY_API_KEY", "")
 NC_USER = os.environ.get("NC_KALENDER_USER", "")
