@@ -67,13 +67,24 @@ def nc_put(name: str, inhalt: str):
         except urllib.error.HTTPError as e:
             if e.code != 405:
                 raise
-    req = urllib.request.Request(
-        f"{NC_BASIS}/{urllib.parse.quote(NC_ORDNER)}/{urllib.parse.quote(name)}",
-        data=inhalt.encode("utf-8"),
-        method="PUT",
-        headers={"Authorization": f"Basic {auth}"},
-    )
-    urllib.request.urlopen(req, timeout=60)
+    import time
+
+    for versuch in range(4):
+        req = urllib.request.Request(
+            f"{NC_BASIS}/{urllib.parse.quote(NC_ORDNER)}/{urllib.parse.quote(name)}",
+            data=inhalt.encode("utf-8"),
+            method="PUT",
+            headers={"Authorization": f"Basic {auth}"},
+        )
+        try:
+            urllib.request.urlopen(req, timeout=60)
+            break
+        except urllib.error.HTTPError as e:
+            # 423 = Datei kurzzeitig gesperrt (Nextcloud-Locking) → warten
+            if e.code == 423 and versuch < 3:
+                time.sleep(10)
+                continue
+            raise
     print(f"  hochgeladen: {NC_ORDNER}/{name} ({len(inhalt)} Zeichen)")
 
 
