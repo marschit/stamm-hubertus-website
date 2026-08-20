@@ -1,0 +1,31 @@
+name: Schließsystem in die Nextcloud spiegeln
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Täglich 05:37 – KleverKey-Rechte/Karten als Liste in die Cloud
+    - cron: '37 5 * * *'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Zugangsdaten prüfen
+        id: secrets
+        run: echo "vorhanden=${{ secrets.KLEVERKEY_API_KEY != '' }}" >> "$GITHUB_OUTPUT"
+
+      - name: Hinweis bei fehlendem API-Key
+        if: steps.secrets.outputs.vorhanden != 'true'
+        run: echo "KLEVERKEY_API_KEY nicht gesetzt – Sync übersprungen."
+
+      - uses: actions/checkout@v4
+        if: steps.secrets.outputs.vorhanden == 'true'
+
+      - name: Spiegeln
+        if: steps.secrets.outputs.vorhanden == 'true'
+        env:
+          KLEVERKEY_API_KEY: ${{ secrets.KLEVERKEY_API_KEY }}
+          NC_KALENDER_USER: ${{ secrets.NC_KALENDER_USER }}
+          NC_KALENDER_PASS: ${{ secrets.NC_KALENDER_PASS }}
+        run: python3 scripts/kleverkey-sync.py
