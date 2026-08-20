@@ -76,7 +76,13 @@ const webcalUrl = feedUrl.replace(/^https?:/, 'webcal:');
 
       <div class="termine">
         {monate.map(([schluessel, datum]) => (
-          <div class="monat" data-monat={schluessel}>
+          <div
+            class="monat"
+            data-monat={schluessel}
+            hidden={zeilen
+              .filter((z) => z.iso.slice(0, 7) === schluessel)
+              .every((z) => z.art === 'cloud' && z.cloud.kategorie === 'lvnrw')}
+          >
             <h2>{formatMonat(datum)}</h2>
             <ul>
               {zeilen
@@ -87,6 +93,7 @@ const webcalUrl = feedUrl.replace(/^https?:/, 'webcal:');
                       class="termin"
                       data-kategorie={z.cloud.kategorie}
                       data-ende={alsIso(z.cloud.endDatum ?? z.cloud.datum)}
+                      hidden={z.cloud.kategorie === 'lvnrw'}
                     >
                       <div class="wann">
                         <span class="tag">{formatDatum(z.cloud.datum)}</span>
