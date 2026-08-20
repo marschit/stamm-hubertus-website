@@ -122,6 +122,10 @@ export function parseKalender(ics: string): CloudTermin[] {
 /** Ein Kalender je Website-Kategorie: termine-stamm, termine-meute, … */
 const KALENDER: Kategorie[] = ['stamm', 'meute', 'sippen', 'gilde', 'foerderverein'];
 
+/** Öffentlicher Termin-Kalender des BdP Landesverbands NRW (Kategorie lvnrw) */
+const LVNRW_EXPORT =
+  'https://cloud.bdpnrw.de/remote.php/dav/public-calendars/Y33JPQXCY5KiATCJ?export';
+
 let zwischenspeicher: CloudTermin[] | null = null;
 
 export async function ladeCloudTermine(): Promise<CloudTermin[]> {
@@ -135,8 +139,22 @@ export async function ladeCloudTermine(): Promise<CloudTermin[]> {
   }
   const auth = { Authorization: 'Basic ' + Buffer.from(`${user}:${pass}`).toString('base64') };
   const alle: CloudTermin[] = [];
-  await Promise.all(
-    KALENDER.map(async (kategorie) => {
+
+  const ladeLvnrw = (async () => {
+    try {
+      const antwort = await fetch(LVNRW_EXPORT, { signal: AbortSignal.timeout(20000) });
+      if (!antwort.ok) throw new Error(`HTTP ${antwort.status}`);
+      for (const t of parseKalender(await antwort.text())) {
+        alle.push({ ...t, kategorie: 'lvnrw' });
+      }
+    } catch (fehler) {
+      console.warn('[termine] LV-NRW-Kalender nicht ladbar:', fehler);
+    }
+  })();
+
+  await Promise.all([
+    ladeLvnrw,
+    ...KALENDER.map(async (kategorie) => {
       try {
         const antwort = await fetch(`${basis}termine-${kategorie}/?export`, {
           headers: auth,
@@ -150,8 +168,8 @@ export async function ladeCloudTermine(): Promise<CloudTermin[]> {
       } catch (fehler) {
         console.warn(`[termine] Kalender termine-${kategorie} nicht ladbar:`, fehler);
       }
-    })
-  );
+    }),
+  ]);
   console.log(`[termine] ${alle.length} Termine aus den Cloud-Kalendern geladen.`);
   zwischenspeicher = alle;
   return alle;

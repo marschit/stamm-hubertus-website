@@ -4,6 +4,7 @@ export const KATEGORIEN = {
   sippen: { label: 'Sippen', farbe: '#2f6b3c', hell: false },
   gilde: { label: 'Gilde', farbe: '#971b2f', hell: false },
   foerderverein: { label: 'Förderverein', farbe: '#5b6b7a', hell: false },
+  lvnrw: { label: 'BdP NRW', farbe: '#c75b12', hell: false },
 } as const;
 
 export type Kategorie = keyof typeof KATEGORIEN;
