@@ -35,6 +35,13 @@ aufgebaut und dabei technisch bedingt deine IP-Adresse übertragen. Ohne
 Klick werden keine Daten an Google übermittelt. Es gelten die
 [Datenschutzhinweise von Google](https://policies.google.com/privacy).
 
+## Zugangs- und Kartenanträge
+
+Anträge über das Formular „Zugang & Schlüsselkarte“ (Name, E-Mail, ggf.
+Telefon und betroffene Person) speichern wir zur Bearbeitung in unserer
+vereinsinternen Cloud und senden sie per E-Mail an die Stammesführung.
+Nach Abschluss der Bearbeitung werden die Antragsdaten gelöscht.
+
 ## Kontaktaufnahme
 
 Wenn du uns per E-Mail oder über das Kontaktformular kontaktierst,

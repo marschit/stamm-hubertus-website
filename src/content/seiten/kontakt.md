@@ -24,6 +24,11 @@ Nach dem Schnuppern dabei bleiben? So geht's:
 - **Ernie** (Jan Philip Berg) 
 - **Samson** (Marco Schmidt)
 
+## Zugang zum Stammesheim
+
+Du brauchst einen Zugang zum Heim (App oder Schlüsselkarte) – oder möchtest
+einen abmelden? Nutze unser [Antragsformular](/zugangsantrag).
+
 ## So erreichst du uns
 
 - **E-Mail:** [kontakt@stamm-hubertus-siegen.de](mailto:kontakt@stamm-hubertus-siegen.de)

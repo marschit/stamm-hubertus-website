@@ -1,0 +1,162 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout titel="Zugang & Schlüsselkarte" beschreibung="Zugang zum Stammesheim beantragen: Smartphone-App, Schlüsselkarte oder Löschung – Antragsformular des Stamm Hubertus Siegen.">
+  <section>
+    <div class="wrap-text" id="antrag">
+      <span class="eyebrow">Stammesheim · Schließsystem</span>
+      <h1>Zugang &amp; Schlüsselkarte</h1>
+      <p>
+        Unser Stammesheim hat ein digitales Schließsystem (KleverKey). Zugang
+        gibt es per Smartphone-App oder Schlüsselkarte/Chip – hier kannst du
+        einen Zugang beantragen, eine Karte anfragen oder die Löschung eines
+        Zugangs melden (z.&nbsp;B. bei Austritt oder Kartenverlust).
+      </p>
+      <p class="hinweis-oben">
+        Über Anträge entscheidet die Stammesführung – du bekommst Bescheid,
+        sobald dein Antrag bearbeitet ist.
+      </p>
+
+      <form action="/antrag.php" method="post">
+        <label>
+          Was möchtest du beantragen?
+          <select name="art" required>
+            <option value="">Bitte wählen …</option>
+            <option value="zugang">Neuen Zugang (Smartphone-App)</option>
+            <option value="karte">Schlüsselkarte / Chip</option>
+            <option value="loeschung">Zugang löschen / Karte zurückgeben</option>
+          </select>
+        </label>
+        <div class="zeile">
+          <label>
+            Dein Name
+            <input type="text" name="name" required maxlength="100" autocomplete="name" />
+          </label>
+          <label>
+            E-Mail
+            <input type="email" name="email" required maxlength="150" autocomplete="email" />
+          </label>
+        </div>
+        <div class="zeile">
+          <label>
+            Telefon (optional)
+            <input type="tel" name="telefon" maxlength="40" autocomplete="tel" />
+          </label>
+          <label>
+            Für wen? <span class="klein">(falls nicht für dich selbst)</span>
+            <input type="text" name="betroffene" maxlength="150" placeholder="z. B. Name des Kindes / der Karte" />
+          </label>
+        </div>
+        <label>
+          Bemerkung (optional)
+          <textarea name="bemerkung" rows="4" maxlength="2000" placeholder="z. B. Funktion im Stamm, Grund der Löschung, Karte verloren …"></textarea>
+        </label>
+        <input type="text" name="webseite" class="honig" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <input type="hidden" name="pruef" value="" />
+        <p class="formular-hinweis">
+          Deine Angaben verwenden wir nur zur Bearbeitung des Antrags
+          (<a href="/datenschutz">Datenschutz</a>).
+        </p>
+        <button class="btn" type="submit">Antrag senden</button>
+      </form>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const formular = document.querySelector<HTMLFormElement>('#antrag form')!;
+  const setzePruef = () => {
+    (formular.querySelector('input[name="pruef"]') as HTMLInputElement).value = 'gut-pfad-1907';
+  };
+  formular.addEventListener('focusin', setzePruef, { once: true });
+  formular.addEventListener('input', setzePruef, { once: true });
+
+  const params = new URLSearchParams(location.search);
+  if (params.has('gesendet')) {
+    const p = document.createElement('p');
+    p.className = 'formular-erfolg';
+    p.setAttribute('role', 'status');
+    p.textContent = 'Danke, dein Antrag ist eingegangen! Die Stammesführung meldet sich bei dir.';
+    formular.replaceWith(p);
+  } else if (params.get('fehler')) {
+    const meldungen: Record<string, string> = {
+      'unvollstaendig': 'Bitte wähle eine Antragsart und fülle Name und E-Mail aus.',
+      'zu-lang': 'Ein Feld ist zu lang geraten – bitte kürze es etwas.',
+      'rate-limit': 'Für heute sind genug Anträge eingegangen – bitte versuche es morgen wieder oder schreib uns per E-Mail.',
+      'technik': 'Das hat leider nicht geklappt – bitte schreib uns direkt per E-Mail.',
+    };
+    const p = document.createElement('p');
+    p.className = 'formular-fehler';
+    p.setAttribute('role', 'alert');
+    p.setAttribute('tabindex', '-1');
+    p.textContent = meldungen[params.get('fehler')!] ?? meldungen['technik'];
+    formular.before(p);
+    p.scrollIntoView({ block: 'center' });
+    p.focus({ preventScroll: true });
+  }
+</script>
+
+<style>
+  .hinweis-oben { color: var(--ink-soft); font-size: 0.95rem; }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    max-width: 36rem;
+    background: var(--pfadiblau-hell);
+    border-radius: 6px;
+    padding: 1.75rem;
+  }
+  .zeile {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: 1rem;
+  }
+  label { display: flex; flex-direction: column; gap: 0.3rem; font-weight: 700; font-size: 0.95rem; }
+  .klein { font-weight: 400; color: var(--ink-soft); }
+  input, textarea, select {
+    font: inherit;
+    font-weight: 400;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--linie);
+    border-radius: 4px;
+    background: #fff;
+    color: var(--ink);
+  }
+  input:focus-visible, textarea:focus-visible, select:focus-visible {
+    outline: 3px solid var(--woelflingsgelb);
+    outline-offset: 1px;
+  }
+  textarea { resize: vertical; }
+  .honig { position: absolute; left: -9999px; }
+  .formular-hinweis { font-size: 0.85rem; color: var(--ink-soft); margin: 0; font-weight: 400; }
+  button.btn { align-self: flex-start; border: 0; cursor: pointer; font: inherit; font-weight: 700; }
+  /* Erfolgs-/Fehlermeldungen: global, da per JS erzeugt */
+  :global(.formular-erfolg) {
+    background: #e4f2e6;
+    border-left: 4px solid var(--waldgruen);
+    color: #235c2f;
+    font-weight: 700;
+    padding: 0.9rem 1.1rem;
+    border-radius: 0 4px 4px 0;
+  }
+  :global(.formular-fehler) {
+    background: var(--rr-rot);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.05rem;
+    padding: 1rem 1.2rem 1rem 3rem;
+    border-radius: 6px;
+    position: relative;
+    box-shadow: 0 4px 14px rgb(151 27 47 / 0.35);
+  }
+  :global(.formular-fehler)::before {
+    content: '⚠';
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.3rem;
+  }
+</style>

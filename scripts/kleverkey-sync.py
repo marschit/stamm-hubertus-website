@@ -133,7 +133,9 @@ for org_id in org_ids:
         "",
         "> Änderungen an Rechten und Karten bitte im "
         "[KleverKey-Portal](https://portal.kleverkey.com) vornehmen – "
-        "diese Datei wird täglich um 5:37 Uhr überschrieben.",
+        "diese Datei wird täglich um 5:37 Uhr überschrieben. Neue Anträge "
+        "kommen über das [Antragsformular](https://stamm-hubertus-siegen.de/zugangsantrag) "
+        "in den Unterordner „Anträge“.",
         "",
         f"## Schlösser ({len(schloesser)})",
         "",
