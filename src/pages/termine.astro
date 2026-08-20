@@ -107,7 +107,15 @@ const webcalUrl = feedUrl.replace(/^https?:/, 'webcal:');
                           class={`badge ${KATEGORIEN[z.cloud.kategorie].hell ? 'badge--hell' : ''}`}
                           style={`background:${KATEGORIEN[z.cloud.kategorie].farbe}`}
                         >{KATEGORIEN[z.cloud.kategorie].label}</span>
-                        <strong>{z.cloud.titel}</strong>
+                        {z.cloud.kategorie === 'lvnrw' ? (
+                          <strong>
+                            <a class="lv-link" href="https://bdpnrw.de/aktionen/" title="Infos und Ausschreibung auf bdpnrw.de">
+                              {z.cloud.titel} <span class="extern" aria-hidden="true">↗</span>
+                            </a>
+                          </strong>
+                        ) : (
+                          <strong>{z.cloud.titel}</strong>
+                        )}
                         {z.cloud.ort && <span class="ort">{z.cloud.ort}</span>}
                         {z.cloud.beschreibung && <div class="beschreibung"><p>{z.cloud.beschreibung}</p></div>}
                       </div>
@@ -293,6 +301,9 @@ const webcalUrl = feedUrl.replace(/^https?:/, 'webcal:');
   .bis, .zeit { font-size: 0.9rem; color: var(--ink-soft); }
   .was { flex: 1 1 18rem; display: flex; flex-direction: column; gap: 0.15rem; }
   .was strong { font-weight: 900; font-size: 1.15rem; color: var(--pfadiblau); }
+  .lv-link { color: var(--pfadiblau); text-decoration: none; }
+  .lv-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .extern { font-size: 0.75em; }
   .ort { font-size: 0.9rem; color: var(--ink-soft); }
   .beschreibung { font-size: 0.95rem; }
   .beschreibung :global(p) { margin: 0.3em 0 0; }
