@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Spiegelt das KleverKey-Schließsystem (Nutzer, Karten, Berechtigungen)
-als Übersicht in die Nextcloud des Stammes.
+als Übersicht in die Nextcloud des Stammes (Verein/Schließsystem).
 
 Benötigte Umgebungsvariablen:
   KLEVERKEY_API_KEY  – API-Key aus dem KleverKey-Portal (Account → Api Key)
@@ -8,9 +8,12 @@ Benötigte Umgebungsvariablen:
   NC_KALENDER_PASS   – Nextcloud-App-Passwort
 """
 
+import base64
 import json
 import os
 import sys
+import urllib.error
+import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 
@@ -24,39 +27,33 @@ NC_PASS = os.environ.get("NC_KALENDER_PASS", "")
 if not (API_KEY and NC_USER and NC_PASS):
     sys.exit("KLEVERKEY_API_KEY / NC_KALENDER_USER / NC_KALENDER_PASS fehlen")
 
+STATUS_TEXT = {"1": "eingeladen", "2": "aktiv", "3": "aktiv"}
 
-def kk_get(pfad: str, accept: str = "application/json"):
+
+def kk_get(pfad: str):
     req = urllib.request.Request(
         API + pfad,
-        headers={"Authorization": f"ApiKey {API_KEY}", "Accept": accept},
+        headers={"Authorization": f"ApiKey {API_KEY}", "Accept": "application/json"},
     )
     with urllib.request.urlopen(req, timeout=30) as r:
-        daten = r.read()
-    return json.loads(daten) if accept == "application/json" else daten.decode("utf-8")
+        return json.load(r)
 
 
-def liste(antwort):
-    """API liefert teils {items: [...]}, teils direkt eine Liste."""
-    if isinstance(antwort, dict):
-        for k in ("items", "data", "results", "users", "permissions", "devices", "locks"):
-            if isinstance(antwort.get(k), list):
-                return antwort[k]
-        return []
+def items(antwort):
+    if isinstance(antwort, dict) and isinstance(antwort.get("items"), list):
+        return antwort["items"]
     return antwort if isinstance(antwort, list) else []
 
 
-def feld(obj, *namen, standard=""):
-    for n in namen:
-        if isinstance(obj, dict) and obj.get(n) not in (None, ""):
-            return obj[n]
-    return standard
+def datum(iso: str) -> str:
+    try:
+        return datetime.fromisoformat(iso.replace("Z", "+00:00")).astimezone().strftime("%d.%m.%Y")
+    except Exception:
+        return ""
 
 
 def nc_put(name: str, inhalt: str):
-    import base64
-
     auth = base64.b64encode(f"{NC_USER}:{NC_PASS}".encode()).decode()
-    # Ordner sicherstellen (MKCOL, 405 = existiert schon)
     pfad = ""
     for teil in NC_ORDNER.split("/"):
         pfad += "/" + teil
@@ -68,7 +65,7 @@ def nc_put(name: str, inhalt: str):
         try:
             urllib.request.urlopen(req, timeout=30)
         except urllib.error.HTTPError as e:
-            if e.code not in (405,):
+            if e.code != 405:
                 raise
     req = urllib.request.Request(
         f"{NC_BASIS}/{urllib.parse.quote(NC_ORDNER)}/{urllib.parse.quote(name)}",
@@ -77,101 +74,110 @@ def nc_put(name: str, inhalt: str):
         headers={"Authorization": f"Basic {auth}"},
     )
     urllib.request.urlopen(req, timeout=60)
-    print(f"  hochgeladen: {name} ({len(inhalt)} Zeichen)")
+    print(f"  hochgeladen: {NC_ORDNER}/{name} ({len(inhalt)} Zeichen)")
 
 
-import urllib.parse
+ich = kk_get("/api/v1/users/me")
+org_ids = ich.get("organizationIds") or []
+if not org_ids:
+    sys.exit("Der API-Key gehört zu keiner Organisation")
 
-orgs = liste(kk_get("/api/v1/organizations"))
-if not orgs:
-    sys.exit("Keine Organisation für diesen API-Key gefunden")
-
-for org in orgs:
-    org_id = feld(org, "id", "organizationId")
-    org_name = feld(org, "name", standard=f"Organisation {org_id}")
-    print(f"Organisation: {org_name} ({org_id})")
+for org_id in org_ids:
     basis = f"/api/v1/organizations/{org_id}"
+    schloesser = items(kk_get(f"{basis}/locks"))
+    nutzer = items(kk_get(f"{basis}/users"))
+    karten = items(kk_get(f"{basis}/devices/smart-cards"))
+    rechte = items(kk_get(f"{basis}/permissions"))
+    gruppen = items(kk_get(f"{basis}/access-groups"))
+    print(
+        f"Organisation {org_id}: {len(schloesser)} Schlösser, {len(nutzer)} Personen, "
+        f"{len(karten)} Karten, {len(rechte)} Berechtigungen"
+    )
 
-    schloesser = liste(kk_get(f"{basis}/locks"))
-    nutzer = liste(kk_get(f"{basis}/users"))
-    karten = liste(kk_get(f"{basis}/devices/smart-cards"))
-    rechte = liste(kk_get(f"{basis}/permissions"))
-    try:
-        gruppen = liste(kk_get(f"{basis}/access-groups"))
-    except Exception:
-        gruppen = []
+    def name_von(u) -> str:
+        if not isinstance(u, dict):
+            return "?"
+        n = f"{u.get('firstName') or ''} {u.get('lastName') or ''}".strip()
+        return n or (u.get("displayName") or "?").split("<")[0].strip()
 
-    schloss_name = {feld(s, "id", "lockId"): feld(s, "name", standard="?") for s in schloesser}
-    nutzer_info = {
-        feld(u, "id", "userId"): {
-            "name": (feld(u, "firstName") + " " + feld(u, "lastName")).strip()
-            or feld(u, "name", "displayName", standard="?"),
-            "email": feld(u, "email", "eMail"),
-        }
-        for u in nutzer
-    }
+    # Karten → Inhaber über die Geräteliste je Nutzer
+    karten_inhaber: dict[str, str] = {}
+    for u in nutzer:
+        try:
+            for geraet in items(kk_get(f"{basis}/users/{u['id']}/devices")):
+                karten_inhaber[str(geraet.get("id"))] = name_von(u)
+        except Exception as e:
+            print(f"  Warnung: Geräte von {name_von(u)} nicht lesbar: {e}")
 
     stand = datetime.now(timezone.utc).astimezone().strftime("%d.%m.%Y %H:%M Uhr")
     z = [
-        f"# Schließsystem {org_name} – Übersicht",
+        "# Schließsystem – Übersicht",
         "",
         f"Automatisch gespiegelt aus KleverKey · Stand: {stand}",
         "",
         "> Änderungen an Rechten und Karten bitte im "
         "[KleverKey-Portal](https://portal.kleverkey.com) vornehmen – "
-        "diese Datei wird täglich überschrieben.",
+        "diese Datei wird täglich um 5:37 Uhr überschrieben.",
         "",
         f"## Schlösser ({len(schloesser)})",
         "",
-        "| Schloss | ID |",
-        "|---|---|",
+        "| Schloss | Batterie | Zuletzt aktiv |",
+        "|---|---|---|",
     ]
     for s in schloesser:
-        z.append(f"| {feld(s, 'name', standard='?')} | {feld(s, 'id', 'lockId')} |")
+        batterie = "⚠ Wechsel empfohlen" if s.get("batteryChangeRecommended") else "ok"
+        z.append(f"| {s.get('name') or s.get('displayName')} | {batterie} | {datum(s.get('dateLastActivity') or '')} |")
 
-    z += ["", f"## Personen ({len(nutzer)})", "", "| Name | E-Mail |", "|---|---|"]
-    for u in sorted(nutzer_info.values(), key=lambda x: x["name"].lower()):
-        z.append(f"| {u['name']} | {u['email']} |")
+    z += ["", f"## Personen ({len(nutzer)})", "", "| Name | E-Mail | Rolle |", "|---|---|---|"]
+    for u in sorted(nutzer, key=lambda x: name_von(x).lower()):
+        rollen = ", ".join(r.get("displayName") or r.get("name") or "" for r in (u.get("roles") or []))
+        z.append(f"| {name_von(u)} | {u.get('email') or ''} | {rollen or 'Mitglied'} |")
 
-    z += ["", f"## Smartcards / Chips ({len(karten)})", "", "| Karte | UID | Zugewiesen an |", "|---|---|---|"]
-    for k in karten:
-        inhaber_id = feld(k, "userId", "assignedUserId", "ownerId")
-        inhaber = nutzer_info.get(inhaber_id, {}).get("name", "") or feld(
-            k, "userName", "assignedTo", standard="– nicht zugewiesen –"
-        )
+    z += [
+        "",
+        f"## Smartcards / Chips ({len(karten)})",
+        "",
+        "| Karte | Chip-ID | Inhaber*in | Zuletzt benutzt |",
+        "|---|---|---|---|",
+    ]
+    for k in sorted(karten, key=lambda x: (x.get("name") or "").lower()):
+        inhaber = karten_inhaber.get(str(k.get("id")), "– nicht zugewiesen –")
         z.append(
-            f"| {feld(k, 'name', 'displayName', standard='?')} "
-            f"| {feld(k, 'uid', 'serialNumber', 'hexId')} | {inhaber} |"
+            f"| {k.get('name') or k.get('displayName')} | {k.get('deviceHexId') or ''} "
+            f"| {inhaber} | {datum(k.get('dateLastActivity') or '')} |"
         )
 
-    z += ["", f"## Berechtigungen ({len(rechte)})", "", "| Person | Schloss | Details |", "|---|---|---|"]
-
-    def sortschluessel(r):
-        uid = feld(r, "userId")
-        return (nutzer_info.get(uid, {}).get("name", "").lower(), feld(r, "lockId"))
-
-    for r in sorted(rechte, key=sortschluessel):
-        uid, lid = feld(r, "userId"), feld(r, "lockId")
-        person = nutzer_info.get(uid, {}).get("name") or feld(r, "userName", standard=uid)
-        schloss = schloss_name.get(lid) or feld(r, "lockName", standard=lid)
-        details = []
-        for k2, v in (r.items() if isinstance(r, dict) else []):
-            if k2 in ("userId", "lockId", "userName", "lockName") or v in (None, "", False):
-                continue
-            details.append(f"{k2}: {v}")
-        z.append(f"| {person} | {schloss} | {'; '.join(details[:4])} |")
+    z += [
+        "",
+        f"## Berechtigungen ({len(rechte)})",
+        "",
+        "| Person | Schloss | Status | Vergeben am |",
+        "|---|---|---|---|",
+    ]
+    for r in sorted(rechte, key=lambda x: name_von(x.get("user")).lower()):
+        status = STATUS_TEXT.get(str(r.get("permissionStatus")), f"Status {r.get('permissionStatus')}")
+        schloss = (r.get("lock") or {}).get("name") or (r.get("lock") or {}).get("displayName") or "?"
+        z.append(f"| {name_von(r.get('user'))} | {schloss} | {status} | {datum(r.get('dateGranted') or '')} |")
 
     if gruppen:
         z += ["", f"## Zutrittsgruppen ({len(gruppen)})", ""]
         for g in gruppen:
-            z.append(f"- **{feld(g, 'name', standard='?')}**")
+            z.append(f"- **{g.get('name') or g.get('displayName')}**")
 
-    suffix = "" if len(orgs) == 1 else f"_{org_id}"
+    suffix = "" if len(org_ids) == 1 else f"_{org_id}"
     nc_put(f"Schliesssystem_Uebersicht{suffix}.md", "\n".join(z) + "\n")
     nc_put(
         f"kleverkey_rohdaten{suffix}.json",
         json.dumps(
-            {"stand": stand, "schloesser": schloesser, "nutzer": nutzer, "karten": karten, "rechte": rechte, "gruppen": gruppen},
+            {
+                "stand": stand,
+                "schloesser": schloesser,
+                "nutzer": nutzer,
+                "karten": karten,
+                "kartenInhaber": karten_inhaber,
+                "rechte": rechte,
+                "gruppen": gruppen,
+            },
             ensure_ascii=False,
             indent=1,
         ),
