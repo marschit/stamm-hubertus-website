@@ -145,6 +145,9 @@ export async function ladeCloudTermine(): Promise<CloudTermin[]> {
       const antwort = await fetch(LVNRW_EXPORT, { signal: AbortSignal.timeout(20000) });
       if (!antwort.ok) throw new Error(`HTTP ${antwort.status}`);
       for (const t of parseKalender(await antwort.text())) {
+        // Ferien-/Feiertagsblöcke des LV ausblenden – Ferien zeigt die
+        // Website bereits über die eigene Heimabend-Logik
+        if (/ferien|feiertag/i.test(t.titel)) continue;
         alle.push({ ...t, kategorie: 'lvnrw' });
       }
     } catch (fehler) {

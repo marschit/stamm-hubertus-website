@@ -10,7 +10,9 @@ import { ladeCloudTermine } from '../lib/nextcloud-termine';
 const heute = alsIso(new Date());
 const naechste = [
   ...(await getCollection('termine')).map((t) => ({ titel: t.data.titel, datum: t.data.datum, ende: t.data.endDatum ?? t.data.datum })),
-  ...(await ladeCloudTermine()).map((t) => ({ titel: t.titel, datum: t.datum, ende: t.endDatum ?? t.datum })),
+  ...(await ladeCloudTermine())
+    .filter((t) => t.kategorie !== 'lvnrw')
+    .map((t) => ({ titel: t.titel, datum: t.datum, ende: t.endDatum ?? t.datum })),
 ]
   .filter((t) => alsIso(t.ende) >= heute)
   .sort((a, b) => a.datum.valueOf() - b.datum.valueOf())

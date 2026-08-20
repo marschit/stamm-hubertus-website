@@ -8,6 +8,7 @@ const heute = alsIso(new Date());
 const cloudTermine = (await ladeCloudTermine()).filter(
   (t) => alsIso(t.endDatum ?? t.datum) >= heute
 );
+const lvnrwAnzahl = cloudTermine.filter((t) => t.kategorie === 'lvnrw').length;
 const alle = (await getCollection('termine'))
   .filter((t) => alsIso(t.data.endDatum ?? t.data.datum) >= heute)
   .sort((a, b) => a.data.datum.valueOf() - b.data.datum.valueOf());
@@ -60,9 +61,18 @@ const webcalUrl = feedUrl.replace(/^https?:/, 'webcal:');
       <div class="filter" role="group" aria-label="Nach Gruppe filtern">
         <button type="button" data-filter="alle" aria-pressed="true">Alle</button>
         {Object.entries(KATEGORIEN).map(([schluessel, k]) => (
-          <button type="button" data-filter={schluessel} aria-pressed="false">{k.label}</button>
+          <button type="button" data-filter={schluessel} aria-pressed="false">
+            {k.label}
+            {schluessel === 'lvnrw' && lvnrwAnzahl > 0 && (
+              <span class="zaehler" title={`${lvnrwAnzahl} Termine des Landesverbands`}>{lvnrwAnzahl}</span>
+            )}
+          </button>
         ))}
       </div>
+      <p class="lv-hinweis">
+        Termine unseres Landesverbands (Kurse, Lager, Treffen) blenden wir hier
+        nicht automatisch ein – ein Klick auf <strong>BdP NRW</strong> zeigt sie dir.
+      </p>
 
       <div class="termine">
         {monate.map(([schluessel, datum]) => (
@@ -170,7 +180,11 @@ const webcalUrl = feedUrl.replace(/^https?:/, 'webcal:');
   function anwenden(filter: string) {
     knoepfe.forEach((k) => k.setAttribute('aria-pressed', String(k.dataset.filter === filter)));
     document.querySelectorAll<HTMLElement>('.termin').forEach((t) => {
-      t.hidden = filter !== 'alle' && t.dataset.kategorie !== filter;
+      // Landesverbands-Termine nur zeigen, wenn gezielt gefiltert wird
+      t.hidden =
+        filter === 'alle'
+          ? t.dataset.kategorie === 'lvnrw'
+          : t.dataset.kategorie !== filter;
     });
     document.querySelectorAll<HTMLElement>('.monat').forEach((m) => {
       m.hidden = !m.querySelector('.termin:not([hidden])');
@@ -211,6 +225,23 @@ const webcalUrl = feedUrl.replace(/^https?:/, 'webcal:');
   .filter button[aria-pressed='true'] {
     background: var(--pfadiblau);
     color: var(--papier);
+  }
+  .zaehler {
+    display: inline-block;
+    min-width: 1.35em;
+    margin-left: 0.35em;
+    padding: 0.05em 0.35em;
+    background: var(--woelflingsgelb);
+    color: var(--pfadiblau);
+    border-radius: 999px;
+    font-size: 0.75em;
+    font-weight: 900;
+    text-align: center;
+  }
+  .lv-hinweis {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    margin: 0.2rem 0 0;
   }
 
   .monat h2 {

@@ -114,9 +114,10 @@ export const GET: APIRoute = async ({ params }) => {
     zeilen.push('END:VEVENT');
   }
 
-  // Termine aus dem Nextcloud-Kalender des Teams
-  const cloudTermine = (await ladeCloudTermine()).filter(
-    (t) => !kategorie || t.kategorie === kategorie
+  // Termine aus dem Nextcloud-Kalender des Teams; die Landesverbands-Termine
+  // stecken nur im eigenen Feed termine-lvnrw.ics, nicht im Gesamt-Abo
+  const cloudTermine = (await ladeCloudTermine()).filter((t) =>
+    kategorie ? t.kategorie === kategorie : t.kategorie !== 'lvnrw'
   );
   for (const t of cloudTermine) {
     const start = kompakt(alsIso(t.datum));
