@@ -17,18 +17,13 @@
       ]
     },
     {
-      "label": "Termine",
-      "href": "/termine",
-      "gruppenAutomatik": false
-    },
-    {
       "label": "Aktuelles",
       "href": "/aktuelles",
       "gruppenAutomatik": false
     },
     {
-      "label": "Fotos",
-      "href": "/fotos",
+      "label": "Förderverein",
+      "href": "/foerderverein",
       "gruppenAutomatik": false
     },
     {
@@ -37,8 +32,13 @@
       "gruppenAutomatik": false
     },
     {
-      "label": "Förderverein",
-      "href": "/foerderverein",
+      "label": "Termine",
+      "href": "/termine",
+      "gruppenAutomatik": false
+    },
+    {
+      "label": "Fotos",
+      "href": "/fotos",
       "gruppenAutomatik": false
     },
     {
