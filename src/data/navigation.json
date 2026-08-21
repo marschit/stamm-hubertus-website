@@ -32,6 +32,11 @@
       "gruppenAutomatik": false
     },
     {
+      "label": "Spenden",
+      "href": "/spenden",
+      "gruppenAutomatik": false
+    },
+    {
       "label": "Termine",
       "href": "/termine",
       "gruppenAutomatik": false
@@ -39,11 +44,6 @@
     {
       "label": "Fotos",
       "href": "/fotos",
-      "gruppenAutomatik": false
-    },
-    {
-      "label": "Spenden",
-      "href": "/spenden",
       "gruppenAutomatik": false
     },
     {
