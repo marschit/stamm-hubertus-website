@@ -2,11 +2,10 @@
 titel: Förderverein
 untertitel: Seit über 40 Jahren an unserer Seite
 ---
-
 Der **Verein zur Betreuung der Pfadfinder (BdP) im Siegerland e. V.**
 unterstützt unsere Pfadfinderarbeit seit über 40 Jahren. Er betreut unser
 Stammesheim, leistet ideelle und finanzielle
-Unterstützung – und sorgt dafür, dass **alle Kinder** an unseren Aktionen
+Unterstützung – und sorgt dafür, dass **alle Kinder** an unseren Aktionen  
 teilnehmen können, unabhängig vom Geldbeutel der Eltern.
 
 ## Mitglied werden
@@ -20,9 +19,11 @@ auf Wunsch automatisch zu.
 **So wirst du Mitglied:**
 
 1. [Beitrittserklärung herunterladen (PDF)](/dokumente/Beitrittserklaerung_Foerderverein-BdP-Siegerland_Stand-2026-08.pdf)
-   – mit Formular und SEPA-Lastschriftmandat
+
+  – mit Formular und SEPA-Lastschriftmandat
 2. Ausfüllen, einscannen (oder abfotografieren) und per E-Mail senden an
-   [fv@stamm-hubertus-siegen.de](mailto:fv@stamm-hubertus-siegen.de)
+
+  [fv@stamm-hubertus-siegen.de](mailto:fv@stamm-hubertus-siegen.de)
 
 Fragen zum Förderverein? Schreib uns an
 [fv@stamm-hubertus-siegen.de](mailto:fv@stamm-hubertus-siegen.de).
