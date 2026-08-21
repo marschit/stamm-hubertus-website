@@ -1,6 +1,6 @@
 ---
 titel: Wir waren auf dem Bundeslager juBULAeum – wieder gemeinsam mit Stamm
-  Sakarya aus Istanbul (Türkei)
+  Sakarya aus Istanbul!
 datum: 2026-08-18
 bild: /bilder/bundeslager-2026-jurten.jpg
 ---
