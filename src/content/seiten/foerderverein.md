@@ -8,7 +8,7 @@ Stammesheim, leistet ideelle und finanzielle
 Unterstützung – und sorgt dafür, dass **alle Kinder** an unseren Aktionen  
 teilnehmen können, unabhängig vom Geldbeutel der Eltern.
 
-## Mitglied werden
+![](/bilder/Förderverein/FV-Logo_Siegerland_2400px.png)
 
 Mitglieder zahlen einen Jahresbeitrag ab **40 Euro** und werden zur
 jährlichen Mitgliederversammlung eingeladen. Der Verein ist beim Finanzamt
