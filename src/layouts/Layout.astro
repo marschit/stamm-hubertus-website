@@ -262,17 +262,20 @@ const strukturDaten = {
     color: var(--pfadiblau);
     letter-spacing: 0.01em;
   }
+  /* Wenn das Menü in die zweite Zeile umbricht, bleibt es rechtsbündig */
+  nav { margin-left: auto; }
   nav ul {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.1rem 1.1rem;
+    justify-content: flex-end;
+    gap: 0.1rem 0.95rem;
     list-style: none;
     margin: 0;
     padding: 0;
   }
   nav a {
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     text-decoration: none;
     color: var(--pfadiblau);
     padding: 0.3rem 0;
