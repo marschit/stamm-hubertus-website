@@ -1,0 +1,13 @@
+{
+  "eintraege": [
+    { "label": "Start", "href": "/" },
+    { "label": "Über uns", "href": "/ueber-uns" },
+    { "label": "Termine", "href": "/termine" },
+    { "label": "Aktuelles", "href": "/aktuelles" },
+    { "label": "Fotos", "href": "/fotos" },
+    { "label": "Heim mieten", "href": "/heim" },
+    { "label": "Förderverein", "href": "/foerderverein" },
+    { "label": "Spenden", "href": "/spenden" },
+    { "label": "Kontakt", "href": "/kontakt" }
+  ]
+}

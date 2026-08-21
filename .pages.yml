@@ -213,6 +213,26 @@ content:
             type: date
             required: true
 
+  - name: navigation
+    label: Menü
+    description: Die Menüleiste oben – Bezeichnungen, Reihenfolge und Einträge
+    type: file
+    path: src/data/navigation.json
+    fields:
+      - name: eintraege
+        label: Menüpunkte (Reihenfolge per Ziehen ändern)
+        type: object
+        list: true
+        fields:
+          - name: label
+            label: Bezeichnung im Menü
+            type: string
+            required: true
+          - name: href
+            label: Ziel (Seitenpfad, z. B. /termine)
+            type: string
+            required: true
+
   - name: einstellungen
     label: Einstellungen
     description: Adresse, Treffzeit, Kontaktdaten, Kalender-Links

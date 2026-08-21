@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import '../styles/global.css';
 import einstellungen from '../data/einstellungen.json';
+import navigation from '../data/navigation.json';
 
 interface Props {
   titel?: string;
@@ -20,25 +21,16 @@ const gruppenEintraege = (await getCollection('gruppen')).sort(
   (a, b) => a.data.reihenfolge - b.data.reihenfolge
 );
 
-const nav = [
-  { href: '/', label: 'Start' },
-  {
-    href: '/ueber-uns',
-    label: 'Über uns',
-    unter: [
-      { href: '/gruppen', label: 'Unsere Gruppen' },
-      ...gruppenEintraege.map((g) => ({ href: `/gruppen/${g.id}`, label: g.data.name })),
-      { href: '/pfadfinderregeln', label: 'Pfadfinderregeln' },
-    ],
-  },
-  { href: '/termine', label: 'Termine' },
-  { href: '/aktuelles', label: 'Aktuelles' },
-  { href: '/fotos', label: 'Fotos' },
-  { href: '/heim', label: 'Heim mieten' },
-  { href: '/foerderverein', label: 'Förderverein' },
-  { href: '/spenden', label: 'Spenden' },
-  { href: '/kontakt', label: 'Kontakt' },
+// Menüpunkte kommen aus src/data/navigation.json (in Pages CMS unter „Menü“
+// pflegbar); der Über-uns-Punkt erhält automatisch das Gruppen-Untermenü.
+const untermenu = [
+  { href: '/gruppen', label: 'Unsere Gruppen' },
+  ...gruppenEintraege.map((g) => ({ href: `/gruppen/${g.id}`, label: g.data.name })),
+  { href: '/pfadfinderregeln', label: 'Pfadfinderregeln' },
 ];
+const nav = navigation.eintraege.map((n) =>
+  n.href === '/ueber-uns' ? { ...n, unter: untermenu } : n
+);
 const pfad = Astro.url.pathname.replace(/\/$/, '') || '/';
 
 const strukturDaten = {
