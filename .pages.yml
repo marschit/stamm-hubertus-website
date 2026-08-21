@@ -81,7 +81,7 @@ content:
 
   - name: gruppen
     label: Gruppen
-    description: Die Gruppen des Stammes (Meute, Sippen, Gilde)
+    description: Die Gruppen des Stammes (Meute, Sippen, Kreis)
     type: collection
     path: src/content/gruppen
     view:
