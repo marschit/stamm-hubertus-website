@@ -1,9 +1,9 @@
 ---
-titel: Wir waren auf dem Bundeslager – wieder gemeinsam mit Stamm Sakarya
+titel: Wir waren auf dem Bundeslager juBULAeum – wieder gemeinsam mit Stamm
+  Sakarya aus Istanbul (Türkei)
 datum: 2026-08-18
 bild: /bilder/bundeslager-2026-jurten.jpg
 ---
-
 Dieses Jahr war es wieder so weit: Der Stamm Hubertus war auf dem
 [Bundeslager des BdP](https://www.bundeslager.pfadfinden.de/) – dem
 **„juBULÄum“** zu 50 Jahren BdP, vom 30. Juli bis 9. August 2026 im Zentrum
