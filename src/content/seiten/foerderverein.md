@@ -2,9 +2,11 @@
 titel: Förderverein
 untertitel: Seit über 40 Jahren an unserer Seite
 ---
-Gegründet von Mitgliedern, Eltern und Freunden des Stammes im Jahr 1977 unterstützt der **Verein zur Betreuung der Pfadfinder (BdP) im Siegerland e. V.** unsere Pfadfinderarbeit seit über 40 Jahren. Er betreut unser Stammesheim, leistet ideelle und finanzielle Unterstützung – und sorgt dafür, dass **alle Kinder** an unseren Aktionen teilnehmen können, unabhängig vom Geldbeutel der Eltern!      
+Gegründet von Mitgliedern, Eltern und Freunden des Stammes im Jahr 1977 unterstützt der **Verein zur Betreuung der Pfadfinder (BdP) im Siegerland e. V.** unsere Pfadfinderarbeit seit über 40 Jahren. Er betreut unser Stammesheim, leistet ideelle und finanzielle Unterstützung – und sorgt dafür, dass **alle Kinder** an unseren Aktionen teilnehmen können, unabhängig vom Geldbeutel der Eltern!        
+  
 
-![](</bilder/Förderverein/Bildschirmfoto 2026-08-21 um 20.14.24.png>)
+
+![](/bilder/Förderverein/Bildschirmfoto.png)
 
 ## Mitglied werden!
 
