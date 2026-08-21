@@ -1,6 +1,6 @@
 ---
 titel: Stammesheim
-untertitel: Stammesheim in der Fludersbach
+untertitel: Unser Zuhause in der Fludersbach
 ---
 Unser Stammesheim liegt im Ortsteil *Fludersbach*, etwas außerhalb des Siegener  
 Zentrums, und kann von **Pfadfinder- und anderen Gruppen** gemietet werden –  
