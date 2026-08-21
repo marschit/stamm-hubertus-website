@@ -2,10 +2,10 @@
 titel: Stammesheim
 untertitel: Stammesheim in der Fludersbach
 ---
-Unser Stammesheim liegt in der Fludersbach, etwas außerhalb des Siegener
-Zentrums, und kann von **Pfadfinder- und anderen Gruppen** gemietet werden –
-in den Schulferien von Nordrhein-Westfalen und an Wochenenden.
-Als Partylocation vermieten wir das Heim ausdrücklich nicht.
+Unser Stammesheim liegt im Ortsteil Fludersbach, etwas außerhalb des Siegener  
+Zentrums, und kann von **Pfadfinder- und anderen Gruppen** gemietet werden –  
+in den Schulferien von Nordrhein-Westfalen und an Wochenenden.  
+A**ls Partylocation vermieten wir das Heim ausdrücklich nicht!**
 
 ## Ausstattung
 
@@ -14,7 +14,8 @@ Als Partylocation vermieten wir das Heim ausdrücklich nicht.
 - Voll ausgestattete Küche: Herd, Backofen, Kühlschrank, Spülmaschine
 - Konferenzraum und Musikraum
 - 4 weitere flexibel nutzbare Räume
-- WLAN, Bierbänke und Tische
+- WLAN
+- Bollerwagen
 
 ## Lage & Anreise
 
@@ -24,5 +25,5 @@ Haltestelle „Fludersbach Seilereiweg“.
 ## Anfragen
 
 Schreib uns einfach eine E-Mail an
-[kontakt@stamm-hubertus-siegen.de](mailto:kontakt@stamm-hubertus-siegen.de) –
-wir melden uns mit Terminen und Konditionen zurück.
+[kontakt@stamm-hubertus-siegen.de](mailto:kontakt@stamm-hubertus-siegen.de) –  
+Wir melden uns mit Terminen und Konditionen zurück.
