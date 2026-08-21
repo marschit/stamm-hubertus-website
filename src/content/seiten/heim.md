@@ -18,8 +18,7 @@ Als Partylocation vermieten wir das Heim ausdrücklich nicht.
 
 ## Lage & Anreise
 
-Ein Supermarkt ist zu Fuß in ein paar Minuten erreichbar. Vom Siegener
-Hauptbahnhof fahren die Buslinien **C103 und C104** in etwa 15 Minuten zur
+Vom Siegener Hauptbahnhof fahren die Buslinien **C103 und C104** in etwa 15 Minuten zur
 Haltestelle „Fludersbach Seilereiweg“.
 
 ## Anfragen
