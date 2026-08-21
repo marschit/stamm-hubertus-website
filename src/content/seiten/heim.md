@@ -1,8 +1,7 @@
 ---
-titel: Unser Heim – zu vermieten
+titel: Stammesheim
 untertitel: Stammesheim in der Fludersbach
 ---
-
 Unser Stammesheim liegt in der Fludersbach, etwas außerhalb des Siegener
 Zentrums, und kann von **Pfadfinder- und anderen Gruppen** gemietet werden –
 in den Schulferien von Nordrhein-Westfalen und an Wochenenden.
