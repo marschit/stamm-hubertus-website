@@ -1,29 +1,89 @@
 {
   "eintraege": [
-    { "label": "Start", "href": "/" },
+    {
+      "label": "Start",
+      "href": "/",
+      "gruppenAutomatik": false
+    },
     {
       "label": "Über uns",
       "href": "/ueber-uns",
       "gruppenAutomatik": true,
-      "unter": [{ "label": "Pfadfinderregeln", "href": "/pfadfinderregeln" }]
+      "unter": [
+        {
+          "label": "Pfadfinderregeln",
+          "href": "/pfadfinderregeln"
+        }
+      ]
     },
-    { "label": "Termine", "href": "/termine" },
-    { "label": "Aktuelles", "href": "/aktuelles" },
-    { "label": "Fotos", "href": "/fotos" },
-    { "label": "Stammesheim", "href": "/heim" },
-    { "label": "Förderverein", "href": "/foerderverein" },
-    { "label": "Spenden", "href": "/spenden" },
-    { "label": "Kontakt", "href": "/kontakt" }
+    {
+      "label": "Termine",
+      "href": "/termine",
+      "gruppenAutomatik": false
+    },
+    {
+      "label": "Aktuelles",
+      "href": "/aktuelles",
+      "gruppenAutomatik": false
+    },
+    {
+      "label": "Fotos",
+      "href": "/fotos",
+      "gruppenAutomatik": false
+    },
+    {
+      "label": "Stammesheim",
+      "href": "/heim",
+      "gruppenAutomatik": false
+    },
+    {
+      "label": "Förderverein",
+      "href": "/foerderverein",
+      "gruppenAutomatik": false
+    },
+    {
+      "label": "Spenden",
+      "href": "/spenden",
+      "gruppenAutomatik": false
+    },
+    {
+      "label": "Kontakt",
+      "href": "/kontakt",
+      "gruppenAutomatik": false
+    }
   ],
   "fusszeile": [
-    { "label": "Termine", "href": "/termine" },
-    { "label": "Fotos einreichen", "href": "/fotos-einreichen" },
-    { "label": "Zugang & Schlüsselkarte", "href": "/zugangsantrag" },
-    { "label": "Spenden", "href": "/spenden" },
-    { "label": "Instagram", "href": "https://www.instagram.com/stamm_hubertus.siegen/" },
-    { "label": "Facebook", "href": "https://facebook.com/stammhubertus" },
-    { "label": "Vereins-Cloud", "href": "https://cloud.stamm-hubertus-siegen.de" },
-    { "label": "Impressum", "href": "/impressum" },
-    { "label": "Datenschutz", "href": "/datenschutz" }
+    {
+      "label": "Termine",
+      "href": "/termine"
+    },
+    {
+      "label": "Fotos einreichen",
+      "href": "/fotos-einreichen"
+    },
+    {
+      "label": "Spenden",
+      "href": "/spenden"
+    },
+    {
+      "label": "Instagram",
+      "href": "https://www.instagram.com/stamm_hubertus.siegen/"
+    },
+    {
+      "label": "Facebook",
+      "href": "https://facebook.com/stammhubertus"
+    },
+    {
+      "label": "Vereins-Cloud",
+      "href": "https://cloud.stamm-hubertus-siegen.de"
+    },
+    {
+      "label": "Impressum",
+      "href": "/impressum"
+    },
+    {
+      "label": "Datenschutz",
+      "href": "/datenschutz"
+    }
   ]
 }
