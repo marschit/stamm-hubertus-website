@@ -6,7 +6,7 @@ Der **Verein zur Betreuung der Pfadfinder (BdP) im Siegerland e. V.**
 unterstützt unsere Pfadfinderarbeit seit über 40 Jahren. Er betreut unser
 Stammesheim, leistet ideelle und finanzielle
 Unterstützung – und sorgt dafür, dass **alle Kinder** an unseren Aktionen  
-teilnehmen können, unabhängig vom Geldbeutel der Eltern.
+teilnehmen können, unabhängig vom Geldbeutel der Eltern!
 
 ## Mitglied werden!
 
