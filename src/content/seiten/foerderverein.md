@@ -7,8 +7,6 @@ Gegründet von Mitgliedern, Eltern und Freunden des Stammes im Jahr 1977 unterst
 
 ![](/bilder/Förderverein/FV-Logo_Siegerland_2400px.png)
 
-![](/bilder/Förderverein/FV.png)
-
 ![](/bilder/Förderverein/Bildschirmfoto.png)
 
 ## Mitglied werden!
