@@ -14,6 +14,7 @@ Als Partylocation vermieten wir das Heim ausdrücklich nicht!
 - Voll ausgestattete Küche: Herd, Backofen, Kühlschrank, Spülmaschine
 - Konferenzraum und Musikraum
 - 4 weitere flexibel nutzbare Räume
+- Werkraum
 - WLAN
 - Bollerwagen, Tische und Bänke ...
 
