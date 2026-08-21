@@ -6,7 +6,7 @@ Gegründet von Mitgliedern, Eltern und Freunden des Stammes im Jahr 1977 unterst
 
 ![](/bilder/Förderverein/Bildschirmfoto.png)
 
-## Mitglied werden
+## Mitglied werden!
 
 Mitglieder zahlen einen Jahresbeitrag ab **40 Euro** und werden zur
 jährlichen Mitgliederversammlung eingeladen. Der Verein ist beim Finanzamt
