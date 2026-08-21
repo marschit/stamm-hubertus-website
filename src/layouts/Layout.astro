@@ -21,16 +21,24 @@ const gruppenEintraege = (await getCollection('gruppen')).sort(
   (a, b) => a.data.reihenfolge - b.data.reihenfolge
 );
 
-// Menüpunkte kommen aus src/data/navigation.json (in Pages CMS unter „Menü“
-// pflegbar); der Über-uns-Punkt erhält automatisch das Gruppen-Untermenü.
-const untermenu = [
+// Menü und Fußleiste kommen aus src/data/navigation.json (Pages CMS „Menü“).
+// „Gruppen automatisch“ hängt die Gruppen-Liste an; eigene Unterpunkte
+// lassen sich je Eintrag frei ergänzen.
+interface NavEintrag {
+  label: string;
+  href: string;
+  gruppenAutomatik?: boolean;
+  unter?: { label: string; href: string }[];
+}
+const gruppenMenu = [
   { href: '/gruppen', label: 'Unsere Gruppen' },
   ...gruppenEintraege.map((g) => ({ href: `/gruppen/${g.id}`, label: g.data.name })),
-  { href: '/pfadfinderregeln', label: 'Pfadfinderregeln' },
 ];
-const nav = navigation.eintraege.map((n) =>
-  n.href === '/ueber-uns' ? { ...n, unter: untermenu } : n
-);
+const nav = (navigation.eintraege as NavEintrag[]).map((n) => {
+  const unter = [...(n.gruppenAutomatik ? gruppenMenu : []), ...(n.unter ?? [])];
+  return { ...n, unter: unter.length > 0 ? unter : undefined };
+});
+const fusszeile = (navigation as { fusszeile?: { label: string; href: string }[] }).fusszeile ?? [];
 const pfad = Astro.url.pathname.replace(/\/$/, '') || '/';
 
 const strukturDaten = {
@@ -107,16 +115,16 @@ const strukturDaten = {
         <nav id="hauptnav" aria-label="Hauptnavigation">
           <ul>
             {nav.map((n) => (
-              <li class={'unter' in n ? 'hat-unter' : undefined}>
+              <li class={n.unter ? 'hat-unter' : undefined}>
                 <a
                   href={n.href}
                   aria-current={pfad === n.href ? 'page' : undefined}
-                  class={'unter' in n && (pfad.startsWith('/gruppen') || pfad === n.href) ? 'eltern-aktiv' : undefined}
+                  class={n.unter && (pfad === n.href || n.unter.some((u) => pfad === u.href)) ? 'eltern-aktiv' : undefined}
                 >{n.label}</a>
-                {'unter' in n && (
+                {n.unter && (
                   <button class="unter-knopf" type="button" aria-expanded="false" aria-label={`Untermenü ${n.label} aufklappen`}>▾</button>
                 )}
-                {'unter' in n && n.unter && (
+                {n.unter && (
                   <ul class="untermenu">
                     {n.unter.map((u) => (
                       <li>
@@ -167,14 +175,9 @@ const strukturDaten = {
           </div>
         </div>
         <div class="fuss-links">
-          <a href="/termine">Termine</a>
-          <a href="/fotos-einreichen">Fotos einreichen</a>
-          <a href="/spenden">Spenden</a>
-          <a href={einstellungen.instagram}>Instagram</a>
-          <a href={einstellungen.facebook}>Facebook</a>
-          <a href="https://cloud.stamm-hubertus-siegen.de">Vereins-Cloud</a>
-          <a href="/impressum">Impressum</a>
-          <a href="/datenschutz">Datenschutz</a>
+          {fusszeile.map((f) => (
+            <a href={f.href}>{f.label}</a>
+          ))}
         </div>
         <p class="fuss-bund">
           <span>Mitglied im</span>

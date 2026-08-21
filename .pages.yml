@@ -220,7 +220,7 @@ content:
     path: src/data/navigation.json
     fields:
       - name: eintraege
-        label: Menüpunkte (Reihenfolge per Ziehen ändern)
+        label: Menüpunkte oben (Reihenfolge per Ziehen ändern)
         type: object
         list: true
         fields:
@@ -230,6 +230,35 @@ content:
             required: true
           - name: href
             label: Ziel (Seitenpfad, z. B. /termine)
+            type: string
+            required: true
+          - name: gruppenAutomatik
+            label: Gruppen automatisch als Untermenü anhängen
+            type: boolean
+          - name: unter
+            label: Eigene Unterpunkte (machen den Eintrag zum Aufklapp-Menü)
+            type: object
+            list: true
+            fields:
+              - name: label
+                label: Bezeichnung
+                type: string
+                required: true
+              - name: href
+                label: Ziel
+                type: string
+                required: true
+      - name: fusszeile
+        label: Links in der Fußleiste
+        type: object
+        list: true
+        fields:
+          - name: label
+            label: Bezeichnung
+            type: string
+            required: true
+          - name: href
+            label: Ziel (Seitenpfad oder https://…)
             type: string
             required: true
 
