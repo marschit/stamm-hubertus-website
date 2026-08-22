@@ -252,6 +252,9 @@ content:
       - name: teaserHeimText
         label: Kachel Stammesheim – Text
         type: text
+      - name: teaserHeimButton
+        label: Kachel Stammesheim – Button-Beschriftung
+        type: string
 
   - name: navigation
     label: Menü
