@@ -213,6 +213,46 @@ content:
             type: date
             required: true
 
+  - name: startseite
+    label: Startseite
+    description: Überschriften und Texte der Startseite
+    type: file
+    path: src/data/startseite.json
+    fields:
+      - name: heldTitelZeile1
+        label: Große Überschrift – Zeile 1 (weiß)
+        type: string
+      - name: heldTitelZeile2
+        label: Große Überschrift – Zeile 2 (gelb)
+        type: string
+      - name: heldText
+        label: Text unter der Überschrift
+        type: text
+      - name: karteLabel
+        label: Gelbe Karte – kleine Überschrift
+        type: string
+      - name: karteHinweis
+        label: Gelbe Karte – Hinweiszeile unten
+        type: string
+      - name: mitmachenTitel
+        label: Mitmachen-Abschnitt – Überschrift
+        type: string
+      - name: mitmachenAbsatz1
+        label: Mitmachen-Abschnitt – Absatz 1
+        type: text
+      - name: mitmachenAbsatz2
+        label: Mitmachen-Abschnitt – Absatz 2
+        type: text
+      - name: teaserTermineTitel
+        label: Kachel „Nächste Termine“ – Überschrift
+        type: string
+      - name: teaserHeimTitel
+        label: Kachel Stammesheim – Überschrift
+        type: string
+      - name: teaserHeimText
+        label: Kachel Stammesheim – Text
+        type: text
+
   - name: navigation
     label: Menü
     description: Die Menüleiste oben – Bezeichnungen, Reihenfolge und Einträge

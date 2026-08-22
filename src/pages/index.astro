@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import GruppenKarte from '../components/GruppenKarte.astro';
 import KohteKante from '../components/KohteKante.astro';
 import einstellungen from '../data/einstellungen.json';
+import start from '../data/startseite.json';
 import { alsIso, formatDatum } from '../lib/termine';
 import { ladeCloudTermine } from '../lib/nextcloud-termine';
 
@@ -30,21 +31,18 @@ const datumFormat = new Intl.DateTimeFormat('de-DE', { dateStyle: 'long' });
   <div class="held">
     <div class="wrap held-innen">
       <div class="held-text">
-        <h1>Abenteuer beginnt<br /><span class="gelb">vor der Haustür.</span></h1>
-        <p class="held-sub">
-          Wir sind die Pfadfinderinnen und Pfadfinder vom Stamm Hubertus in Siegen –
-          seit über 70 Jahren Lagerfeuer, Fahrten, Freundschaft und jede Menge draußen.
-        </p>
+        <h1>{start.heldTitelZeile1}<br /><span class="gelb">{start.heldTitelZeile2}</span></h1>
+        <p class="held-sub">{start.heldText}</p>
         <div class="held-aktionen">
           <a class="btn" href="/kontakt">Komm vorbei</a>
           <a class="btn btn--ghost" href="/gruppen">Unsere Gruppen</a>
         </div>
       </div>
       <div class="held-karte">
-        <span class="held-karte-label">Schnupperst du rein?</span>
+        <span class="held-karte-label">{start.karteLabel}</span>
         <strong>{einstellungen.treffzeit}</strong>
         <span>{einstellungen.adresse}</span>
-        <span class="held-karte-hinweis">Einfach vorbeikommen – ohne Anmeldung.</span>
+        <span class="held-karte-hinweis">{start.karteHinweis}</span>
       </div>
     </div>
     <KohteKante />
@@ -96,21 +94,11 @@ const datumFormat = new Intl.DateTimeFormat('de-DE', { dateStyle: 'long' });
   <section>
     <div class="wrap-text">
       <span class="eyebrow"><img src="/bdp/icon-karte.png" alt="">Mitmachen</span>
-      <h2>Pfadfinder in Siegen – für Kinder und Jugendliche ab 6 Jahren</h2>
+      <h2>{start.mitmachenTitel}</h2>
+      <p>{start.mitmachenAbsatz1}</p>
       <p>
-        Du suchst eine Jugendgruppe oder ein Freizeitangebot für dein Kind in
-        Siegen? Bei uns erleben Kinder und Jugendliche echte Abenteuer statt
-        Bildschirm: wöchentliche Gruppenstunden, Zeltlager, Fahrten und
-        Lagerfeuer – und dabei ganz nebenbei Selbstständigkeit, Teamgeist und
-        Verantwortung. Als Teil des Bundes der Pfadfinderinnen und Pfadfinder
-        (BdP) machen wir seit über 70 Jahren Jugendarbeit in Siegen.
-      </p>
-      <p>
-        Mitmachen ist unkompliziert: Komm einfach zu einem
-        <strong>Heimabend am Samstag von 15 bis 17 Uhr</strong> in unser
-        Stammesheim in der Fludersbach (Seilereiweg 8) und schnupper rein –
-        ohne Anmeldung, kostenlos und unverbindlich. Für jedes Alter gibt es
-        die <a href="/gruppen">passende Gruppe</a>: Wölflinge ab 6, Pfadis ab
+        {start.mitmachenAbsatz2} Für jedes Alter gibt es die
+        <a href="/gruppen">passende Gruppe</a>: Wölflinge ab 6, Pfadis ab
         11 und Ranger &amp; Rover ab 16 Jahren.
       </p>
     </div>
@@ -119,7 +107,7 @@ const datumFormat = new Intl.DateTimeFormat('de-DE', { dateStyle: 'long' });
   <section class="zweispalt-band">
     <div class="wrap zweispalt">
       <div class="teaser">
-        <h2><img class="h2-icon" src="/bdp/icon-kompass.png" alt="">Nächste Termine</h2>
+        <h2><img class="h2-icon" src="/bdp/icon-kompass.png" alt="">{start.teaserTermineTitel}</h2>
         {naechste.length > 0 ? (
           <ul class="termin-liste">
             {naechste.map((t) => (
@@ -135,11 +123,8 @@ const datumFormat = new Intl.DateTimeFormat('de-DE', { dateStyle: 'long' });
         <a class="btn btn--blau" href="/termine">Alle Termine &amp; Kalender-Abo</a>
       </div>
       <div class="teaser">
-        <h2><img class="h2-icon" src="/bdp/icon-kohte.png" alt="">Unser Heim</h2>
-        <p>
-          Unser Stammesheim in der Fludersbach können Pfadfinder- und andere
-          Gruppen für Wochenenden und Ferienfreizeiten mieten.
-        </p>
+        <h2><img class="h2-icon" src="/bdp/icon-kohte.png" alt="">{start.teaserHeimTitel}</h2>
+        <p>{start.teaserHeimText}</p>
         <a class="btn btn--blau" href="/heim">Heim ansehen</a>
       </div>
     </div>
