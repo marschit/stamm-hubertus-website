@@ -49,7 +49,10 @@ if (eintrag.id === 'kontakt' && eintrag.body) {
         </>
       ) : (
         <>
-          {eintrag.id === 'kontakt' && <KarteAnfahrt />}
+          {eintrag.id === 'foerderverein' && (
+        <img class="fv-emblem" src="/bdp/fv-logo.svg" alt="Logo des Fördervereins" width="150" height="122" />
+      )}
+      {eintrag.id === 'kontakt' && <KarteAnfahrt />}
           <div class="prose">
             <Content />
           </div>
@@ -63,6 +66,16 @@ if (eintrag.id === 'kontakt' && eintrag.body) {
 </Layout>
 
 <style is:global>
+  .seite-foerderverein .fv-emblem {
+    float: right;
+    width: clamp(110px, 18vw, 160px);
+    height: auto;
+    margin: 0 0 1rem 1.5rem;
+  }
+  @media (max-width: 480px) {
+    .seite-foerderverein .fv-emblem { width: 96px; margin-left: 1rem; }
+  }
+
   /* Pfadfinderregeln: nummerierte Listen als Regel-Karten */
   .seite-pfadfinderregeln .prose ol {
     list-style: none;
