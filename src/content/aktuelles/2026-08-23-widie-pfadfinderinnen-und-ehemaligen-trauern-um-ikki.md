@@ -1,5 +1,5 @@
 ---
-titel: Mitglieder und Ehemalige trauern um "Ikki" (Jürgen Tietze) - Ein Nachruf!
+titel: Mitglieder und Ehemalige trauern um "Ikki" (Jürgen Tietze) – Ein Nachruf!
 datum: 2026-06-26
 bild: /bilder/Traueranzeige Ikki.jpg
 ---
@@ -12,7 +12,7 @@ Du wuchst aus der Meute heraus, wurdest Jungpfadfinder, Pfadfinder und schließl
 Du, liebe Ille, hast mir erzählt, dass Ihr Euch so um die 70 Jahre gekannt habt. 70 Jahre, das ist weitlänger als die allermeisten von uns alt sind. Auch hier hatten die Pfadfinder ihre Hände im Spiel, denn Du warst im Pfadfinderinnenverband aktiv. Es kam, wie es gar nicht so unüblich bei den Pfadfindern ist, Ihr fandet zueinander und schlosst den Bund für‘s Leben. Deine Schwester Hildegard heiratete Eckhardt, der in unserer Stammes- und Landesverbandsgeschichte ebenfalls eine wichtige Rolle spielte. Auch weitere Familienmitglieder waren im Stamm Hubertus aktiv. Im Rückblick könnte man sagen, dass fast so eine Art Pfadfinderdynastie entstand. Und so verwundert es nicht, dass Eure Söhne Mark-Stephan und Kim-Oliver bei vielen besser bekannt sind als Happy und Mowgli.
 
 Anders als viele von uns, die es irgendwann in den Landesverband oder in Gremien auf Bundesebene zog und zieht, bliebst Du stets dem Stamm treu. Deine Berufung sahst Du in der direkten Arbeit mit den Kindern und Jugendlichen. Viele, viele Jahre hast Du Deine Frau Ille als Meutenführung unterstützt. Und auch hier hast Du unzählige Funken versprüht in der Hoffnung, dass diese in unseren Wölflingen und Pfadfindern zünden würden. Denn in Dir selbst loderte seit frühster Jugend das Feuer echter Begeisterung, Du branntest zeitlebens für die Idee der Pfadfinderei.   
-  
+
 Dein beruflicher Weg war kurvenreicher als der pfadfinderische. Du warst musikalisch, arbeitetest als Klavierstimmer und Klavierverkäufer in einem bekannten Siegener Musikhaus. Klavierstimmer, heute ein überaus gefragter Beruf, damals jedoch eine mehr als unsichere Zukunftsperspektive. Die Chance auf eine Neuorientierung ergab sich schließlich und aus Dir wurde ein Lehrer, ein Pädagoge. Das merkte man zuweilen sehr deutlich, sowohl im Guten als auch im weniger Guten. Wir Ehemaligen erinnern uns nur zu gut an die im ganzen Heim verteilten Klebezettel, unzählige davon klebten auf Schränken, Türen, Kisten und Kästen. Mal stand der Inhalt darauf, mal eine Bitte, mal eine Anweisung. Und auch das pädagogisch unpädagogische Mittel des Aussperrens wurde zeitweise zu unserem ständigen Begleiter. Küche und Materialraum wurden regelmäßig wegen inakzeptablen Zustandes zugeschlossen. Da passierte es auch schon mal, dass eine Fahrt, ein Lager oder sonstige Unternehmung anstand und wir nicht an unser Material kommen konnten. Dass jedes Handeln oder eben auch Nichthandeln Konsequenzen nach sich zieht, mussten wir so manches Mal sozusagen schmerzhaft lernen.
 
 Wer an Pfadfinder denkt, hat oft ein Bild von singenden Menschen, die sich rund um ein Lagerfeuer versammelt haben, vor Augen. Ja es stimmt, wir Pfadfinder singen gerne und oft, häufig des Abends in der Jurte im Feuerkreis. Schöner und stimmungsvoller ist es natürlich, wenn das Singen von Gitarrenspiel begleitet wird. Und so war es Dir eine Herzensangelegenheit, auch Deine musikalische Ader in die Stammesarbeit einfließen zu lassen und Generationen von Pfadfindern das Gitarrenspiel beizubringen. Du wachtest stets darüber, dass im Stamm ausreichend Gitarren zur Verfügung standen und hattest ein Auge auf das Auswechseln gerissener Saiten oder kleinere Reparaturen. Wenn wir es auch nie ausgesprochen haben, so glaube ich doch, dass wir es Dir mit vielen Teilnahmen an Singewettstreiten immer wieder gedankt haben.
@@ -31,5 +31,5 @@ es würde Dich stolz und glücklich machen zu sehen und zu erleben, wie viele Eh
 Dein Schaukelstuhl in Deinem Wohnzimmer in unserem Pfadfinderheim bleibt nun für immer leer. Wir danken Dir für Dein unermüdliches Engagement sowie Deine Geduld mit uns und verabschieden Dich mit einem letzten
 
 Gut Jagd, Gut Pfad, Seid wach und Allzeit bereit!  
-  
+
 *(Verfasst im Juli 2026 von Claudia Kiel im Namen der Mitglieder und Ehemaligen vom Stamm Hubertus Siegen und seinem Förderverein)*
