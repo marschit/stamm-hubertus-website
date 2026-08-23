@@ -1,7 +1,6 @@
 ---
 titel: Datenschutz
 ---
-
 Der Schutz deiner Daten ist uns wichtig. Diese Website kommt bewusst ohne
 Tracking, Analyse-Dienste und Werbe-Cookies aus.
 
@@ -13,7 +12,7 @@ Server-Logfiles. Diese Daten sind für den Betrieb der Website erforderlich
 (Art. 6 Abs. 1 lit. f DSGVO) und werden nicht mit anderen Datenquellen
 zusammengeführt.
 
-<!-- TODO: Hosting-Anbieter konkret benennen, sobald das Hosting feststeht -->
+
 
 ## Foto-Einreichung
 
@@ -28,7 +27,7 @@ jederzeit per E-Mail verlangen.
 
 ## Google Street View (nur nach Klick)
 
-Auf der Seite [Heim](/heim) bieten wir eine 360°-Ansicht über Google
+Auf der Seite [Stammesheim](/heim) bieten wir eine 360°-Ansicht über Google
 Street View an. Diese wird **erst nach deinem ausdrücklichen Klick**
 geladen; erst dann wird eine Verbindung zu Google (Google Ireland Ltd.)
 aufgebaut und dabei technisch bedingt deine IP-Adresse übertragen. Ohne
