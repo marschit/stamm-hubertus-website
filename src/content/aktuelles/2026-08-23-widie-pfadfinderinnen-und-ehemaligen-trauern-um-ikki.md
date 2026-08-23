@@ -1,5 +1,5 @@
 ---
-titel: Mitglieder und Ehemalige trauern um "Ikki". – Ein Nachruf!
+titel: Mitglieder und Ehemalige trauern um "Ikki" – ein Nachruf!
 datum: 2026-06-26
 bild: /bilder/Traueranzeige Ikki.jpg
 ---
