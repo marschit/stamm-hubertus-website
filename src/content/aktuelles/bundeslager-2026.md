@@ -1,13 +1,13 @@
 ---
-titel: Wir waren auf dem Bundeslager juBULAeum – wieder gemeinsam mit Stamm
-  Sakarya aus Istanbul!
+titel: Wir waren auf dem Bundeslager juBULAeum – gemeinsam mit dem Stamm Sakarya
+  aus Istanbul!
 datum: 2026-08-18
 bild: /bilder/bundeslager-2026-jurten.jpg
 ---
 Dieses Jahr war es wieder so weit: Der Stamm Hubertus war auf dem
 [Bundeslager des BdP](https://www.bundeslager.pfadfinden.de/) – dem
-**„juBULÄum“** zu 50 Jahren BdP, vom 30. Juli bis 9. August 2026 im Zentrum
-Pfadfinden in Immenhausen, zusammen mit rund 5.000 Pfadfinderinnen und
+**„juBULÄum“** zu 50 Jahren BdP, vom 30. Juli bis 9. August 2026 im Zentrum  
+Pfadfinden in Immenhausen, zusammen mit über 5.000 Pfadfinderinnen und  
 Pfadfindern aus aller Welt.
 
 Besonders schön: Wie schon beim Bundeslager 2022 waren wir auch diesmal
