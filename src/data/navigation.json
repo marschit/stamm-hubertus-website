@@ -54,24 +54,24 @@
   ],
   "fusszeile": [
     {
-      "label": "Termine",
-      "href": "/termine"
-    },
-    {
       "label": "Spenden",
       "href": "/spenden"
     },
     {
-      "label": "Instagram",
-      "href": "https://www.instagram.com/stamm_hubertus.siegen/"
+      "label": "Termine",
+      "href": "/termine"
+    },
+    {
+      "label": "Fotos einreichen",
+      "href": "/fotos-einreichen"
     },
     {
       "label": "Facebook",
       "href": "https://facebook.com/stammhubertus"
     },
     {
-      "label": "Fotos einreichen",
-      "href": "/fotos-einreichen"
+      "label": "Instagram",
+      "href": "https://www.instagram.com/stamm_hubertus.siegen/"
     },
     {
       "label": "Vereins-Cloud",
