@@ -234,6 +234,15 @@ content:
       - name: karteHinweis
         label: Gelbe Karte – Hinweiszeile unten
         type: string
+      - name: eyebrowGruppen
+        label: Kleine rote Zeile über „Unsere Gruppen“
+        type: string
+      - name: eyebrowAktuelles
+        label: Kleine rote Zeile über „Aktuelles“
+        type: string
+      - name: eyebrowMitmachen
+        label: Kleine rote Zeile über dem Mitmachen-Abschnitt
+        type: string
       - name: mitmachenTitel
         label: Mitmachen-Abschnitt – Überschrift
         type: string

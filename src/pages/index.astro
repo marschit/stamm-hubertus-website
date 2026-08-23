@@ -50,7 +50,7 @@ const datumFormat = new Intl.DateTimeFormat('de-DE', { dateStyle: 'long' });
 
   <section id="gruppen">
     <div class="wrap">
-      <span class="eyebrow"><img src="/bdp/icon-wald.png" alt="">Von Wölfling bis Gilde</span>
+      <span class="eyebrow"><img src="/bdp/icon-wald.png" alt="">{start.eyebrowGruppen}</span>
       <h2>Unsere Gruppen</h2>
       <div class="gruppen-raster">
         {gruppen.map((g) => (
@@ -75,7 +75,7 @@ const datumFormat = new Intl.DateTimeFormat('de-DE', { dateStyle: 'long' });
   {news.length > 0 && (
     <section>
       <div class="wrap">
-        <span class="eyebrow"><img src="/bdp/icon-feuer.png" alt="">Aus dem Stammesleben</span>
+        <span class="eyebrow"><img src="/bdp/icon-feuer.png" alt="">{start.eyebrowAktuelles}</span>
         <h2>Aktuelles</h2>
         <div class="news-raster">
           {news.map((n) => (
@@ -93,7 +93,7 @@ const datumFormat = new Intl.DateTimeFormat('de-DE', { dateStyle: 'long' });
 
   <section>
     <div class="wrap-text">
-      <span class="eyebrow"><img src="/bdp/icon-karte.png" alt="">Mitmachen</span>
+      <span class="eyebrow"><img src="/bdp/icon-karte.png" alt="">{start.eyebrowMitmachen}</span>
       <h2>{start.mitmachenTitel}</h2>
       <p>{start.mitmachenAbsatz1}</p>
       <p>
