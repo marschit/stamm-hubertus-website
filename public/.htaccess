@@ -1,9 +1,11 @@
 # Weiterleitungen der alten WordPress-URLs auf die neue Seitenstruktur
 RewriteEngine On
 
-# Immer HTTPS
+# Kanonische Domain + HTTPS in einem Schritt:
+# stamm-hubertus.de, www-Varianten und http leiten auf die Hauptdomain um
+RewriteCond %{HTTP_HOST} !^stamm-hubertus-siegen\.de$ [OR]
 RewriteCond %{HTTPS} !=on
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+RewriteRule ^(.*)$ https://stamm-hubertus-siegen.de/$1 [R=301,L]
 
 RewriteRule ^wir-ueber-uns/?$ /ueber-uns [R=301,L]
 RewriteRule ^wir-ueber-uns/pfadfindergeschichte/?$ /ueber-uns [R=301,L]
