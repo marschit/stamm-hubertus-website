@@ -41,3 +41,19 @@ ausgestreckt, und der Daumen liegt über dem kleinen Finger:
 
 Dazu sagen wir **„Gut Pfad!“** – den Gruß der Pfadfinderinnen und
 Pfadfinder.
+
+## Der Wolfsgruß
+
+![Der Wolfsgruß: Zeige- und Mittelfinger stehen wie Wolfsohren nach oben, der Daumen hält die beiden anderen Finger](/bdp/wolfsgruss.svg)
+
+Unsere Jüngsten haben einen eigenen Gruß: Beim **Wolfsgruß** stehen Zeige-
+und Mittelfinger der linken Hand gespreizt nach oben – wie die aufgestellten
+Ohren eines Wolfs. Der Daumen hält die beiden übrigen Finger.
+
+- Die **zwei Ohren** stehen für die beiden Wölflingsregeln: Rücksicht nehmen
+  und helfen, wo man kann.
+- Der **Daumen über den kleinen Fingern** heißt auch hier: Die Größeren
+  schützen die Kleineren.
+
+Wenn Wölflinge älter werden und in eine Sippe wechseln, wird aus dem
+Wolfsgruß der Pfadfindergruß mit drei Fingern.

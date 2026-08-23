@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 165">
+  <!-- Wölflingsgruß: Zeige- und Mittelfinger als Wolfsohren gespreizt,
+       Daumen hält Ring- und kleinen Finger -->
+  <g fill="#ffd208" stroke="#0e4278" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round">
+    <!-- Handfläche -->
+    <path d="M36,92 L94,92 L94,132 Q94,152 74,152 L56,152 Q36,152 36,132 Z"/>
+    <!-- linkes „Ohr“ (Zeigefinger), leicht nach außen geneigt -->
+    <path d="M44,94 L34,42 Q32,33 40,30 Q48,28 51,37 L64,92 Z"/>
+    <!-- rechtes „Ohr“ (Mittelfinger) -->
+    <path d="M70,92 L83,37 Q86,28 94,30 Q102,33 100,42 L90,94 Z"/>
+    <!-- eingeklappte Finger (Ring + klein) als Knöchelblock -->
+    <path d="M36,94 L36,78 Q36,70 44,70 L58,70 Q66,70 66,78 L66,94 Z"/>
+    <!-- Daumen quer darüber -->
+    <path d="M97,122 Q104,114 97,106 L58,84 Q50,80 46,87 Q42,94 50,98 L86,120 Q92,125 97,122 Z"/>
+  </g>
+</svg>

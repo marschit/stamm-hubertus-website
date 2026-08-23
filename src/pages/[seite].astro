@@ -66,6 +66,40 @@ if (eintrag.id === 'kontakt' && eintrag.body) {
 </Layout>
 
 <style is:global>
+  /* Partnerseite: Logos vor den Links – über das Link-Ziel zugeordnet,
+     damit die Reihenfolge im CMS frei änderbar bleibt. */
+  .seite-partner .prose ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.7rem;
+    margin: 1.2rem 0 2rem;
+  }
+  .seite-partner .prose ul li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--pfadiblau-hell);
+    border-radius: 6px;
+    padding: 0.9rem 1.2rem;
+    margin: 0;
+    font-weight: 700;
+  }
+  .seite-partner .prose ul li::before {
+    content: '';
+    flex: 0 0 46px;
+    height: 46px;
+    background: url('/bdp/klilie-neu.svg') center / contain no-repeat;
+  }
+  .seite-partner .prose ul li:has(a[href*="foerderverein"])::before {
+    background-image: url('/bdp/fv-logo.svg');
+  }
+  .seite-partner .prose ul li:has(a[href*="stadtjugendring"])::before {
+    background-image: url('/bilder/partner-sjr.png');
+  }
+  .seite-partner .prose ul li a { text-decoration: none; }
+  .seite-partner .prose ul li a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
   .seite-foerderverein .fv-emblem {
     float: right;
     width: clamp(110px, 18vw, 160px);
