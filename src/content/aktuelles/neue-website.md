@@ -1,5 +1,5 @@
 ---
-titel: Unsere neue Website ist da!
+titel: Unsere neue Website ist online! Schau dich gerne um!
 datum: 2026-08-18
 ---
 Willkommen auf der neuen Website des Stamm Hubertus Siegen! Hier findest du
