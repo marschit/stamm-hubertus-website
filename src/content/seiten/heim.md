@@ -2,7 +2,7 @@
 titel: Stammesheim
 untertitel: Unser Zuhause in der Fludersbach
 ---
-Unser Stammesheim liegt im Ortsteil *Fludersbach*, etwas außerhalb des Siegener  
+Unser Stammesheim liegt im Ortsteil Fludersbach, etwas außerhalb des Siegener  
 Zentrums, und kann von **Pfadfinder- und anderen Gruppen** gemietet werden –  
 in den Schulferien von Nordrhein-Westfalen und an Wochenenden.  
 Als Partylocation vermieten wir das Heim ausdrücklich nicht!
@@ -16,7 +16,8 @@ Als Partylocation vermieten wir das Heim ausdrücklich nicht!
 - 4 weitere flexibel nutzbare Räume
 - Werkraum
 - WLAN
-- Bollerwagen, Tische und Bänke ...
+- 2 Bollerwagen 
+- Mobile Tische und Bänke
 
 ## Lage & Anreise
 
