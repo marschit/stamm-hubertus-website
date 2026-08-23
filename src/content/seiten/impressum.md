@@ -20,12 +20,6 @@ Registernummer: VR 2549
 **Inhaltlich verantwortlich gemäß § 18 Abs. 2 MStV:**
 Marco Schmidt, Seilereiweg 8, 57074 Siegen
 
-## Bildnachweis
-
-Zeichnung des Wölflingsgrußes: DPSG Plankstadt, Verwendung mit freundlicher
-Genehmigung. Zeichnung des Pfadfindergrußes: Wikimedia Commons (gemeinfrei).
-Logos und Ikons des BdP: Bund der Pfadfinderinnen und Pfadfinder e. V.
-
 ## Verbraucherstreitbeilegung
 
 Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren
