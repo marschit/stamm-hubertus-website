@@ -66,6 +66,10 @@
       "href": "/fotos-einreichen"
     },
     {
+      "label": "Partner",
+      "href": "/partner"
+    },
+    {
       "label": "Facebook",
       "href": "https://facebook.com/stammhubertus"
     },
@@ -76,10 +80,6 @@
     {
       "label": "Vereins-Cloud",
       "href": "https://cloud.stamm-hubertus-siegen.de"
-    },
-    {
-      "label": "Partner",
-      "href": "/partner"
     },
     {
       "label": "Impressum",
