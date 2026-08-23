@@ -19,8 +19,11 @@ jeder wächst an ihnen im eigenen Tempo.
 
 ## Die Wölflingsregeln
 
+![Der Wolfskopf – das Abzeichen der Wölflinge](/bdp/wolfskopf.svg)
+
 Für unsere Jüngsten in der [Meute Schwarzkittel](/gruppen/meute-schwarzkittel)
-gibt es zwei einfache Regeln, die alles Wichtige zusammenfassen:
+gibt es zwei einfache Regeln, die alles Wichtige zusammenfassen – sie stehen
+hinter dem Wolfskopf, den jeder Wölfling auf der Kluft trägt:
 
 1. Ein Wölfling nimmt Rücksicht auf Andere.
 2. Ein Wölfling hilft, wo er kann.

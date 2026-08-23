@@ -134,6 +134,12 @@ if (eintrag.id === 'kontakt' && eintrag.body) {
     max-width: 130px;
     margin: 0.5rem 0 1rem;
   }
+  /* Wolfskopf steht neben den Wölflingsregeln, nicht darüber */
+  .seite-pfadfinderregeln .prose img[src*="wolfskopf"] {
+    float: right;
+    max-width: 110px;
+    margin: 0 0 1rem 1.5rem;
+  }
   .seite-pfadfinderregeln .prose ol li::before {
     content: counter(regel);
     position: absolute;
