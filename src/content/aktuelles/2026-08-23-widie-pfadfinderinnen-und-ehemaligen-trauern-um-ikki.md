@@ -3,8 +3,7 @@ titel: Mitglieder und Ehemalige trauern um "Ikki" - Ein Nachruf!
 datum: 2026-06-26
 bild: /bilder/Traueranzeige Ikki.jpg
 ---
-Ein Nachruf!
-
+**Ein Nachruf!**  
   
 Es war Freitag, der 31. März 1939 als in Siegen ein kleiner Junge geboren wurde, seine Eltern gaben ihm den Namen Jürgen. Einige Jahre später, im Jahr 1947, wurde in einer Waldhütte in Deuz der Stamm Hubertus Siegen gegründet, da war Jürgen gerade einmal 8 Jahre alt. Ich weiß nicht genau, wie Jürgen zu den Pfadfindern des Stammes Hubertus fand, fest steht jedenfalls, dass im Alter von 10 Jahren aus dem Kind Jürgen der Wölfling Ikki geworden war und dies einen Funken in ihmentzündete. Und dieser Funken sollte seinen Lebensweg entscheidend beeinflussen.
 
