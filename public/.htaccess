@@ -1,4 +1,7 @@
-# Weiterleitungen der alten WordPress-URLs auf die neue Seitenstruktur
+# Weiterleitungen alter URLs auf die neue Seitenstruktur
+# Kein Content-Negotiation (sonst z. B. 300er bei /termine.html)
+Options -MultiViews
+
 RewriteEngine On
 
 # Kanonische Domain + HTTPS in einem Schritt:
@@ -7,6 +10,19 @@ RewriteCond %{HTTP_HOST} !^stamm-hubertus-siegen\.de$ [OR]
 RewriteCond %{HTTPS} !=on
 RewriteRule ^(.*)$ https://stamm-hubertus-siegen.de/$1 [R=301,L]
 
+# Alte Zeta-Producer-Seite (bis 2016, unter stamm-hubertus.de)
+RewriteRule ^index\.html$ / [R=301,L]
+RewriteRule ^termine\.html$ /termine [R=301,L]
+RewriteRule ^wir-ueber-uns\.html$ /ueber-uns [R=301,L]
+RewriteRule ^kontakt\.html$ /kontakt [R=301,L]
+RewriteRule ^mitmachen\.html$ /kontakt [R=301,L]
+RewriteRule ^online-anmeldung\.html$ /kontakt [R=301,L]
+RewriteRule ^bilder\.html$ /fotos [R=301,L]
+RewriteRule ^news\.html$ /aktuelles [R=301,L]
+RewriteRule ^partnerstamm\.html$ /ueber-uns [R=301,L]
+RewriteRule ^gaestebuch\.php$ /kontakt [R=301,L]
+
+# Alte WordPress-URLs
 RewriteRule ^wir-ueber-uns/?$ /ueber-uns [R=301,L]
 RewriteRule ^wir-ueber-uns/pfadfindergeschichte/?$ /ueber-uns [R=301,L]
 RewriteRule ^pfadfindergeschichte/?$ /ueber-uns [R=301,L]
