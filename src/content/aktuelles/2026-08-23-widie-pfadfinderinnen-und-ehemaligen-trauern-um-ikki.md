@@ -1,5 +1,5 @@
 ---
-titel: Mitglieder und Ehemalige trauern um "Ikki" (Jürgen Tietze) -  Ein Nachruf!
+titel: Mitglieder und Ehemalige trauern um "Ikki" (Jürgen Tietze) - Ein Nachruf!
 datum: 2026-06-26
 bild: /bilder/Traueranzeige Ikki.jpg
 ---
