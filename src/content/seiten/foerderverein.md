@@ -6,7 +6,7 @@ Gegründet von Mitgliedern, Eltern und Freunden des Stammes im Jahr 1977 unterst
 
 ## Unser Verein
 
-Der Förderverein st ein eingetragener, gemeinnütziger Verein.
+Der Förderverein ist ein eingetragener, gemeinnütziger Verein.
 
 ## Mitglied werden!
 
