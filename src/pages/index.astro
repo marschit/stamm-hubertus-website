@@ -4,7 +4,25 @@ import Layout from '../layouts/Layout.astro';
 import GruppenKarte from '../components/GruppenKarte.astro';
 import KohteKante from '../components/KohteKante.astro';
 import einstellungen from '../data/einstellungen.json';
-import start from '../data/startseite.json';
+import startDaten from '../data/startseite.json';
+
+// Fallbacks: Wird ein Feld im CMS geleert oder fällt bei einer Änderung
+// weg, greift der Standardtext – die Seite bleibt vollständig.
+const standard = {
+  heldTitelZeile1: 'Abenteuer beginnt',
+  heldTitelZeile2: 'vor der Haustür.',
+  karteLabel: 'Schnupperst du rein?',
+  eyebrowGruppen: 'Von Wölfling bis Ranger & Rover',
+  eyebrowAktuelles: 'Aus dem Stammesleben',
+  eyebrowMitmachen: 'Mitmachen',
+  teaserTermineTitel: 'Nächste Termine',
+  teaserHeimTitel: 'Stammesheim',
+  teaserHeimButton: 'Stammesheim ansehen',
+};
+const start: Record<string, string> = { ...standard };
+for (const [schluessel, wert] of Object.entries(startDaten)) {
+  if (typeof wert === 'string' && wert.trim() !== '') start[schluessel] = wert;
+}
 import { alsIso, formatDatum } from '../lib/termine';
 import { ladeCloudTermine } from '../lib/nextcloud-termine';
 
