@@ -15,9 +15,8 @@ Als Partylocation vermieten wir das Heim ausdrücklich nicht!
 - Konferenzraum und Musikraum
 - 4 weitere flexibel nutzbare Räume
 - Werkraum
-- WLAN
 - 2 Bollerwagen 
-- Mobile Tische und Bänke
+- WLAN
 
 ## Lage & Anreise
 
