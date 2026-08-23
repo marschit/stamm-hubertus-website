@@ -6,9 +6,8 @@ Wir freuen uns über die Unterstützung unserer Jugendarbeit durch unsere Partne
 
 **Vielen Dank für den Einsatz und das Engagement!**  
 
-
-- [Verein zur Betreuung der Pfadfinder (BdP) im Siegerland e. V. – unser Förderverein](/foerderverein)
 - [Bund der Pfadfinder*innen e. V. (BdP)](https://www.pfadfinden.de)
 - [BdP Landesverband Nordrhein-Westfalen](https://bdpnrw.de/)
+- [Verein zur Betreuung der Pfadfinder (BdP) im Siegerland e. V. – unser Förderverein](/foerderverein)
 - [Stadtjugendring Siegen e. V.](https://www.stadtjugendring-siegen.de/)
 
