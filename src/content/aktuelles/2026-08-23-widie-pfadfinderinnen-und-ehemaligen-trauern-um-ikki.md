@@ -25,11 +25,11 @@ Du warst ein bescheidener Mensch, Du brauchtest kein direktes Lob, auch wenn Du 
 
 Der Lebenskreis unseres langjährigen Weggefährten und Ehrenvorsitzenden hat sich geschlossen. Ikki hat jahrzehntelang die Geschicke unseres Stammes gelenkt, hatte stets das Wohl unseres Stammes im Blick und war ein Streiter für die Idee der Pfadfinderei. Der Funke, der in dem kleinen Wölfling Ikki entzündet wurde, der jahrzehntelang in ihm brannte, der weitere Funken versprühte und im Laufe der Zeit hundertfach geteilt wurde, dieser Funken ist nun für immer erloschen.Wir sind sehr traurig und in Gedanken bei seiner Familie. Wir werden Ikki stets ein ehrendes Andenken bewahren.
 
-Lieber Ikki,  
+***Lieber Ikki,***  
 es würde Dich stolz und glücklich machen zu sehen und zu erleben, wie viele Ehemalige sich in den heutigen schwierigen Zeiten für den Stamm so überaus engagiert einbringen, das, was sie selbst erleben durften, weitergeben möchten und alles daran setzen, für unsere Wölflinge und Pfadfinder Lager und Fahrten möglich zu machen. Dein Funke mag erloschen sein, aber Du hast die Fackel nur weitergegeben, die Flamme der Pfadfinderei brennt in vielen, vielen von uns weiter.
 
 Dein Schaukelstuhl in Deinem Wohnzimmer in unserem Pfadfinderheim bleibt nun für immer leer. Wir danken Dir für Dein unermüdliches Engagement sowie Deine Geduld mit uns und verabschieden Dich mit einem letzten
 
-Gut Jagd, Gut Pfad, Seid wach und Allzeit bereit!  
+***Gut Jagd, Gut Pfad, Seid wach und Allzeit bereit!***  
 
 *(Verfasst im Juli 2026 von Claudia Kiel stellvertretend für die Mitglieder und Ehemaligen vom Stamm Hubertus Siegen und seinem Förderverein)*
