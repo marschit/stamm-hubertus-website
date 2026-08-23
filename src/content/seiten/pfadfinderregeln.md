@@ -2,9 +2,9 @@
 titel: Unsere Pfadfinderregeln
 untertitel: Wonach wir handeln wollen
 ---
-Die Pfadfinderregeln des Bundes der Pfadfinderinnen und Pfadfinder (BdP)
-beschreiben, wie wir miteinander und mit unserer Umwelt umgehen wollen.
-Sie sind kein Gesetz, sondern ein Versprechen an uns selbst – jede und
+Die Pfadfinderregeln des Bundes der Pfadfinder*innen e.V. (BdP)  
+beschreiben, wie wir miteinander und mit unserer Umwelt umgehen wollen.  
+Sie sind kein Gesetz, sondern ein Versprechen an uns selbst – jede und  
 jeder wächst an ihnen im eigenen Tempo.
 
 1. Ich will hilfsbereit und rücksichtsvoll sein.
@@ -37,10 +37,10 @@ linken Hand – der Hand, die näher am Herzen ist. Dabei sind drei Finger
 ausgestreckt, und der Daumen liegt über dem kleinen Finger:
 
 - Die **drei gestreckten Finger** erinnern an die Grundgedanken des
-  Pfadfindens: Verantwortung für sich selbst, für die Gemeinschaft und
-  für die Umwelt.
+Pfadfindens: Verantwortung für sich selbst, für die Gemeinschaft und
+für die Umwelt.
 - Der **Daumen über dem kleinen Finger** bedeutet: Die Größeren schützen
-  die Kleineren.
+die Kleineren.
 
 Dazu sagen wir **„Gut Pfad!“** – den Gruß der Pfadfinderinnen und
 Pfadfinder.
@@ -54,9 +54,9 @@ und Mittelfinger der linken Hand gespreizt nach oben – wie die aufgestellten
 Ohren eines Wolfs. Der Daumen hält die beiden übrigen Finger.
 
 - Die **zwei Ohren** stehen für die beiden Wölflingsregeln: Rücksicht nehmen
-  und helfen, wo man kann.
+und helfen, wo man kann.
 - Der **Daumen über den kleinen Fingern** heißt auch hier: Die Größeren
-  schützen die Kleineren.
+schützen die Kleineren.
 
 Wenn Wölflinge älter werden und in eine Sippe wechseln, wird aus dem
 Wolfsgruß der Pfadfindergruß mit drei Fingern.
