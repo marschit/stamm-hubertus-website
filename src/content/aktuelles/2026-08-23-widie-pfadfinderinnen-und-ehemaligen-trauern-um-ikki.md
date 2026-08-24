@@ -32,4 +32,4 @@ Dein Schaukelstuhl in Deinem Wohnzimmer in unserem Pfadfinderheim bleibt nun fü
 
 ***Gut Jagd, Gut Pfad, Seid wach und Allzeit bereit!***  
 
-*(Verfasst im Juli 2026 von Claudia Kiel (1. Vorsitzende im Förderverein) - stellvertretend für die Mitglieder und Ehemaligen vom Stamm Hubertus Siegen und seinem Förderverein)*
+*(Verfasst im Juli 2026 von Claudia Kiel (1. Vorsitzende des Fördervereins) – stellvertretend für die Mitglieder und Ehemaligen vom Stamm Hubertus Siegen und seinem Förderverein)*
