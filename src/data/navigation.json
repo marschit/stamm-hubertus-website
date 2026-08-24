@@ -58,16 +58,16 @@
       "href": "/spenden"
     },
     {
+      "label": "Partner",
+      "href": "/partner"
+    },
+    {
       "label": "Termine",
       "href": "/termine"
     },
     {
       "label": "Fotos einreichen",
       "href": "/fotos-einreichen"
-    },
-    {
-      "label": "Partner",
-      "href": "/partner"
     },
     {
       "label": "Vereins-Cloud",
