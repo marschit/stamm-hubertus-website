@@ -1,0 +1,105 @@
+---
+// Anmeldung für den Vereinsnewsletter „Durchblick“.
+// Das Formular sendet direkt an unseren eigenen Listmonk-Server – erst beim
+// Absenden, nicht beim Laden der Seite. Dadurch entsteht beim bloßen Besuch
+// keine Verbindung nach außen und es sind keine Cookies nötig.
+const LISTE = '032eb640-3645-49e4-93e3-112cc126fc0b';
+const ZIEL = 'https://durchblick.stamm-hubertus-siegen.de/subscription/form';
+---
+
+<section class="brief">
+  <div class="wrap brief-innen">
+    <div class="brief-text">
+      <span class="eyebrow"><img src="/bdp/icon-karte.png" alt="">Newsletter</span>
+      <h2>Durchblick</h2>
+      <p>
+        Ein paar Mal im Jahr schreiben wir auf, was im Stamm los war und was
+        ansteht: Lager, Fahrten, Aktionen und Termine zum Vormerken.
+      </p>
+    </div>
+
+    <form class="brief-form" method="post" action={ZIEL}>
+      {/* Bot-Falle: bleibt für Menschen unsichtbar und muss leer bleiben */}
+      <input type="text" name="nonce" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <input type="hidden" name="l" value={LISTE} />
+
+      <label for="brief-name">Name <span>(freiwillig)</span></label>
+      <input type="text" id="brief-name" name="name" autocomplete="name" />
+
+      <label for="brief-mail">E-Mail-Adresse</label>
+      <input type="email" id="brief-mail" name="email" required autocomplete="email" />
+
+      <button type="submit" class="btn btn--blau">Durchblick abonnieren</button>
+
+      <p class="brief-hinweis">
+        Du bekommst eine E-Mail mit einem Bestätigungslink – erst danach bist du
+        dabei. Abmelden kannst du dich jederzeit mit einem Klick am Ende jeder
+        Ausgabe. Mehr dazu in unserer <a href="/datenschutz">Datenschutzerklärung</a>.
+      </p>
+    </form>
+  </div>
+</section>
+
+<style>
+  .brief {
+    background: var(--woelflingsgelb);
+    color: var(--pfadiblau);
+  }
+  .brief-innen {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    gap: 2rem 3.5rem;
+    align-items: center;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  .brief h2 { color: var(--pfadiblau); }
+  .brief .eyebrow { color: var(--rr-rot); }
+  .brief-text p { max-width: 32rem; }
+
+  .brief-form { display: flex; flex-direction: column; gap: 0.35rem; max-width: 26rem; }
+  .brief-form label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .brief-form label span { font-weight: 400; text-transform: none; letter-spacing: 0; opacity: 0.7; }
+  .brief-form input[type='text'],
+  .brief-form input[type='email'] {
+    font: inherit;
+    padding: 0.6rem 0.75rem;
+    border: 2px solid rgb(14 66 120 / 0.25);
+    border-radius: 3px;
+    background: var(--papier);
+    color: var(--ink);
+    margin-bottom: 0.7rem;
+  }
+  .brief-form input:focus-visible {
+    outline: none;
+    border-color: var(--pfadiblau);
+  }
+  /* Bot-Falle unsichtbar, aber nicht display:none – Bots füllen sie trotzdem */
+  .brief-form input[name='nonce'] {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+  /* .btn ist für Links gemacht – das braucht ein <button> zusätzlich */
+  .brief-form button {
+    margin-top: 0.3rem;
+    align-self: flex-start;
+    font-family: inherit;
+    border: none;
+    cursor: pointer;
+  }
+  .brief-hinweis {
+    margin: 0.9rem 0 0;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: rgb(14 66 120 / 0.8);
+  }
+  .brief-hinweis a { color: var(--pfadiblau); }
+</style>

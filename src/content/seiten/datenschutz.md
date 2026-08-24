@@ -54,6 +54,29 @@ Nachrichteninhalte übertragen. Nachrichten aus dem
 Kontaktformular werden direkt per E-Mail an uns zugestellt und nicht auf
 dem Webserver gespeichert. Eine Weitergabe an Dritte findet nicht statt.
 
+## Newsletter „Durchblick“
+
+Für unseren Newsletter verarbeiten wir deine E-Mail-Adresse und – falls du
+ihn angibst – deinen Namen. Rechtsgrundlage ist deine Einwilligung
+(Art. 6 Abs. 1 lit. a DSGVO).
+
+Die Anmeldung erfolgt im Verfahren der doppelten Bestätigung: Nach dem
+Absenden des Formulars erhältst du eine E-Mail mit einem Bestätigungslink.
+Erst wenn du diesen anklickst, nehmen wir dich in den Verteiler auf. Zum
+Nachweis der Einwilligung speichern wir Zeitpunkt und IP-Adresse von
+Anmeldung und Bestätigung. Bestätigst du nicht, wird die Adresse nach
+kurzer Zeit wieder gelöscht.
+
+Den Versand betreiben wir mit der freien Software *Listmonk* auf einem
+eigenen Server in Deutschland. Deine Adresse wird also nicht an einen
+Newsletter-Dienstleister weitergegeben. Wir messen weder, ob du eine
+Ausgabe öffnest, noch ob du einen Link darin anklickst – es sind keine
+Zählpixel enthalten.
+
+Du kannst dich jederzeit abmelden, entweder über den Link am Ende jeder
+Ausgabe oder formlos per E-Mail an uns. Nach der Abmeldung löschen wir
+deine Adresse aus dem Verteiler.
+
 ## Deine Rechte
 
 Du hast das Recht auf Auskunft, Berichtigung und Löschung deiner
