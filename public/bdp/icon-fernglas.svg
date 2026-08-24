@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 200" width="240" height="200">
+  <g fill="none" stroke="#0e4278" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Okulare oben -->
+    <rect x="44" y="24" width="42" height="26" rx="11"/>
+    <rect x="154" y="24" width="42" height="26" rx="11"/>
+    <!-- Körper: unten offen, geht in das Objektiv über -->
+    <path d="M38 112 v-52 q0-10 10-10 h34 q10 0 10 10 v52"/>
+    <path d="M148 112 v-52 q0-10 10-10 h34 q10 0 10 10 v52"/>
+    <!-- Brücke -->
+    <path d="M92 72 h56"/>
+    <path d="M92 94 h56"/>
+    <!-- Objektive -->
+    <circle cx="65" cy="136" r="38"/>
+    <circle cx="175" cy="136" r="38"/>
+    <circle cx="65" cy="136" r="16"/>
+    <circle cx="175" cy="136" r="16"/>
+  </g>
+</svg>
