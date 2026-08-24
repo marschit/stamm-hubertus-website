@@ -341,6 +341,16 @@ content:
       - name: facebook
         label: Facebook-Link
         type: string
+        description: Leer lassen blendet das Symbol in der Fußzeile aus.
       - name: instagram
         label: Instagram-Link
         type: string
+        description: Leer lassen blendet das Symbol in der Fußzeile aus.
+      - name: bluesky
+        label: Bluesky-Link
+        type: string
+        description: Leer lassen blendet das Symbol in der Fußzeile aus.
+      - name: mastodon
+        label: Mastodon-Link
+        type: string
+        description: Leer lassen blendet das Symbol in der Fußzeile aus.

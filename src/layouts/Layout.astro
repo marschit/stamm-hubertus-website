@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import '../styles/global.css';
 import einstellungen from '../data/einstellungen.json';
 import navigation from '../data/navigation.json';
+import SocialLinks from '../components/SocialLinks.astro';
 
 interface Props {
   titel?: string;
@@ -67,7 +68,12 @@ const strukturDaten = {
     geo: { '@type': 'GeoCoordinates', latitude: 50.8639197, longitude: 8.0463747 },
   },
   areaServed: 'Siegen und Siegen-Wittgenstein',
-  sameAs: [einstellungen.instagram, einstellungen.facebook],
+  sameAs: [
+    einstellungen.facebook,
+    einstellungen.instagram,
+    einstellungen.bluesky,
+    einstellungen.mastodon,
+  ].filter(Boolean),
   memberOf: {
     '@type': 'Organization',
     name: 'Bund der Pfadfinderinnen und Pfadfinder e.V.',
@@ -179,6 +185,7 @@ const strukturDaten = {
             <a href={f.href}>{f.label}</a>
           ))}
         </div>
+        <SocialLinks titel="Folgt uns" variante="hell" />
         <p class="fuss-bund">
           <span>Mitglied im</span>
           <img src="/bdp/bundeszeichen-negativ.svg" alt="Bund der Pfadfinder*innen" height="38" />
