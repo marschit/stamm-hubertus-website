@@ -3,19 +3,32 @@
 // Das Formular sendet direkt an unseren eigenen Listmonk-Server – erst beim
 // Absenden, nicht beim Laden der Seite. Dadurch entsteht beim bloßen Besuch
 // keine Verbindung nach außen und es sind keine Cookies nötig.
+import startDaten from '../data/startseite.json';
+
 const LISTE = '032eb640-3645-49e4-93e3-112cc126fc0b';
 const ZIEL = 'https://durchblick.stamm-hubertus-siegen.de/subscription/form';
+
+// Texte kommen aus dem CMS (startseite.json). Wird ein Feld dort geleert oder
+// fällt weg, greift der Standardtext – der Block bleibt vollständig.
+const standard = {
+  newsletterEyebrow: 'Newsletter',
+  newsletterTitel: 'Durchblick',
+  newsletterText:
+    'Wir bauen gerade einen neuen Newsletter-Verteiler auf und freuen uns über jede Anmeldung. Weitere Neuigkeiten folgen in Kürze.',
+  newsletterButton: 'Durchblick abonnieren',
+};
+const text: Record<string, string> = { ...standard };
+for (const [schluessel, wert] of Object.entries(startDaten)) {
+  if (typeof wert === 'string' && wert.trim() !== '') text[schluessel] = wert;
+}
 ---
 
 <section class="brief">
   <div class="wrap brief-innen">
     <div class="brief-text">
-      <span class="eyebrow"><img src="/bdp/icon-fernglas.png" alt="">Newsletter</span>
-      <h2>Durchblick</h2>
-      <p>
-        Ein paar Mal im Jahr schreiben wir auf, was im Stamm los war und was
-        ansteht: Lager, Fahrten, Aktionen und Termine zum Vormerken.
-      </p>
+      <span class="eyebrow"><img src="/bdp/icon-fernglas.png" alt="">{text.newsletterEyebrow}</span>
+      <h2>{text.newsletterTitel}</h2>
+      <p>{text.newsletterText}</p>
     </div>
 
     <form class="brief-form" method="post" action={ZIEL}>
@@ -29,7 +42,7 @@ const ZIEL = 'https://durchblick.stamm-hubertus-siegen.de/subscription/form';
       <label for="brief-mail">E-Mail-Adresse</label>
       <input type="email" id="brief-mail" name="email" required autocomplete="email" />
 
-      <button type="submit" class="btn btn--blau">Durchblick abonnieren</button>
+      <button type="submit" class="btn btn--blau">{text.newsletterButton}</button>
 
       <p class="brief-hinweis">
         Du bekommst eine E-Mail mit einem Bestätigungslink – erst danach bist du

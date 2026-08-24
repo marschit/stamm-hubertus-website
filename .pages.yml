@@ -266,6 +266,19 @@ content:
       - name: teaserHeimButton
         label: Kachel Stammesheim – Button-Beschriftung
         type: string
+      - name: newsletterEyebrow
+        label: Newsletter – kleine Überschrift
+        type: string
+      - name: newsletterTitel
+        label: Newsletter – Titel
+        type: string
+      - name: newsletterText
+        label: Newsletter – Text
+        type: text
+        description: Steht im gelben Anmeldeblock am Ende der Startseite.
+      - name: newsletterButton
+        label: Newsletter – Button-Beschriftung
+        type: string
 
   - name: navigation
     label: Menü
