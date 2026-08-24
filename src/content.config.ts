@@ -34,7 +34,15 @@ const termine = defineCollection({
     zeit: z.coerce.string().optional(),
     ort: z.string().optional(),
     kategorie: z
-      .enum(['stamm', 'meute', 'sippen', 'gilde', 'foerderverein'])
+      .enum([
+        'stamm',
+        'meute',
+        'sippen',
+        'gilde',
+        'foerderverein',
+        'heimbelegung',
+        'anhaenger',
+      ])
       .default('stamm'),
   }),
 });

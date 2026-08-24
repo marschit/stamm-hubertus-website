@@ -72,9 +72,13 @@ content:
             - value: sippen
               label: Sippen
             - value: gilde
-              label: Gilde
+              label: Kreis
             - value: foerderverein
               label: Förderverein
+            - value: heimbelegung
+              label: Heim belegt (Vermietung)
+            - value: anhaenger
+              label: Anhänger vermietet
       - name: body
         label: Beschreibung (optional)
         type: rich-text

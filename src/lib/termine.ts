@@ -2,8 +2,12 @@ export const KATEGORIEN = {
   stamm: { label: 'Ganzer Stamm', farbe: '#0e4278', hell: false },
   meute: { label: 'Meute', farbe: '#ffd208', hell: true },
   sippen: { label: 'Sippen', farbe: '#2f6b3c', hell: false },
-  gilde: { label: 'Gilde', farbe: '#971b2f', hell: false },
+  // Schlüssel bleibt 'gilde', damit bestehende Termine und der Feed
+  // /termine-gilde.ics weiter funktionieren – nur die Beschriftung ändert sich.
+  gilde: { label: 'Kreis', farbe: '#971b2f', hell: false },
   foerderverein: { label: 'Förderverein', farbe: '#5b6b7a', hell: false },
+  heimbelegung: { label: 'Heim belegt', farbe: '#7a5230', hell: false },
+  anhaenger: { label: 'Anhänger', farbe: '#2d6a7a', hell: false },
   lvnrw: { label: 'BdP NRW', farbe: '#c75b12', hell: false },
 } as const;
 
