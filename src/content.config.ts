@@ -40,8 +40,7 @@ const termine = defineCollection({
         'sippen',
         'gilde',
         'foerderverein',
-        'heimbelegung',
-        'anhaenger',
+        'vermietung',
       ])
       .default('stamm'),
   }),

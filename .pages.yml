@@ -75,10 +75,8 @@ content:
               label: Kreis
             - value: foerderverein
               label: Förderverein
-            - value: heimbelegung
-              label: Heim belegt (Vermietung)
-            - value: anhaenger
-              label: Anhänger vermietet
+            - value: vermietung
+              label: Vermietung (Stammesheim oder Anhänger)
       - name: body
         label: Beschreibung (optional)
         type: rich-text

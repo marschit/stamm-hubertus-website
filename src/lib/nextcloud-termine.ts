@@ -23,6 +23,7 @@ function kategorieAusText(text: string | undefined): Kategorie {
   if (t.includes('sippe')) return 'sippen';
   if (t.includes('gilde') || t.includes('r/r') || t.includes('ranger')) return 'gilde';
   if (t.includes('förder') || t.includes('foerder')) return 'foerderverein';
+  if (t.includes('vermiet') || t.includes('anhänger') || t.includes('anhaenger')) return 'vermietung';
   return 'stamm';
 }
 
@@ -120,7 +121,14 @@ export function parseKalender(ics: string): CloudTermin[] {
 }
 
 /** Ein Kalender je Website-Kategorie: termine-stamm, termine-meute, … */
-const KALENDER: Kategorie[] = ['stamm', 'meute', 'sippen', 'gilde', 'foerderverein'];
+const KALENDER: Kategorie[] = [
+  'stamm',
+  'meute',
+  'sippen',
+  'gilde', // heißt in der Anzeige „Kreis“
+  'foerderverein',
+  'vermietung',
+];
 
 /** Öffentlicher Termin-Kalender des BdP Landesverbands NRW (Kategorie lvnrw) */
 const LVNRW_EXPORT =

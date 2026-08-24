@@ -6,7 +6,12 @@ Gegründet von Mitgliedern, Eltern und Freunden des Stammes im Jahr 1977 unterst
 
 ## Unser Verein
 
-Der Förderverein ist ein eingetragener, gemeinnütziger Verein.
+Der Förderverein ist ein eingetragener, gemeinnütziger Verein. Er trägt den
+Namen *Verein zur Betreuung der Pfadfinder (BdP) im Siegerland e. V.*, hat
+seinen Sitz in Siegen und ist im Vereinsregister des Amtsgerichts Siegen unter
+der Nummer 1337 eingetragen.
+
+[Satzung des Fördervereins (PDF, Stand 11.09.2021)](/dokumente/Satzung_Foerderverein-BdP-Siegerland_Stand-2021-09-11.pdf)
 
 ## Mitglied werden!
 

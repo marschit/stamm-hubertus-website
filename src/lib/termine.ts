@@ -6,8 +6,9 @@ export const KATEGORIEN = {
   // /termine-gilde.ics weiter funktionieren – nur die Beschriftung ändert sich.
   gilde: { label: 'Kreis', farbe: '#971b2f', hell: false },
   foerderverein: { label: 'Förderverein', farbe: '#5b6b7a', hell: false },
-  heimbelegung: { label: 'Heim belegt', farbe: '#7a5230', hell: false },
-  anhaenger: { label: 'Anhänger', farbe: '#2d6a7a', hell: false },
+  // Stammesheim und Anhänger laufen gemeinsam hier – was genau vermietet ist,
+  // steht im Titel des Termins.
+  vermietung: { label: 'Vermietung', farbe: '#7a5230', hell: false },
   lvnrw: { label: 'BdP NRW', farbe: '#c75b12', hell: false },
 } as const;
 
