@@ -54,12 +54,12 @@
   ],
   "fusszeile": [
     {
-      "label": "Spenden",
-      "href": "/spenden"
-    },
-    {
       "label": "Partner",
       "href": "/partner"
+    },
+    {
+      "label": "Spenden",
+      "href": "/spenden"
     },
     {
       "label": "Termine",
