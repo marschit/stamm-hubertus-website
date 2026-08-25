@@ -275,7 +275,7 @@ content:
       - name: newsletterText
         label: Newsletter – Text
         type: text
-        description: Steht im gelben Anmeldeblock am Ende der Startseite.
+        description: Steht im Anmeldeblock am Ende der Startseite.
       - name: newsletterButton
         label: Newsletter – Button-Beschriftung
         type: string
