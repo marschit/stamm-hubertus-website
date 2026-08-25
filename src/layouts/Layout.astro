@@ -4,6 +4,7 @@ import '../styles/global.css';
 import einstellungen from '../data/einstellungen.json';
 import navigation from '../data/navigation.json';
 import SocialLinks from '../components/SocialLinks.astro';
+import NewsletterAnmeldung from '../components/NewsletterAnmeldung.astro';
 
 interface Props {
   titel?: string;
@@ -185,7 +186,10 @@ const strukturDaten = {
             <a href={f.href}>{f.label}</a>
           ))}
         </div>
-        <SocialLinks titel="Folgt uns" variante="hell" />
+        <div class="fuss-rechts">
+          <SocialLinks titel="Folgt uns" variante="hell" />
+          <NewsletterAnmeldung variante="fuss" />
+        </div>
         <p class="fuss-bund">
           <span>Mitglied im</span>
           <img src="/bdp/bundeszeichen-negativ.svg" alt="Bund der Pfadfinder*innen" height="38" />
@@ -416,6 +420,12 @@ const strukturDaten = {
     flex-direction: column;
     gap: 0.35rem;
     font-weight: 700;
+  }
+  /* Kanäle und Newsletter teilen sich die rechte Spalte */
+  .fuss-rechts {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
   }
   .fuss-bund {
     width: 100%;

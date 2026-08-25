@@ -279,6 +279,10 @@ content:
       - name: newsletterButton
         label: Newsletter – Button-Beschriftung
         type: string
+      - name: newsletterKurz
+        label: Newsletter – Kurztext (Fußzeile)
+        type: string
+        description: Ein Satz unter dem Titel in der Fußzeile.
 
   - name: navigation
     label: Menü

@@ -3,7 +3,6 @@ import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import GruppenKarte from '../components/GruppenKarte.astro';
 import KohteKante from '../components/KohteKante.astro';
-import NewsletterAnmeldung from '../components/NewsletterAnmeldung.astro';
 import einstellungen from '../data/einstellungen.json';
 import startDaten from '../data/startseite.json';
 
@@ -149,7 +148,6 @@ const datumFormat = new Intl.DateTimeFormat('de-DE', { dateStyle: 'long' });
     </div>
   </section>
 
-  <NewsletterAnmeldung />
 </Layout>
 
 <style>

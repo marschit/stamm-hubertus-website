@@ -8,6 +8,12 @@ import startDaten from '../data/startseite.json';
 const LISTE = '032eb640-3645-49e4-93e3-112cc126fc0b';
 const ZIEL = 'https://durchblick.stamm-hubertus-siegen.de/subscription/form';
 
+interface Props {
+  /** 'fuss' = schmale Zeile in der Fußzeile, 'block' = großer Abschnitt mit Bild-Überschrift */
+  variante?: 'fuss' | 'block';
+}
+const { variante = 'fuss' } = Astro.props;
+
 // Texte kommen aus dem CMS (startseite.json). Wird ein Feld dort geleert oder
 // fällt weg, greift der Standardtext – der Block bleibt vollständig.
 const standard = {
@@ -16,6 +22,7 @@ const standard = {
   newsletterText:
     'Wir bauen gerade einen neuen Newsletter-Verteiler auf und freuen uns über jede Anmeldung. Weitere Neuigkeiten folgen in Kürze.',
   newsletterButton: 'Durchblick abonnieren',
+  newsletterKurz: 'Neuigkeiten aus dem Stamm, ein paar Mal im Jahr.',
 };
 const text: Record<string, string> = { ...standard };
 for (const [schluessel, wert] of Object.entries(startDaten)) {
@@ -23,41 +30,142 @@ for (const [schluessel, wert] of Object.entries(startDaten)) {
 }
 ---
 
-<section class="brief">
-  <div class="wrap brief-innen">
-    <div class="brief-text">
-      <span class="eyebrow"><img src="/bdp/icon-fernglas.png" alt="">{text.newsletterEyebrow}</span>
-      <h2>{text.newsletterTitel}</h2>
-      <p>{text.newsletterText}</p>
-    </div>
+{variante === 'fuss' ? (
+  <div class="brief-fuss">
+    <span class="brief-fuss-titel">
+      <img src="/bdp/icon-fernglas.png" alt="" width="22" height="18" />
+      {text.newsletterTitel}
+    </span>
+    <p class="brief-fuss-text">{text.newsletterKurz}</p>
 
-    <form class="brief-form" method="post" action={ZIEL}>
-      {/* Bot-Falle: bleibt für Menschen unsichtbar und muss leer bleiben */}
+    <form class="brief-fuss-form" method="post" action={ZIEL}>
       <input type="text" name="nonce" tabindex="-1" autocomplete="off" aria-hidden="true" />
       <input type="hidden" name="l" value={LISTE} />
-
-      <label for="brief-name">Name <span>(freiwillig)</span></label>
-      <input type="text" id="brief-name" name="name" autocomplete="name" />
-
-      <label for="brief-mail">E-Mail-Adresse</label>
-      <input type="email" id="brief-mail" name="email" required autocomplete="email" />
-
-      <button type="submit" class="btn btn--blau">{text.newsletterButton}</button>
-
-      <p class="brief-hinweis">
-        Du bekommst eine E-Mail mit einem Bestätigungslink – erst danach bist du
-        dabei. Abmelden kannst du dich jederzeit mit einem Klick am Ende jeder
-        Ausgabe. Mehr dazu in unserer <a href="/datenschutz">Datenschutzerklärung</a>.
-      </p>
+      <label class="nur-vorleser" for="brief-mail-fuss">E-Mail-Adresse</label>
+      <input
+        type="email"
+        id="brief-mail-fuss"
+        name="email"
+        required
+        autocomplete="email"
+        placeholder="E-Mail-Adresse"
+      />
+      <button type="submit">Anmelden</button>
     </form>
+
+    <p class="brief-fuss-hinweis">
+      Du erhältst eine Bestätigungsmail. Abmelden jederzeit möglich –
+      <a href="/datenschutz">Datenschutz</a>.
+    </p>
   </div>
-</section>
+) : (
+  <section class="brief">
+    <div class="wrap brief-innen">
+      <div class="brief-text">
+        <span class="eyebrow"><img src="/bdp/icon-fernglas.png" alt="">{text.newsletterEyebrow}</span>
+        <h2>{text.newsletterTitel}</h2>
+        <p>{text.newsletterText}</p>
+      </div>
+
+      <form class="brief-form" method="post" action={ZIEL}>
+        <input type="text" name="nonce" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <input type="hidden" name="l" value={LISTE} />
+        <label for="brief-name">Name <span>(freiwillig)</span></label>
+        <input type="text" id="brief-name" name="name" autocomplete="name" />
+        <label for="brief-mail">E-Mail-Adresse</label>
+        <input type="email" id="brief-mail" name="email" required autocomplete="email" />
+        <button type="submit" class="btn btn--blau">{text.newsletterButton}</button>
+        <p class="brief-hinweis">
+          Du bekommst eine E-Mail mit einem Bestätigungslink – erst danach bist du
+          dabei. Abmelden kannst du dich jederzeit mit einem Klick am Ende jeder
+          Ausgabe. Mehr dazu in unserer <a href="/datenschutz">Datenschutzerklärung</a>.
+        </p>
+      </form>
+    </div>
+  </section>
+)}
 
 <style>
-  .brief {
+  /* Bot-Falle unsichtbar, aber nicht display:none – Bots füllen sie trotzdem */
+  input[name='nonce'] {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+  .nur-vorleser {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  /* ---- schmale Form für die Fußzeile ---- */
+  .brief-fuss { display: flex; flex-direction: column; gap: 0.4rem; max-width: 20rem; }
+  .brief-fuss-titel {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+  .brief-fuss-titel img {
+    width: 22px;
+    height: 18px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+  }
+  .brief-fuss-text {
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.45;
+    color: rgb(253 252 248 / 0.75);
+  }
+  .brief-fuss-form { display: flex; gap: 0.4rem; margin-top: 0.2rem; }
+  .brief-fuss-form input[type='email'] {
+    flex: 1 1 auto;
+    min-width: 0;
+    font: inherit;
+    font-size: 0.9rem;
+    padding: 0.45rem 0.6rem;
+    border: 1px solid rgb(253 252 248 / 0.35);
+    border-radius: 3px;
+    background: rgb(253 252 248 / 0.1);
+    color: var(--papier);
+  }
+  .brief-fuss-form input[type='email']::placeholder { color: rgb(253 252 248 / 0.55); }
+  .brief-fuss-form input[type='email']:focus-visible {
+    outline: none;
+    border-color: var(--woelflingsgelb);
+    background: rgb(253 252 248 / 0.16);
+  }
+  .brief-fuss-form button {
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 0.45rem 0.9rem;
+    border: none;
+    border-radius: 3px;
     background: var(--woelflingsgelb);
     color: var(--pfadiblau);
+    cursor: pointer;
+    white-space: nowrap;
   }
+  .brief-fuss-form button:hover { filter: brightness(1.07); }
+  .brief-fuss-hinweis {
+    margin: 0;
+    font-size: 0.75rem;
+    line-height: 1.45;
+    color: rgb(253 252 248 / 0.6);
+  }
+  .brief-fuss-hinweis a { color: rgb(253 252 248 / 0.85); }
+
+  /* ---- großer Abschnitt (derzeit nicht eingebunden) ---- */
+  .brief { background: var(--woelflingsgelb); color: var(--pfadiblau); }
   .brief-innen {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
@@ -69,7 +177,6 @@ for (const [schluessel, wert] of Object.entries(startDaten)) {
   .brief h2 { color: var(--pfadiblau); }
   .brief .eyebrow { color: var(--rr-rot); }
   .brief-text p { max-width: 32rem; }
-
   .brief-form { display: flex; flex-direction: column; gap: 0.35rem; max-width: 26rem; }
   .brief-form label {
     font-size: 0.85rem;
@@ -88,19 +195,7 @@ for (const [schluessel, wert] of Object.entries(startDaten)) {
     color: var(--ink);
     margin-bottom: 0.7rem;
   }
-  .brief-form input:focus-visible {
-    outline: none;
-    border-color: var(--pfadiblau);
-  }
-  /* Bot-Falle unsichtbar, aber nicht display:none – Bots füllen sie trotzdem */
-  .brief-form input[name='nonce'] {
-    position: absolute;
-    left: -9999px;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-  }
-  /* .btn ist für Links gemacht – das braucht ein <button> zusätzlich */
+  .brief-form input:focus-visible { outline: none; border-color: var(--pfadiblau); }
   .brief-form button {
     margin-top: 0.3rem;
     align-self: flex-start;
