@@ -23,16 +23,7 @@ Ein weiterer Meilenstein in Deiner Pfadfinderhistorie ist unser Förderverein. I
 
 Du warst ein bescheidener Mensch, Du brauchtest kein direktes Lob, auch wenn Du Dich bestimmt das ein oder andere Mal sehr darüber gefreut hättest. Für Dich war es aber Dank genug, den Stamm aufblühen und aktiv zu sehen. In den Jahren ab 1959 traf man sich noch in kleiner Runde in einer kleinen Hütte nahe der Freusburg, später dann von etwa 1967 bis 1984 am Altenberg in der ehemaligen Jugendherberge am Oberen Schloss. Durch hartnäckiges Verhandeln, an dem Du maßgeblich beteiligt warst, konnte der Stamm im Jahre 1984 die ehemalige Schule in der Blücherstraße in Beschlag nehmen und sich dort ein eigenes Stammesheim einrichten. In den besten Jahren fanden sich regelmäßig um die 200 Pfadfinder:innen zu den Heimabenden ein. So kam es dann auch, dass Ehemalige sich dafür einsetzten, dass Du für das Bundesverdienstkreuz vorgeschlagen wurdest, das Dir dann im Jahre 2001 auch verliehen wurde. Nachdem der Pachtvertrag für die Schule in der Blücherstraße auslief, fanden wir im Jahre 2010 im ehemaligen Kindertreff der Stadt im Seilereiweg unser jetziges Zuhause. Auch hierbei hast Du uns tatkräftig unterstützt und begleitet.
 
-Der Lebenskreis unseres langjährigen Weggefährten und Ehrenvorsitzenden hat sich geschlossen. Ikki hat jahrzehntelang die Geschicke unseres Stammes gelenkt, hatte stets das Wohl unseres Stammes im Blick und war ein Streiter für die Idee der Pfadfinderei. Der Funke, der in dem kleinen Wölfling Ikki entzündet wurde, der jahrzehntelang in ihm brannte, der weitere Funken versprühte und im Laufe der Zeit hundertfach geteilt wurde, dieser Funken ist nun für immer erloschen.Wir sind sehr traurig und in Gedanken bei seiner Familie. Wir werden Ikki stets ein ehrendes Andenken bewahren.
-
-  
-
-
-![](/bilder/IMG_3200.jpg)
-
-![](/bilder/durchblick-titel-hell.png)
-
-  
+Der Lebenskreis unseres langjährigen Weggefährten und Ehrenvorsitzenden hat sich geschlossen. Ikki hat jahrzehntelang die Geschicke unseres Stammes gelenkt, hatte stets das Wohl unseres Stammes im Blick und war ein Streiter für die Idee der Pfadfinderei. Der Funke, der in dem kleinen Wölfling Ikki entzündet wurde, der jahrzehntelang in ihm brannte, der weitere Funken versprühte und im Laufe der Zeit hundertfach geteilt wurde, dieser Funken ist nun für immer erloschen.Wir sind sehr traurig und in Gedanken bei seiner Familie. Wir werden Ikki stets ein ehrendes Andenken bewahren.  
   
 ***Lieber Ikki,***  
 es würde Dich stolz und glücklich machen zu sehen und zu erleben, wie viele Ehemalige sich in den heutigen schwierigen Zeiten für den Stamm so überaus engagiert einbringen, das, was sie selbst erleben durften, weitergeben möchten und alles daran setzen, für unsere Wölflinge und Pfadfinder Lager und Fahrten möglich zu machen. Dein Funke mag erloschen sein, aber Du hast die Fackel nur weitergegeben, die Flamme der Pfadfinderei brennt in vielen, vielen von uns weiter.
