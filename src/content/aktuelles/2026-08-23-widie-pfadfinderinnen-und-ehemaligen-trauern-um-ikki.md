@@ -25,6 +25,13 @@ Du warst ein bescheidener Mensch, Du brauchtest kein direktes Lob, auch wenn Du 
 
 Der Lebenskreis unseres langjährigen Weggefährten und Ehrenvorsitzenden hat sich geschlossen. Ikki hat jahrzehntelang die Geschicke unseres Stammes gelenkt, hatte stets das Wohl unseres Stammes im Blick und war ein Streiter für die Idee der Pfadfinderei. Der Funke, der in dem kleinen Wölfling Ikki entzündet wurde, der jahrzehntelang in ihm brannte, der weitere Funken versprühte und im Laufe der Zeit hundertfach geteilt wurde, dieser Funken ist nun für immer erloschen.Wir sind sehr traurig und in Gedanken bei seiner Familie. Wir werden Ikki stets ein ehrendes Andenken bewahren.
 
+  
+
+
+![](/bilder/IMG_3200.jpg)
+
+  
+  
 ***Lieber Ikki,***  
 es würde Dich stolz und glücklich machen zu sehen und zu erleben, wie viele Ehemalige sich in den heutigen schwierigen Zeiten für den Stamm so überaus engagiert einbringen, das, was sie selbst erleben durften, weitergeben möchten und alles daran setzen, für unsere Wölflinge und Pfadfinder Lager und Fahrten möglich zu machen. Dein Funke mag erloschen sein, aber Du hast die Fackel nur weitergegeben, die Flamme der Pfadfinderei brennt in vielen, vielen von uns weiter.
 
