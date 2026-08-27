@@ -30,6 +30,8 @@ Der Lebenskreis unseres langjährigen Weggefährten und Ehrenvorsitzenden hat si
 
 ![](/bilder/IMG_3200.jpg)
 
+![](/bilder/durchblick-titel-hell.png)
+
   
   
 ***Lieber Ikki,***  
