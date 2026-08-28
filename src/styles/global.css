@@ -135,6 +135,13 @@ img { max-width: 100%; height: auto; }
   border-radius: 0 4px 4px 0;
 }
 .prose img { border-radius: 6px; margin: 0.5rem 0; }
+/* Bilder mit dem Titel „Porträt“ (im Markdown: ![Text](/pfad "Porträt"))
+   stehen schmaler als der Text, mittig und mit Luft davor und danach. */
+.prose img[title='Porträt'] {
+  display: block;
+  max-width: min(18rem, 75%);
+  margin: 2.2rem auto;
+}
 .prose table { border-collapse: collapse; width: 100%; }
 .prose th, .prose td { border-bottom: 1px solid var(--linie); padding: 0.5em 0.7em; text-align: left; }
 
