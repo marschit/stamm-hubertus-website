@@ -2,6 +2,8 @@
 titel: Förderverein
 untertitel: Seit über 40 Jahren an unserer Seite
 ---
+**Pfadfinden –  eine Idee lebt!** Sie wird seit mehr als 70 Jahren in Siegen vom Stamm Hubertus ausgefüllt. Viele Kinder und Jugendliche haben hier in der Gemeinschaft wichtige Erfahrungen für ihr Leben und die Gesellschaft gemacht. Damit das so bleibt, unterstützen wir den Stamm Hubertus in seiner Jugendarbeit!
+
 Gegründet von Mitgliedern, Eltern und Freunden des Stammes im Jahr 1977 unterstützt der **Verein zur Betreuung der Pfadfinder (BdP) im Siegerland e. V.** unsere Pfadfinderarbeit seit über 40 Jahren. Er betreut unser Stammesheim, leistet ideelle und finanzielle Unterstützung – und sorgt dafür, dass **alle Kinder** an unseren Aktionen teilnehmen können, unabhängig vom Geldbeutel der Eltern! 
 
 ## Unser Verein
@@ -15,6 +17,8 @@ der Nummer 1337 eingetragen.
 
 ## Mitglied werden!
 
+Mitglieder des Fördervereins können die Idee der Pfadfinder vor Ort aktiv unterstützen. Auch jede praktische Hilfe ist gerne willkommen! Sei es bei anstehenden Reparatur- und Renovierungsarbeiten oder, in Abstimmung, die Beschaffung von notwendigen Materialien. ***Helfen Sie mit!***  
+  
 Mitglieder zahlen einen Jahresbeitrag ab **40 Euro** und werden zur
 jährlichen Mitgliederversammlung eingeladen. Der Verein ist beim Finanzamt
 Siegen als gemeinnützig anerkannt (Steuernummer 5342/5925/2555) – Beiträge
