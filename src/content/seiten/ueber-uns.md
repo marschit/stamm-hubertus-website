@@ -3,9 +3,9 @@ titel: Wir über uns
 untertitel: Stamm Hubertus Siegen e. V.
 ---
 Wir sind der **Stamm Hubertus Siegen e. V.**, ein Pfadfinderstamm im  
-[Bund der Pfadfinder*innen e.V. (BdP)](https://www.pfadfinden.de) - und das **seit über 70 Jahren**.   
-Seit Generationen erleben Kinder und Jugendliche bei uns Gemeinschaft,   
-Abenteuer und Natur – in Gruppenstunden, auf Fahrten und in Lagern.
+[Bund der Pfadfinder*innen e.V. (BdP)](https://www.pfadfinden.de) - und das **seit über 70 Jahren**.  
+Seit Generationen erleben Kinder und Jugendliche bei uns Gemeinschaft,  
+Abenteuer und Natur – in den Gruppenstunden, auf Fahrten und in Zeltlagern.
 
 Wir treffen uns **jeden Samstag von 15 bis 17 Uhr** in unserem Stammesheim
 am Seilereiweg 8 in Siegen. Wer reinschnuppern möchte, kommt einfach vorbei.
