@@ -16,8 +16,7 @@ Der Förderverein ist ein eingetragener, gemeinnütziger Verein. Er trägt den N
 
 Mitglieder des Fördervereins können den Stamm Hubertus vor Ort finanziell unterstützen. Auch jede praktische Hilfe ist gerne willkommen. Sei es bei anstehenden Reparatur- und Renovierungsarbeiten im Stammesheim oder, in Abstimmung, bei der Beschaffung von notwendigen Materialien. Hilf mit!  
 
-Mitglieder zahlen einen Jahresbeitrag ab **40 Euro** und werden zur jährlichen Mitgliederversammlung eingeladen. Der Verein ist beim Finanzamt Siegen als gemeinnützig anerkannt (Steuernummer 5342/5925/2555) – Beiträge und Spenden sind steuerlich absetzbar, eine Spendenbescheinigung geht dir  
-auf Wunsch automatisch zu.
+Mitglieder zahlen einen Jahresbeitrag ab **40 Euro** und werden zur jährlichen Mitgliederversammlung eingeladen. Der Verein ist beim Finanzamt Siegen als gemeinnützig anerkannt (Steuernummer 5342/5925/2555) – Beiträge und Spenden sind steuerlich absetzbar, eine Spendenbescheinigung geht dir auf Wunsch automatisch zu.
 
 **So wirst du Mitglied:**
 
