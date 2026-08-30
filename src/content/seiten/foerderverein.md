@@ -33,7 +33,7 @@ Fragen zum Förderverein? Schreib uns an
 
 ## Vermietung
 
-Als Träger des Stammesheims als "Stätte der Möglichkeiten" bieten wir in Abstimmung eine Vermietung unseres Pfadfinderheimes an. Auch unserer Stammesanhänger kann für Transporte gemietet werden. Sprcht uns an: [[fv@stamm-hubertus-siegen.de](mailto:fv@stamm-hubertus-siegen.de)]([mailto:fv@stamm-hubertus-siegen.de](mailto:fv@stamm-hubertus-siegen.de))
+In Abstimmung bieten wir eine Vermietung unseres [Stammesheims](https://stamm-hubertus-siegen.de/heim/) an. Auch der Stammesanhänger kann für Transporte gemietet werden. Sprecht uns an!
 
 ## Spendenkonto des Fördervereins
 
