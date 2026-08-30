@@ -2,7 +2,6 @@
 titel: Spenden
 untertitel: Ehrenamtliche Arbeit unterstützen
 ---
-
 Wir sind ein gemeinnütziger Verein und unsere gesamte Arbeit findet
 ehrenamtlich statt. Wir freuen uns immer über Spenden, die uns dabei helfen,
 unsere Arbeit aufrechtzuerhalten und auch in Zukunft tolle Aktionen zu
@@ -19,3 +18,5 @@ veranstalten.
 Selbstverständlich stellen wir eine Spendenquittung aus.
 
 **Vielen Dank!**
+
+Wer förderndes Mitglied werden möchte, schaut gerne beim [Förderverein](https://stamm-hubertus-siegen.de/foerderverein/) des Stammes vorbei!
