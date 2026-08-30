@@ -19,4 +19,4 @@ Selbstverständlich stellen wir eine Spendenquittung aus.
 
 **Vielen Dank!**
 
-Wer förderndes Mitglied werden möchte, schaut gerne beim [Förderverein](https://stamm-hubertus-siegen.de/foerderverein/) des Stammes vorbei!
+Wer dauerhaft förderndes Mitglied werden möchte, schaut gerne beim [Förderverein](https://stamm-hubertus-siegen.de/foerderverein/) des Stammes vorbei!
