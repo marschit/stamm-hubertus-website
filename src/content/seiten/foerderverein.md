@@ -41,7 +41,7 @@ In Abstimmung bieten wir eine Vermietung unseres [Stammesheims](https://stamm-hu
 Du möchtest direkt den Stamm unterstützen? Dann schau auf unsere
 [Spendenseite](/spenden).
 
-# Kontakt
+## Kontakt
 
 Fragen zum Förderverein oder zu Vermietungen? Schreib uns an  
 [fv@stamm-hubertus-siegen.de](mailto:fv@stamm-hubertus-siegen.de).
