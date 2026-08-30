@@ -14,7 +14,7 @@ Der Förderverein ist ein eingetragener, gemeinnütziger Verein. Er trägt den N
 
 ## Mitglied werden!
 
-Mitglieder des Fördervereins können die Idee der Pfadfinder vor Ort finanziell unterstützen. Auch jede praktische Hilfe ist gerne willkommen. Sei es bei anstehenden Reparatur- und Renovierungsarbeiten im Stammesheim oder, in Abstimmung, bei der Beschaffung von notwendigen Materialien. Helft mit!  
+Mitglieder des Fördervereins können die Idee der Pfadfinder vor Ort finanziell unterstützen. Auch jede praktische Hilfe ist gerne willkommen. Sei es bei anstehenden Reparatur- und Renovierungsarbeiten im Stammesheim oder, in Abstimmung, bei der Beschaffung von notwendigen Materialien. Hilf mit!  
 
 Mitglieder zahlen einen Jahresbeitrag ab **40 Euro** und werden zur jährlichen Mitgliederversammlung eingeladen. Der Verein ist beim FinanzamtSiegen als gemeinnützig anerkannt (Steuernummer 5342/5925/2555) – Beiträge und Spenden sind steuerlich absetzbar, eine Spendenbescheinigung geht dir  
 auf Wunsch automatisch zu.
@@ -30,7 +30,7 @@ auf Wunsch automatisch zu.
 
 ## Vermietung
 
-In Abstimmung bieten wir eine Vermietung unseres [Stammesheims](https://stamm-hubertus-siegen.de/heim/) an. Auch der Stammesanhänger kann für Transporte gemietet werden. Nehmt gerne Kontakt mit uns auf!
+In Abstimmung bieten wir eine Vermietung unseres [Stammesheims](https://stamm-hubertus-siegen.de/heim/) an. Auch der Stammesanhänger kann für Transporte gemietet werden. Nimm gerne Kontakt mit uns auf!
 
 ## Spendenkonto des Fördervereins
 
