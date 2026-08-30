@@ -8,21 +8,15 @@ Gegründet von Mitgliedern, Eltern und Freunden des Stammes im Jahr 1977 unterst
 
 ## Unser Verein
 
-Der Förderverein ist ein eingetragener, gemeinnütziger Verein. Er trägt den
-Namen *Verein zur Betreuung der Pfadfinder (BdP) im Siegerland e. V.*, hat
-seinen Sitz in Siegen und ist im Vereinsregister des Amtsgerichts Siegen unter
-der Nummer 1337 eingetragen.
+Der Förderverein ist ein eingetragener, gemeinnütziger Verein. Er trägt den Namen *Verein zur Betreuung der Pfadfinder (BdP) im Siegerland e. V.*, hat seinen Sitz in Siegen und ist im Vereinsregister des Amtsgerichts Siegen unterder Nummer 1337 eingetragen.
 
 [Satzung des Fördervereins (PDF, Stand 11.09.2021)](/dokumente/Satzung_Foerderverein-BdP-Siegerland_Stand-2021-09-11.pdf)
 
 ## Mitglied werden!
 
-Mitglieder des Fördervereins können die Idee der Pfadfinder vor Ort aktiv unterstützen. Auch jede praktische Hilfe ist gerne willkommen! Sei es bei anstehenden Reparatur- und Renovierungsarbeiten oder, in Abstimmung, die Beschaffung von notwendigen Materialien. ***Helfen Sie mit!***  
+Mitglieder des Fördervereins können die Idee der Pfadfinder ++*vor Ort*++ finanziell aktiv unterstützen. Auch jede praktische Hilfe ist gerne willkommen. Sei es bei anstehenden Reparatur- und Renovierungsarbeiten im Stammesheim oder, in Abstimmung, bei der Beschaffung von notwendigen Materialien. ***Helfen Sie mit!***  
   
-Mitglieder zahlen einen Jahresbeitrag ab **40 Euro** und werden zur
-jährlichen Mitgliederversammlung eingeladen. Der Verein ist beim Finanzamt
-Siegen als gemeinnützig anerkannt (Steuernummer 5342/5925/2555) – Beiträge
-und Spenden sind steuerlich absetzbar, eine Spendenbescheinigung geht dir
+Mitglieder zahlen einen Jahresbeitrag ab **40 Euro** und werden zur jährlichen Mitgliederversammlung eingeladen. Der Verein ist beim FinanzamtSiegen als gemeinnützig anerkannt (Steuernummer 5342/5925/2555) – Beiträgeund Spenden sind steuerlich absetzbar, eine Spendenbescheinigung geht dir  
 auf Wunsch automatisch zu.
 
 **So wirst du Mitglied:**
