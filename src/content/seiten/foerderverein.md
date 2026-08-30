@@ -43,5 +43,5 @@ Du möchtest direkt den Stamm unterstützen? Dann schau auf unsere
 
 ## Kontakt
 
-Fragen zum Förderverein oder zu Vermietungen? Schreib uns gerne an!  
+Fragen zum Förderverein oder zu Vermietungen? Schreib uns an!  
 [fv@stamm-hubertus-siegen.de](mailto:fv@stamm-hubertus-siegen.de).
