@@ -142,6 +142,23 @@ img { max-width: 100%; height: auto; }
   max-width: min(18rem, 75%);
   margin: 2.2rem auto;
 }
+/* Mehrere Bilder im selben Absatz mit dem Titel „Paar“ stehen nebeneinander,
+   solange der Platz reicht – auf schmalen Bildschirmen untereinander. */
+.prose p:has(img[title='Paar']) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+.prose img[title='Paar'] {
+  width: auto;
+  max-height: 18rem;
+  max-width: 100%;
+  margin: 0;
+  flex: 0 1 auto;
+}
 .prose table { border-collapse: collapse; width: 100%; }
 .prose th, .prose td { border-bottom: 1px solid var(--linie); padding: 0.5em 0.7em; text-align: left; }
 

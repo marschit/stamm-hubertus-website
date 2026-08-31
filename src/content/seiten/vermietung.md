@@ -17,15 +17,14 @@ es auf der Seite [Stammesheim](/heim).
 
 ## Stammesanhänger
 
-![Stammesanhänger, Seitenansicht](/bilder/anhaenger-seite.jpg)
+![Stammesanhänger, Seitenansicht](/bilder/anhaenger-seite.jpg "Paar")
+![Heck des Stammesanhängers](/bilder/anhaenger-heck.jpg "Paar")
 
 Unser Planenanhänger kann für Transporte gemietet werden:
 
 - **Brenderup 2260 S** mit blauer Plane
 - zulässiges Gesamtgewicht: **1.300 kg**
 - weitere Daten und Konditionen folgen
-
-![Heck des Stammesanhängers](/bilder/anhaenger-heck.jpg "Porträt")
 
 *Nutzungsvertrag und Konditionen folgen.*
 
