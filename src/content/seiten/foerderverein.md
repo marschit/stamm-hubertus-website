@@ -27,11 +27,9 @@ Mitglieder zahlen einen Jahresbeitrag ab **40 Euro** und werden zur jährlichen 
 
   [fv@stamm-hubertus-siegen.de](mailto:fv@stamm-hubertus-siegen.de)
 
-## Vermietung
+## Vermietung und Verleih
 
-In Abstimmung bieten wir eine Vermietung unseres [Stammesheims](/heim) an. Auch der Stammesanhänger kann *für Transporte* gemietet werden. Nimm gerne Kontakt mit uns auf!
-
-Alle Angebote im Überblick: [Vermietung und Verleih](/vermietung)
+In Abstimmung bieten wir eine Vermietung unseres [Stammesheims](/heim) an. Auch der Stammesanhänger kann *für Transporte* gemietet werden. Alle Angebote im Überblick: [Vermietung und Verleih](/vermietung)
 
 ## Spendenkonto des Fördervereins
 
@@ -44,5 +42,5 @@ Du möchtest direkt den Stamm unterstützen? Dann schau auf unsere
 
 ## Kontakt
 
-Fragen zum Förderverein oder zu Vermietungen und Verleih? Schreib uns an!  
+Du hast Fragen zum Förderverein und seinem Angebot! Schreib uns an!  
 [fv@stamm-hubertus-siegen.de](mailto:fv@stamm-hubertus-siegen.de).
