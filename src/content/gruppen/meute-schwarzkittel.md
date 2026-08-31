@@ -8,14 +8,13 @@ abzeichen: /bdp/wolfskopf.svg
 abzeichenText: Der Wolfskopf – das Abzeichen der Wölflinge
 reihenfolge: 1
 ---
-
 Die Jüngsten bei uns sind die **Wölflinge**. Sie treffen sich in der Meute
 Schwarzkittel – bei Pfadfindern heißt die Wölflingsgruppe Meute, manchmal
 auch Rudel.
 
-Im Mittelpunkt stehen spielerisches Lernen, Abenteuer und Entdeckungen –
-viele Geschichten und Rituale stammen aus den Dschungelbüchern von Rudyard
-Kipling. Ganz nebenbei lernen die Wölflinge Teamgeist, Selbstständigkeit
+Im Mittelpunkt stehen spielerisches Lernen, Abenteuer und Entdeckungen –  
+viele Geschichten und Rituale stammen aus dem *Dschungelbuch* von Rudyard  
+Kipling. Ganz nebenbei lernen die Wölflinge Teamgeist, Selbstständigkeit  
 und Verantwortungsbewusstsein.
 
 ## Was wir machen
