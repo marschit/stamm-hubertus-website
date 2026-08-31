@@ -3,8 +3,9 @@ titel: Vermietung und Verleih
 untertitel: Angebote des Fördervereins
 ---
 Der Förderverein vermietet in Abstimmung das Stammesheim und verleiht  
-Ausstattung des Stammes – etwa den Stammesanhänger. D*iese Seite befindet*  
-*sich noch im Aufbau! Die Nutzungsbedingungen und Konditionen werden derzeit*  
+Ausstattung des Stammes – etwa den Stammesanhänger.   
+  
+D*iese Seite befindet sich noch im Aufbau! Die Nutzungsbedingungen und Konditionen werden derzeit*  
 *vom Vorstand erarbeitet und hier veröffentlicht, sobald sie beschlossen sind.*
 
 ## Stammesheim
@@ -23,11 +24,9 @@ Unser Planenanhänger kann für Transporte gemietet werden:
 
 - **Brenderup 2260 S** mit blauer Plane und Anhängerschloss
 - zulässiges Gesamtgewicht: **1.300 kg**
-- weitere Daten und Konditionen folgen
 
-*Nutzungsvertrag und Konditionen folgen.*
+*Weitere Daten, ein Nutzungsvertrag und Konditionen folgen.*
 
 ## Kontakt
 
-Interesse an Stammesheim oder Anhänger? Schreib dem Förderverein an!  
-[fv@stamm-hubertus-siegen.de](mailto:fv@stamm-hubertus-siegen.de).
+Interesse an einer Buchung des Stammesheims oder einer Leihe des Anhängers? Wende dich an den Förderverein unter [fv@stamm-hubertus-siegen.de](mailto:fv@stamm-hubertus-siegen.de).
