@@ -27,7 +27,7 @@ Nach dem Schnuppern dabei bleiben? So geht's:
 
 ## Zugang zum Stammesheim
 
-Du brauchst einen Zugang zum Heim (App oder Schlüsselkarte) – oder möchtest
+Du brauchst einen Zugang zum Stammesheim (App oder Schlüsselkarte) – oder möchtest
 einen abmelden? Nutze unser [Antragsformular](/zugangsantrag).
 
 ## So erreichst du uns
