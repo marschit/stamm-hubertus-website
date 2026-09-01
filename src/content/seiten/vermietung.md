@@ -4,9 +4,8 @@ untertitel: Angebote des Fördervereins
 ---
 Der Förderverein vermietet in Abstimmung das Stammesheim und verleiht  
 Ausstattung des Stammes – etwa den Stammesanhänger.   
-  
-D*iese Seite befindet sich noch im Aufbau! Die Nutzungsbedingungen und Konditionen werden derzeit*  
-*vom Vorstand erarbeitet und hier veröffentlicht, sobald sie beschlossen sind.*
+
+D*iese Seite befindet sich noch im Aufbau! Die Nutzungsbedingungen und Konditionen werden derzeit vom Vorstand erarbeitet und hier veröffentlicht, sobald sie beschlossen sind.*
 
 ## Stammesheim
 
