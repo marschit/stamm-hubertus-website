@@ -19,12 +19,19 @@ Wochenenden und Ferienfreizeiten mieten. Alle Informationen gibt es auf der Seit
 ![Stammesanhänger, Seitenansicht](/bilder/anhaenger-seite.jpg "Paar")
 ![Heck des Stammesanhängers](/bilder/anhaenger-heck.jpg "Paar")
 
-Unser Planenanhänger kann für Transporte gemietet werden:
+Unser Stammesanhänger kann für Transporte gemietet werden:
 
-- **Brenderup 2260 S** mit blauer Plane und Anhängerschloss
+- **Brenderup 2260 S** mit Plane und Anhängerschloss
 - zulässiges Gesamtgewicht: **1.300 kg**
+- Stützrad mit Bremse
+- LKW-Planfarbe BLAU überlappend
+- Holz-Einstecklatten
+- PVC-Drehwirbelverschlüsse
+- Allseitig zu öffnen, Schleuderverschlüsse rundum
+- Stahl-Ringösen!
+- Innenmaße: 258 x 128 x 40
 
-*Weitere Daten, ein Nutzungsvertrag und Konditionen folgen.*
+*Ein Nutzungsvertrag und Konditionen folgen.*
 
 ## Kontakt
 
