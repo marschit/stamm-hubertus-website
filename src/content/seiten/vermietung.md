@@ -21,11 +21,11 @@ Wochenenden und Ferienfreizeiten mieten. Alle Informationen gibt es auf der Seit
 
 Unser Stammesanhänger kann für Transporte gemietet werden:
 
-- **Brenderup 2260 S** mit Plane und Anhängerschloss
+- **Brenderup 2260 S** mit Plane
 - zulässiges Gesamtgewicht: **1.300 kg**
-- Stützrad mit Bremse
 - Innenmaße: 258 cm x 128  cm x 40 cm
 - LKW-Planfarbe BLAU überlappend
+- Stützrad mit Bremse und Anhängerschloss
 - Holz-Einstecklatten
 - PVC-Drehwirbelverschlüsse
 - Allseitig zu öffnen, Schleuderverschlüsse rundum
