@@ -25,10 +25,10 @@ Unser Stammesanhänger kann für Transporte gemietet werden:
 - zulässiges Gesamtgewicht: **1.300 kg**
 - Innenmaße: 258 cm x 128  cm x 40 cm
 - LKW-Planfarbe BLAU überlappend
+- Allseitig zu öffnen, Schleuderverschlüsse rundum
 - Stützrad mit Bremse und Anhängerschloss
 - Holz-Einstecklatten
 - PVC-Drehwirbelverschlüsse
-- Allseitig zu öffnen, Schleuderverschlüsse rundum
 - Stahl-Ringösen!
 
 *Ein Nutzungsvertrag und Konditionen folgen.*
